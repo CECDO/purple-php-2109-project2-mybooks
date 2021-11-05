@@ -1,7 +1,7 @@
 <?php
-//SELECT Book.id, Book.title, Book.release_date, Book.added_date, Book.cover_page, Editor.name AS editor_name, Emplacement.name AS emplacement_name, Status.name AS status_name FROM Book JOIN Editor ON Book.Editor_id = Editor.id JOIN Emplacement ON Book.Emplacement_id = Emplacement.id JOIN Status ON Book.Status_id = Status.id;
 
 namespace App\Model;
+
 use PDO;
 
 class BooksManager extends AbstractManager
@@ -55,23 +55,22 @@ class BooksManager extends AbstractManager
 
     public function update(array $book): bool
     {
-        $statement = $this->pdo->prepare('UPDATE Book SET `title` = :title, `editor_id` = :editor_id, `release_date` = :release_date WHERE id=:id');
+        $statement = $this->pdo->prepare('UPDATE Book SET `title` = :title,
+        `editor_id` = :editor_id,
+        `release_date` = :release_date
+        WHERE id=:id');
         $statement->bindValue('id', $book['id'], \PDO::PARAM_INT);
         $statement->bindValue(':title', $book['title'], \PDO::PARAM_STR);
         $statement->bindValue(':editor_id', $book['editor'], \PDO::PARAM_STR);
         $statement->bindValue(':release_date', $book['release_date'], \PDO::PARAM_STR);
-
-        
         return $statement->execute();
     }
 
-    public function test_input($data)
+    public function testInput($data)
     {
         $data = trim($data);
         $data = stripslashes($data);
         $data = htmlspecialchars($data);
         return $data;
     }
-
-
 }
