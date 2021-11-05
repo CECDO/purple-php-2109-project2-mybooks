@@ -1,0 +1,84 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Page EDIT</h1>
+    <form action="" method="post">
+    	<input type="hidden" value="{{ book.book_id }}" name="id">
+        <div class="cover_page">
+            <label for="imageUpload"></label>
+            <input type="file" name="avatar" id="imageUpload" />
+        </div>
+        
+        <div class="title">
+            <label for="title">Titre :</label>
+            <input type="text" id="title" name="title" value="{{ book.book_title }}" placeholder="{{ book.book_title }}">
+        </div>
+        <div class="author">
+            <label for="author">Auteur :</label>
+            <select name="author" id="author">
+                {% for author in authors %}
+                <option value="{{ author.author_name }}">{{ author.author_name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="release_date">
+            <label for="release_date">Date de sortie :</label>
+            <input type="date" name="release_date" id="release_date" value="{{ book.release_date }}">
+        </div>
+        <div class="editor">
+            <label for="editor">Editeur :</label>
+            <select name="editor" id="editor">
+                <option value="{{ book.editor_id }}" selected hidden>{{ book.editor_name }}</option>
+                {% for editor in editors %}
+                <option name="editor" value="{{ editor.editor_id }}">{{ editor.editor_name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="category">
+            <label for="category">Catégorie :</label>
+            <select name="category" id="category">
+                <option value="none" selected disabled hidden>{{ book.category_name }}</option>
+                <option></option>
+            </select>
+        </div>
+        <div class="format">
+            <label for="format">Format :</label>
+            <select name="format" id="format">
+                <option value="none" selected disabled hidden>{{ book.format_name }}</option>
+                <option value="paper">Papier</option>
+                <option value="numeric">Numérique</option>
+                <option value="audio">Audio</option>
+            </select>
+        </div>
+        <div class="emplacement">
+            <label for="emplacement">Emplacement :</label>
+            <select name="emplacement" id="emplacement">
+                <option value="{{ book.emplacement_name }}" selected disabled hidden>{{ book.emplacement_name }}</option>
+                {% for emplacement in emplacements %}
+                <option value="{{ emplacement.emplacement_name }}">{{ emplacement.emplacement_name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="status">
+            <label for="status">Etat :</label>
+
+            <select name="status" id="status">
+                <option value="{{ book.status_name }}" selected disabled hidden>{{ book.status_name }}</option>
+                {% for statut in status %}
+                <option value="{{ statut.status_name }}">{{ statut.status_name }}</option>
+                {% endfor %}
+            </select>
+
+
+            {# <input type="radio" id="{{ book.status_name }}" name="status" value="{{ book.etat_name }}" checked>
+            <label for="{{ book.status_name }}">{{ book.status_name }}</label>
+            {% for statut in status %}
+            <input type="radio" id="{{statut.status.name}}" name="status" value="{{statut.status_name}}">
+            <label for="{{statut.status_name}}">{{statut.status_name}}</label>
+            {% endfor %} #}
+            
+        </div>
+        <input type="submit">
+    </form>
+
+{% endblock %}

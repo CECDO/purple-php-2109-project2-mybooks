@@ -1,0 +1,7 @@
+
+{% for books in book %}
+<div>
+<li>{{ books.book_title }}</li>
+<a href="../books/edit?id={{books.book_id}}">edit</a>
+</div>
+{% endfor %}
