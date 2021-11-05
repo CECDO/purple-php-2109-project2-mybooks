@@ -1,0 +1,44 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+    Ajouter un livre
+{% endblock title %}
+
+{% block content %}
+
+
+    <form action="" method="post">
+
+        <div class="authorAdd">
+            <label for="author_name">Auteur :</label>
+            <input type="text" id="author_name" name="author_name" placeholder="Saissisez l'auteur">
+        </div>
+    
+        <div class="editorAdd">
+            <label for="editor_name">Editeur:</label>
+            <input type="text" id="editor_name" name="editor_name" placeholder="Saissisez l'éditeur">
+        </div>
+        <div class="categoryAdd">
+            <label for="category_name">Catégorie:</label>
+            <input type="text" id="category_name" name="category_name" placeholder="Saissisez une catégorie">
+        </div>
+    
+        <div class="emplacementAdd">
+            <label for="emplacement_name">Emplacement :</label>
+            <input type="text" id="emplacement_name" name="emplacement_name" placeholder="Saissisez un emplacement">
+        </div>
+        <input type="submit" value="Send">
+
+    </form>
+
+{% for error in errors %}
+    {{ error }}
+{% endfor %}
+
+<a href="add">Back</a>
+
+
+
+
+
+{% endblock %}
