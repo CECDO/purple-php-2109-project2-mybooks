@@ -4,11 +4,11 @@ namespace App\Model;
 
 use PDO;
 
-class CategoryManager extends AbstractManager
+class StatusManager extends AbstractManager
 {
     public function selectAll()
     {
-        $query = ('SELECT category.name AS category_name FROM category');
+        $query = ('SELECT status.id AS status_id, status.name AS status_name FROM status');
         return $this->pdo->query($query)->fetchAll(PDO::FETCH_ASSOC);
     }
 }
