@@ -55,20 +55,20 @@ CREATE TABLE `book` (
   `category_id` int DEFAULT NULL,
   `format_id` int DEFAULT NULL,
   `editor_id` int DEFAULT NULL,
-  `emplacement_id` int DEFAULT NULL,
+  `location_id` int DEFAULT NULL,
   `status_id` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `author_id` (`author_id`),
   KEY `category_id` (`category_id`),
   KEY `format_id` (`format_id`),
   KEY `editor_id` (`editor_id`),
-  KEY `emplacement_id` (`emplacement_id`),
+  KEY `location_id` (`location_id`),
   KEY `status_id` (`status_id`),
   CONSTRAINT `book_ibfk_1` FOREIGN KEY (`author_id`) REFERENCES `author` (`id`),
   CONSTRAINT `book_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`),
   CONSTRAINT `book_ibfk_3` FOREIGN KEY (`format_id`) REFERENCES `format` (`id`),
   CONSTRAINT `book_ibfk_4` FOREIGN KEY (`editor_id`) REFERENCES `editor` (`id`),
-  CONSTRAINT `book_ibfk_5` FOREIGN KEY (`emplacement_id`) REFERENCES `emplacement` (`id`),
+  CONSTRAINT `book_ibfk_5` FOREIGN KEY (`location_id`) REFERENCES `location` (`id`),
   CONSTRAINT `book_ibfk_6` FOREIGN KEY (`status_id`) REFERENCES `status` (`id`)
 );
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -129,13 +129,13 @@ LOCK TABLES `editor` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `emplacement`
+-- Table structure for table `location`
 --
 
-DROP TABLE IF EXISTS `emplacement`;
+DROP TABLE IF EXISTS `location`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `emplacement` (
+CREATE TABLE `location` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -143,12 +143,12 @@ CREATE TABLE `emplacement` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `emplacement`
+-- Dumping data for table `location`
 --
 
-LOCK TABLES `emplacement` WRITE;
-/*!40000 ALTER TABLE `emplacement` DISABLE KEYS */;
-/*!40000 ALTER TABLE `emplacement` ENABLE KEYS */;
+LOCK TABLES `location` WRITE;
+/*!40000 ALTER TABLE `location` DISABLE KEYS */;
+/*!40000 ALTER TABLE `location` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
