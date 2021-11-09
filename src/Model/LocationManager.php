@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-class locationManager extends AbstractManager
+class LocationManager extends AbstractManager
 {
     public const TABLE = 'location';
 }
