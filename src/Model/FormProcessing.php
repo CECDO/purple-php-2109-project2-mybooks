@@ -13,7 +13,7 @@ namespace App\Model;
 class FormProcessing
 {
     /**
-     * ! ADD THE COVER PAGE 
+     * ! ADD THE COVER PAGE
      */
     public function coverPage(): string
     {
@@ -53,7 +53,7 @@ class FormProcessing
     }
 
     /**
-     * ! ADD THE BOOK TO DB 
+     * ! ADD THE BOOK TO DB
      */
     public function addBooktoDB(string $path): void
     {
@@ -75,7 +75,7 @@ class FormProcessing
     }
 
     /**
-     * ! VERIFY AND ADD AUTHOR TO DB 
+     * ! VERIFY AND ADD AUTHOR TO DB
      */
     public function verifyAndAddAuthor(): array
     {
@@ -99,7 +99,7 @@ class FormProcessing
     }
 
     /**
-     * ! VERIFY AND ADD EDITOR TO DB 
+     * ! VERIFY AND ADD EDITOR TO DB
      */
     public function verifyAndAddEditor(): array
     {
@@ -124,7 +124,7 @@ class FormProcessing
     }
 
     /**
-     * ! VERIFY AND ADD CATEGORY TO DB 
+     * ! VERIFY AND ADD CATEGORY TO DB
      */
     public function verifyAndAddCategory(): array
     {
@@ -148,7 +148,7 @@ class FormProcessing
     }
 
     /**
-     * ! VERIFY AND ADD LOCATION TO DB 
+     * ! VERIFY AND ADD LOCATION TO DB
      */
     public function verifyAndAddLocation(): array
     {
