@@ -5,7 +5,6 @@ namespace App\Model;
 class EditorsManager extends AbstractManager
 {
     public const TABLE = 'editor';
-    
 
     /* Insert element aboot the book into bdd */
     public function addEditor(string $information): void

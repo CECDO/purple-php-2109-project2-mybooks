@@ -35,26 +35,19 @@ class BooksController extends AbstractController
         $emplacements = $emplacementsManager->selectAll('name');
 
         $statusManager = new StatusManager();
-        $status = $statusManager->selectAll('name'); 
+        $status = $statusManager->selectAll('name');
 
 
         /**
          * ! PUT THE BOOK IN DBB
          */
-        $incompletForm = "";
 
-        if (
-            !empty($_FILES['avatar'])
-            && !empty($_POST['title'])
-            && !empty($_POST['author'])
-            && !empty($_POST['release_date'])
-            && !empty($_POST['editor'])
-            && !empty($_POST['category'])
-            && !empty($_POST['format'])
-            && !empty($_POST['emplacement'])
-            && !empty($_POST['status'])
-        ) {
-            $service = new Services();
+
+        $service = new Services();
+
+        $incompletForm = "";
+        $errors = $service->verifyEmptyPost();
+        if (empty($errors) && !empty($_FILES['avatar'])) {
             $path = $service->coverPage();
             $service->verifyAndAddBook($path);
         } else {

@@ -6,6 +6,8 @@ use App\Model\AuthorsManager;
 
 class BooksManager extends AbstractManager
 {
+    public const TABLE = 'book';
+
     /* Insert element aboot the book into bdd */
     public function addBook(array $properties): void
     {

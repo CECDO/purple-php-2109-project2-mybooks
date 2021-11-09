@@ -138,4 +138,15 @@ class Services
 
         $book->addBook($items);
     }
+
+    public function verifyEmptyPost(): array
+    {
+        $errors = [];
+        foreach ($_POST as $value) {
+            if (empty($value)) {
+                $errors[] = 'empty';
+            }
+        }
+        return $errors;
+    }
 }
