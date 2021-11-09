@@ -47,7 +47,7 @@ class BooksController extends AbstractController
 
         if (empty($errors) && !empty($_FILES['avatar'])) {
             $path = $formProcessing->coverPage();
-            $formProcessing->verifyAndAddBook($path);
+            $formProcessing->addBooktoDB($path);
         } else {
             $incompletForm = "Merci de remplir le formulaire";
         }

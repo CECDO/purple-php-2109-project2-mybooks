@@ -12,6 +12,9 @@ namespace App\Model;
 
 class FormProcessing
 {
+    /**
+     * ! ADD THE COVER PAGE 
+     */
     public function coverPage(): string
     {
         $errors = [];
@@ -35,6 +38,45 @@ class FormProcessing
         return $uploadFile;
     }
 
+    /**
+     * ! VERIFY IF $_POST IS EMPTY
+     */
+    public function verifyEmptyPost(): array
+    {
+        $errors = [];
+        foreach ($_POST as $value) {
+            if (empty($value)) {
+                $errors[] = 'empty';
+            }
+        }
+        return $errors;
+    }
+
+    /**
+     * ! ADD THE BOOK TO DB 
+     */
+    public function addBooktoDB(string $path): void
+    {
+        $book = new BooksManager();
+
+        $items = [
+            'cover_page' => $path,
+            'title' => ucwords(strtolower(trim($_POST['title']))),
+            'author' => $_POST['author'],
+            'release_date' => $_POST['release_date'],
+            'editor' => $_POST['editor'],
+            'category' => $_POST['category'],
+            'format' => $_POST['format'],
+            'location' => $_POST['location'],
+            'status' => $_POST['status'],
+        ];
+
+        $book->addBook($items);
+    }
+
+    /**
+     * ! VERIFY AND ADD AUTHOR TO DB 
+     */
     public function verifyAndAddAuthor(): array
     {
         $authorsManager = new AuthorsManager();
@@ -56,6 +98,9 @@ class FormProcessing
         }
     }
 
+    /**
+     * ! VERIFY AND ADD EDITOR TO DB 
+     */
     public function verifyAndAddEditor(): array
     {
         $editorsManager = new EditorsManager();
@@ -78,6 +123,9 @@ class FormProcessing
         }
     }
 
+    /**
+     * ! VERIFY AND ADD CATEGORY TO DB 
+     */
     public function verifyAndAddCategory(): array
     {
         $categoriesManager = new CategoriesManager();
@@ -99,6 +147,9 @@ class FormProcessing
         }
     }
 
+    /**
+     * ! VERIFY AND ADD LOCATION TO DB 
+     */
     public function verifyAndAddLocation(): array
     {
         $locationsManager = new LocationsManager();
@@ -118,35 +169,5 @@ class FormProcessing
         } else {
             return $errors;
         }
-    }
-
-    public function verifyAndAddBook(string $path): void
-    {
-        $book = new BooksManager();
-
-        $items = [
-            'cover_page' => $path,
-            'title' => ucwords(strtolower(trim($_POST['title']))),
-            'author' => $_POST['author'],
-            'release_date' => $_POST['release_date'],
-            'editor' => $_POST['editor'],
-            'category' => $_POST['category'],
-            'format' => $_POST['format'],
-            'location' => $_POST['location'],
-            'status' => $_POST['status'],
-        ];
-
-        $book->addBook($items);
-    }
-
-    public function verifyEmptyPost(): array
-    {
-        $errors = [];
-        foreach ($_POST as $value) {
-            if (empty($value)) {
-                $errors[] = 'empty';
-            }
-        }
-        return $errors;
     }
 }
