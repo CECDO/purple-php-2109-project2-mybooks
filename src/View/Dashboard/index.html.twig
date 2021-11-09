@@ -1,0 +1,81 @@
+<h1><a href="/">Page Dashboard</a></h1>
+<form method="get">
+    <div class="filter">
+        <h3>Filter les produits</h3>
+        <label for="author">Auteur :</label>
+        <select name="author_id" id="author">
+            <option value="" hidden>Sélectioner</option>
+            {% for author in authors %}
+            <option name="author_id" value="{{ author.id }}">{{ author.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="editor">
+        <label for="editor">Editeur :</label>
+        <select name="editor_id" id="editor">
+            <option value="" hidden>Sélectioner</option>
+            {% for editor in editors %}
+            <option name="editor_id" value="{{ editor.id }}">{{ editor.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="category">
+        <label for="category">Catégorie :</label>
+        <select name="category_id" id="category">   
+            <option value="" hidden>Sélectioner</option>
+            {% for categorie in categories %}
+            <option name="category_id" value="{{ categorie.id }}">{{ categorie.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="format">
+        <label for="format">Format :</label>
+        <select name="format_id" id="format">
+            <option value="" hidden>Sélectioner</option>
+            {% for format in formats %}
+            <option name="format_id" value="{{ format.id }}">{{ format.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="location">
+        <label for="location">Emplacement :</label>
+        <select name="location_id" id="location">
+            <option value="" hidden>Sélectioner</option>
+            {% for location in locations %}
+            <option name="location_id" value="{{ location.id }}">{{ location.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="status">
+        <label for="status">Etat :</label>
+        <select name="status_id" id="status">
+            <option value="" hidden>Sélectioner</option>
+            {% for statusbook in status %}
+            <option name="status_id" value="{{ statusbook.id }}">{{ statusbook.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <input type="submit"></input>
+</form>    
+
+
+
+
+<h1>Ma bibliothèque</h1>
+{% for book in books %}
+title: {{ book.book_title }}
+<br>
+author: {{ book.author_name }}
+<br>
+edition: {{ book.editor_name}}
+<br>
+categorie: {{ book.category_name}}
+<br>
+format: {{ book.format_name}}
+<br>
+location: {{ book.location_name}}
+<br>
+status: {{ book.status_name}}
+
+<br><br>
+{% endfor %}
