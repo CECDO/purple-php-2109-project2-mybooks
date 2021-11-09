@@ -18,7 +18,7 @@
             <select name="author" id="author">
                 <option value="{{ book.editor_id }}" selected hidden>{{ book.author_name }}</option>
                 {% for author in authors %}
-                <option name="editor" value="{{ author.author_id }}">{{ author.author_name }}</option>
+                <option name="editor" value="{{ author.id }}">{{ author.name }}</option>
                 {% endfor %}
             </select>
         </div>
@@ -31,7 +31,7 @@
             <select name="editor" id="editor">
                 <option value="{{ book.editor_id }}" selected hidden>{{ book.editor_name }}</option>
                 {% for editor in editors %}
-                <option name="editor" value="{{ editor.editor_id }}">{{ editor.editor_name }}</option>
+                <option name="editor" value="{{ editor.id }}">{{ editor.name }}</option>
                 {% endfor %}
             </select>
         </div>
@@ -40,7 +40,7 @@
             <select name="category" id="category">
                 <option value="{{ book.category_id }}" selected hidden>{{ book.category_name }}</option>
                 {% for categorie in categories %}
-                <option name="category" value="{{ categorie.category_id }}">{{ categorie.category_name }}</option>
+                <option name="category" value="{{ categorie.id }}">{{ categorie.name }}</option>
                 {% endfor %}
             </select>
         </div>
@@ -49,16 +49,16 @@
             <select name="format" id="format">
                 <option value="{{ book.format_id }}" selected hidden>{{ book.format_name }}</option>
                 {% for format in formats %}
-                <option name="format" value="{{ format.format_id }}">{{ format.format_name }}</option>
+                <option name="format" value="{{ format.id }}">{{ format.name }}</option>
                 {% endfor %}
             </select>
         </div>
-        <div class="emplacement">
-            <label for="emplacement">Emplacement :</label>
-            <select name="emplacement" id="emplacement">
-                <option value="{{ book.emplacement_id }}" selected hidden>{{ book.emplacement_name }}</option>
-                {% for emplacement in emplacements %}
-                <option name="emplacement" value="{{ emplacement.emplacement_id }}">{{ emplacement.emplacement_name }}</option>
+        <div class="location">
+            <label for="location">Emplacement :</label>
+            <select name="location" id="location">
+                <option value="{{ book.location_id }}" selected hidden>{{ book.location_name }}</option>
+                {% for location in locations %}
+                <option name="location" value="{{ location.id }}">{{ location.name }}</option>
                 {% endfor %}
             </select>
         </div>
@@ -67,7 +67,7 @@
             <select name="status" id="status">
                 <option value="{{ book.status_id }}" selected hidden>{{ book.status_name }}</option>
                 {% for statut in status %}
-                <option name="status" value="{{ statut.status_id }}">{{ statut.status_name }}</option>
+                <option name="status" value="{{ statut_id }}">{{ statut.name }}</option>
                 {% endfor %}
             </select>
         </div>

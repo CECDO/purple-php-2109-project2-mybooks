@@ -1,10 +1,11 @@
 
-{% for books in book %}
+{% for book in books %}
 <div>
-title: <li>{{ books.book_title }}</li>
-author: <li>{{ books.author_name }}</li>
-date:  <li>{{books.release_date }}</li>
-editor: <li>{{books.editor_name }}</li>
-<a href="../books/edit?id={{books.book_id}}">edit</a>
+title: <li>{{ book.book_title }}</li>
+author: <li>{{ book.author_name }}</li>
+date:  <li>{{book.release_date }}</li>
+editor: <li>{{book.editor_name }}</li>
+<a href="../book/edit?id={{book.book_id}}">edit</a>
 </div>
+<br><br><br>
 {% endfor %}
