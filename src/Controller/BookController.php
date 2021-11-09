@@ -40,7 +40,7 @@ class BookController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $book = array_map('trim', $_POST);
             $bookManager->update($book);
-            header('Location: ../books/');
+            header('Location: /');
         }
         return $this->twig->render('Books/edit.html.twig', [
         'book' => $book,
