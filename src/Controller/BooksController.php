@@ -2,88 +2,125 @@
 
 namespace App\Controller;
 
-use App\Model\AddManager;
-use App\Model\BooksManager;
+use App\Model\AbstractManager;
+use App\Model\Services;
+use App\Model\StatusManager;
 use App\Model\AuthorsManager;
 use App\Model\EditorsManager;
-use App\Model\CategoriesManager;
 use App\Model\FormatsManager;
+use App\Model\CategoriesManager;
 use App\Model\EmplacementsManager;
-use App\Model\StatusManager;
-
 
 class BooksController extends AbstractController
 {
-    /**
-     * List items
-     */
+
     public function addBook(): string
     {
-        $authors = new AuthorsManager;
-        $authors = $authors->selectAll();
+        /**
+         * ! GET ELEMENT FOR LIST IN FORM
+         */
+        $authorsManager = new AuthorsManager();
+        $authors = $authorsManager->selectAll('name');
 
-        $editors = new EditorsManager;
-        $editors = $editors->selectAll();
-        
-        $categories = new CategoriesManager;
-        $categories = $categories->selectAll();
+        $editorsManager = new EditorsManager();
+        $editors = $editorsManager->selectAll('name');
 
-        $formats = new FormatsManager;
-        $formats = $formats->selectAll();
+        $categoriesManager = new CategoriesManager();
+        $categories = $categoriesManager->selectAll('name');
 
-        $emplacements = new EmplacementsManager;
-        $emplacements = $emplacements->selectAll();
+        $formatsManager = new FormatsManager();
+        $formats = $formatsManager->selectAll('name');
 
-        $status = new StatusManager;
-        $status = $status->selectAll();
+        $emplacementsManager = new EmplacementsManager();
+        $emplacements = $emplacementsManager->selectAll('name');
 
-        var_dump($formats);
+        $statusManager = new StatusManager();
+        $status = $statusManager->selectAll('name'); 
 
 
-    
-        return $this->twig->render('Books/addBook.html.twig', [ 'authors' => $authors, 'editors' => $editors, 'categories' => $categories, 'formats' => $formats, 'emplacements' => $emplacements, 'status' => $status]);
+        /**
+         * ! PUT THE BOOK IN DBB
+         */
+        $incompletForm = "";
 
+        if (
+            !empty($_FILES['avatar'])
+            && !empty($_POST['title'])
+            && !empty($_POST['author'])
+            && !empty($_POST['release_date'])
+            && !empty($_POST['editor'])
+            && !empty($_POST['category'])
+            && !empty($_POST['format'])
+            && !empty($_POST['emplacement'])
+            && !empty($_POST['status'])
+        ) {
+            $service = new Services();
+            $path = $service->coverPage();
+            $service->verifyAndAddBook($path);
+        } else {
+            $incompletForm = "Merci de remplir le formulaire";
+        }
+
+        return $this->twig->render('Books/addBook.html.twig', [
+            'authors' => $authors,
+            'editors' => $editors, 'categories' => $categories, 'formats' => $formats,
+            'emplacements' => $emplacements, 'status' => $status, 'incompletForm' => $incompletForm
+        ]);
     }
 
-    /* ADD Author, Editor, Category or Emplacement */
-    /* public function addInformation(): string
+    /**
+     * ! ADD AUTHOR
+     */
+    public function addAuthor(): string
     {
-        $BookManager = new BookManager;
 
-        $authors = $BookManager->getAuthor();
+        $errors = [];
+        if (!empty($_POST['author_name'])) {
+            $service = new Services();
+            $errors = $service->verifyAndAddAuthor();
+        }
+        return $this->twig->render('Authors/addAuthor.html.twig', ['errors' => $errors]);
+    }
 
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $errors = [];
-            $informations = array_map('trim', $_POST);
-            foreach($informations as $key => $information) {
-                $informations[$key] = ucwords(strtolower($information));
-            }
-            $authors = $BookManager->getAuthor();
-            var_dump($authors);
+    /**
+     * ! ADD EDITOR
+     */
+    public function addEditor(): string
+    {
 
-            foreach($authors as $author) {
-                var_dump($author);
-                if (in_array($informations['author_name'], $author)) {
-                    $errors[] = 'Cet auteur existe déjà';
-                }
-            }
+        $errors = [];
+        if (!empty($_POST['editor_name'])) {
+            $service = new Services();
+            $errors = $service->verifyAndAddEditor();
+        }
+        return $this->twig->render('Editors/addEditor.html.twig', ['errors' => $errors]);
+    }
 
-            if(empty($errors)) {
-                $BookManager->setAuthor($informations);
-            }
-            
-            var_dump($errors);
-            
-            if (!empty($informations['editor_name'])) {
-                $BookManager->setEditor($informations);
-            }
-            if (!empty($informations['category_name'])) {
-                $BookManager->setCategory($informations);
-            }
-            if (!empty($informations['emplacement_name'])) {
-                $BookManager->setEmplacement($informations);
-            }           
-        } 
-        return $this->twig->render('Books/addInformation.html.twig',);
-    } */
+    /**
+     * ! ADD CATEGORY
+     */
+    public function addCategory(): string
+    {
+
+        $errors = [];
+        if (!empty($_POST['category_name'])) {
+            $service = new Services();
+            $errors = $service->verifyAndAddCategory();
+        }
+        return $this->twig->render('Categories/addCategory.html.twig', ['errors' => $errors]);
+    }
+
+    /**
+     * ! ADD EMPLACEMENT
+     */
+    public function addEmplacement(): string
+    {
+
+        $errors = [];
+        if (!empty($_POST['emplacement_name'])) {
+            $service = new Services();
+            $errors = $service->verifyAndAddEmplacement();
+        }
+        return $this->twig->render('Emplacements/addEmplacement.html.twig', ['errors' => $errors]);
+    }
 }

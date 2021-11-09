@@ -6,10 +6,22 @@
 
 {% block content %}
 
+    <nav>
+        <section class="logoAndName" >
+            <img src="/assets/images/logobook.png" alt="My Books Logo">
+            <p>MY BOOKS</p>
+        </section>
+        <h1>Ajouter un nouveau livre</h1>
+        <section class="backHome" >
+            <a href=""><img src="/assets/images/home.png" alt="Home Logo"><span>Retour à l'accueil</span></a>
+        </section>
 
-    <form action="" method="post">
+        
+    </nav>
+
+    <form action="" method="post" enctype="multipart/form-data">
         <div class="cover_page">
-            <label for="imageUpload"></label>
+            <label for="imageUpload">Choissisez une page de couverture</label>
             <input type="file" name="avatar" id="imageUpload" />
         </div>
         
@@ -22,9 +34,12 @@
             <select name="author" id="author">
                 <option value="none" selected disabled hidden>Choissisez un auteur</option>
                 {% for author in authors %}
-                    <option value="{{ author.authors_id }}">{{ author.authors_name }}</option> 
+                    <option value="{{ author.id }}">{{ author.name }}</option> 
                 {% endfor %}
             </select>
+            <div class="authorAdd">
+                <a href="/authors/add"><input type="button" value="+"></a>
+            </div>
         </div>
         
         <div class="release_date">
@@ -36,9 +51,12 @@
             <select name="editor" id="editor">
                 <option value="none" selected disabled hidden>Choissisez un éditeur</option>
                 {% for editor in editors %}
-                    <option value="{{ editor.editor_id }}">{{ editor.editor_name }}</option> 
+                    <option value="{{ editor.id }}">{{ editor.name }}</option> 
                 {% endfor %}
             </select>
+            <div class="editorAdd">
+                <a href="/editors/add"><input type="button" value="+"></a>
+            </div>
         </div>
         
         <div class="category">
@@ -46,9 +64,12 @@
             <select name="category" id="category">
                 <option value="none" selected disabled hidden>Choissisez une catégorie</option>
                 {% for category in categories %}
-                    <option value="{{ category.category_id }}">{{ category.category_name }}</option> 
+                    <option value="{{ category.id }}">{{ category.name }}</option> 
                 {% endfor %}
             </select>
+            <div class="authorAdd">
+                <a href="/categories/add"><input type="button" value="+"></a>
+            </div>
         </div>
         
         <div class="format">
@@ -56,7 +77,7 @@
             <select name="format" id="format">
                 <option value="none" selected disabled hidden>Choissisez un format</option>
                 {% for format in formats %}
-                    <option value="{{ format.format_id }}">{{ format.format_name }}</option> 
+                    <option value="{{ format.id }}">{{ format.name }}</option> 
                 {% endfor %}
                 
             </select>
@@ -66,9 +87,12 @@
             <select name="emplacement" id="emplacement">
                 <option value="none" selected disabled hidden>Choissisez un emplacement</option>
                 {% for emplacement in emplacements %}
-                    <option value="{{ emplacement.emplacement_id }}">{{ emplacement.emplacement_name }}</option> 
+                    <option value="{{ emplacement.id }}">{{ emplacement.name }}</option> 
                 {% endfor %}
             </select>
+            <div class="emplacementAdd">
+                <a href="/emplacements/add"><input type="button" value="+"></a>
+            </div>
         </div>
         
         <div class="status">
@@ -76,14 +100,16 @@
             <select name="status" id="status">
                 <option value="none" selected disabled hidden>Choissisez un etat</option>
                 {% for statut in status %}
-                    <option value="{{ statut.status_id }}">{{ statut.status_name }}</option> 
+                    <option value="{{ statut.id }}">{{ statut.name }}</option> 
                 {% endfor %}
             </select>
         </div>
         <input type="submit" value="Send">
-
     </form>
-    <a href="add_information">add Information</a>
+    {{ incompletForm }}<br>
+    
+    <br>
+    <a href="addproperties">add Information</a>
 
 
 

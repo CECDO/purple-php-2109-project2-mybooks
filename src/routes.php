@@ -13,4 +13,11 @@ return [
     'items/show' => ['ItemController', 'show', ['id']],
     'items/add' => ['ItemController', 'add',],
     'items/delete' => ['ItemController', 'delete',],
+    'books/add' => ['BooksController', 'addBook'],
+    'authors/add' => ['BooksController', 'addAuthor'],
+    'editors/add' => ['BooksController', 'addEditor'],
+    'categories/add' => ['BooksController', 'addCategory'],
+    'emplacements/add' => ['BooksController', 'addEmplacement'],
+
+
 ];

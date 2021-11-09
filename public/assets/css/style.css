@@ -1,0 +1,62 @@
+* {
+    padding: 0 auto;
+    --primary_color: #1C2238;
+    --second_color: #FFFFFF;
+    --third_color: #929292;
+    --dark_color: #212121;
+    --btn-color: #2F5BFA;
+    
+    --font: 'Roboto', sans-serif;
+
+    --title_weight: bold;
+    --my_book_size: 3.15rem;
+    --title_size_mobile: 2.25rem;
+
+    }
+
+    
+body {
+    background-color: var(--primary_color);
+    font-family: var(--font);
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-content: flex-start;
+    width: 100%;
+    color: var(--second_color);
+    margin-left: -0.25rem;
+}
+
+.logoAndName {
+    display: flex;
+    
+}
+
+.logoAndName img {
+    width: 4.75rem;
+    height: 3.5rem;
+}
+
+.logoAndName p {
+    display: none;
+}
+
+nav h1{
+    font-size: var(--title_size_mobile);
+    font-weight: var(--title_weight);
+    padding-top: 3.5rem;
+    margin: 0;
+    text-align: center;
+    
+}
+
+.backHome img{
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.backHome span {
+    display: none;
+}

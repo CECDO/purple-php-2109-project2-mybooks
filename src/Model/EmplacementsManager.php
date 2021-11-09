@@ -5,18 +5,14 @@ namespace App\Model;
 class EmplacementsManager extends AbstractManager
 {
     /* Get element about book to choose in form */
-    public function selectAll(): array
-    {
-        $statement = 'SELECT name AS emplacement_name FROM emplacement;';
-        return $this->pdo->query($statement)->fetchAll(\PDO::FETCH_ASSOC);
-    }
+    public const TABLE = 'emplacement';
 
-    /* Insert element aboot the book into bdd */ 
-    public function setEmplacement(array $information): void
+    /* Insert element aboot the book into bdd */
+    public function addEmplacement(string $information): void
     {
+        $information = ucwords(strtolower(trim($information)));
         $statement = $this->pdo->prepare("INSERT INTO emplacement (name) VALUES (:emplacement_name)");
-        $statement->bindValue(":emplacement_name", $information['emplacement_name'], \PDO::PARAM_STR);
+        $statement->bindValue(":emplacement_name", $information, \PDO::PARAM_STR);
         $statement->execute();
     }
 }
-
