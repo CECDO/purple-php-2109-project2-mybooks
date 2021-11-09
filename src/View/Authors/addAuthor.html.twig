@@ -56,12 +56,12 @@
                 
             </select>
         </div>
-        <div class="emplacement">
-            <label for="emplacement">Emplacement :</label>
-            <select name="emplacement" id="emplacement" disabled>
+        <div class="location">
+            <label for="location">Emplacement :</label>
+            <select name="location" id="location" disabled>
                 <option value="none" selected disabled hidden>Choissisez un emplacement</option>
-                {% for emplacement in emplacements %}
-                    <option value="{{ emplacement.emplacement_id }}">{{ emplacement.emplacement_name }}</option> 
+                {% for location in locations %}
+                    <option value="{{ location.location_id }}">{{ location.location_name }}</option> 
                 {% endfor %}
             </select>
         </div>

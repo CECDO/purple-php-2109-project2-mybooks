@@ -10,7 +10,7 @@
 
 namespace App\Model;
 
-class Services
+class FormProcessing
 {
     public function coverPage(): string
     {
@@ -99,20 +99,20 @@ class Services
         }
     }
 
-    public function verifyAndAddEmplacement(): array
+    public function verifyAndAddLocation(): array
     {
-        $emplacementsManager = new EmplacementsManager();
-        $elements = $emplacementsManager->selectAll();
+        $locationsManager = new LocationsManager();
+        $elements = $locationsManager->selectAll();
 
         $errors = [];
-        $item = ucwords(strtolower(trim($_POST['emplacement_name'])));
+        $item = ucwords(strtolower(trim($_POST['location_name'])));
         foreach ($elements as $element) {
             if (in_array($item, $element)) {
                 $errors[] = 'Cet emplacement existe déjà';
             }
         }
         if (empty($errors)) {
-            $emplacementsManager->addEmplacement($_POST['emplacement_name']);
+            $locationsManager->addLocation($_POST['location_name']);
             header('Location: /books/add');
             return $errors;
         } else {
@@ -132,7 +132,7 @@ class Services
             'editor' => $_POST['editor'],
             'category' => $_POST['category'],
             'format' => $_POST['format'],
-            'emplacement' => $_POST['emplacement'],
+            'location' => $_POST['location'],
             'status' => $_POST['status'],
         ];
 

@@ -2,14 +2,13 @@
 
 namespace App\Controller;
 
-use App\Model\AbstractManager;
-use App\Model\Services;
+use App\Model\FormProcessing;
 use App\Model\StatusManager;
 use App\Model\AuthorsManager;
 use App\Model\EditorsManager;
 use App\Model\FormatsManager;
 use App\Model\CategoriesManager;
-use App\Model\EmplacementsManager;
+use App\Model\LocationsManager;
 
 class BooksController extends AbstractController
 {
@@ -31,8 +30,8 @@ class BooksController extends AbstractController
         $formatsManager = new FormatsManager();
         $formats = $formatsManager->selectAll('name');
 
-        $emplacementsManager = new EmplacementsManager();
-        $emplacements = $emplacementsManager->selectAll('name');
+        $locationsManager = new LocationsManager();
+        $locations = $locationsManager->selectAll('name');
 
         $statusManager = new StatusManager();
         $status = $statusManager->selectAll('name');
@@ -41,23 +40,21 @@ class BooksController extends AbstractController
         /**
          * ! PUT THE BOOK IN DBB
          */
-
-
-        $service = new Services();
-
+        $formProcessing = new FormProcessing();
         $incompletForm = "";
-        $errors = $service->verifyEmptyPost();
+
+        $errors = $formProcessing->verifyEmptyPost();
+
         if (empty($errors) && !empty($_FILES['avatar'])) {
-            $path = $service->coverPage();
-            $service->verifyAndAddBook($path);
+            $path = $formProcessing->coverPage();
+            $formProcessing->verifyAndAddBook($path);
         } else {
             $incompletForm = "Merci de remplir le formulaire";
         }
 
         return $this->twig->render('Books/addBook.html.twig', [
-            'authors' => $authors,
-            'editors' => $editors, 'categories' => $categories, 'formats' => $formats,
-            'emplacements' => $emplacements, 'status' => $status, 'incompletForm' => $incompletForm
+            'authors' => $authors, 'editors' => $editors, 'categories' => $categories, 'formats' => $formats,
+            'locations' => $locations, 'status' => $status, 'incompletForm' => $incompletForm
         ]);
     }
 
@@ -69,8 +66,8 @@ class BooksController extends AbstractController
 
         $errors = [];
         if (!empty($_POST['author_name'])) {
-            $service = new Services();
-            $errors = $service->verifyAndAddAuthor();
+            $formProcessing = new FormProcessing();
+            $errors = $formProcessing->verifyAndAddAuthor();
         }
         return $this->twig->render('Authors/addAuthor.html.twig', ['errors' => $errors]);
     }
@@ -83,8 +80,8 @@ class BooksController extends AbstractController
 
         $errors = [];
         if (!empty($_POST['editor_name'])) {
-            $service = new Services();
-            $errors = $service->verifyAndAddEditor();
+            $formProcessing = new FormProcessing();
+            $errors = $formProcessing->verifyAndAddEditor();
         }
         return $this->twig->render('Editors/addEditor.html.twig', ['errors' => $errors]);
     }
@@ -97,23 +94,23 @@ class BooksController extends AbstractController
 
         $errors = [];
         if (!empty($_POST['category_name'])) {
-            $service = new Services();
-            $errors = $service->verifyAndAddCategory();
+            $formProcessing = new FormProcessing();
+            $errors = $formProcessing->verifyAndAddCategory();
         }
         return $this->twig->render('Categories/addCategory.html.twig', ['errors' => $errors]);
     }
 
     /**
-     * ! ADD EMPLACEMENT
+     * ! ADD LOCATION
      */
-    public function addEmplacement(): string
+    public function addLocation(): string
     {
 
         $errors = [];
-        if (!empty($_POST['emplacement_name'])) {
-            $service = new Services();
-            $errors = $service->verifyAndAddEmplacement();
+        if (!empty($_POST['location_name'])) {
+            $formProcessing = new FormProcessing();
+            $errors = $formProcessing->verifyAndAddLocation();
         }
-        return $this->twig->render('Emplacements/addEmplacement.html.twig', ['errors' => $errors]);
+        return $this->twig->render('Locations/addLocation.html.twig', ['errors' => $errors]);
     }
 }
