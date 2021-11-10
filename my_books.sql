@@ -16,6 +16,12 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Drop table `emplacement` - first version of my_books.sql
+--
+
+DROP TABLE IF EXISTS `emplacement`;
+
+--
 -- Table structure for table `author`
 --
 
@@ -57,6 +63,7 @@ CREATE TABLE `book` (
   `editor_id` int DEFAULT NULL,
   `location_id` int DEFAULT NULL,
   `status_id` int DEFAULT NULL,
+  `user_id` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `author_id` (`author_id`),
   KEY `category_id` (`category_id`),
@@ -64,12 +71,14 @@ CREATE TABLE `book` (
   KEY `editor_id` (`editor_id`),
   KEY `location_id` (`location_id`),
   KEY `status_id` (`status_id`),
+  KEY `user_id` (`user_id`),
   CONSTRAINT `book_ibfk_1` FOREIGN KEY (`author_id`) REFERENCES `author` (`id`),
   CONSTRAINT `book_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`),
   CONSTRAINT `book_ibfk_3` FOREIGN KEY (`format_id`) REFERENCES `format` (`id`),
   CONSTRAINT `book_ibfk_4` FOREIGN KEY (`editor_id`) REFERENCES `editor` (`id`),
   CONSTRAINT `book_ibfk_5` FOREIGN KEY (`location_id`) REFERENCES `location` (`id`),
-  CONSTRAINT `book_ibfk_6` FOREIGN KEY (`status_id`) REFERENCES `status` (`id`)
+  CONSTRAINT `book_ibfk_6` FOREIGN KEY (`status_id`) REFERENCES `status` (`id`),
+  CONSTRAINT `book_ibfk_7` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
 );
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -210,10 +219,7 @@ CREATE TABLE `user` (
   `id` int NOT NULL AUTO_INCREMENT,
   `firstname` varchar(255) DEFAULT NULL,
   `lastname` varchar(255) DEFAULT NULL,
-  `book_id` int DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `book_id` (`book_id`),
-  CONSTRAINT `user_ibfk_1` FOREIGN KEY (`book_id`) REFERENCES `book` (`id`)
+  PRIMARY KEY (`id`)
 );
 /*!40101 SET character_set_client = @saved_cs_client */;
 
