@@ -21,8 +21,9 @@ Ajouter un livre
 
 <form class="addForm" action="" method="post" enctype="multipart/form-data">
     <div class="cover_page">
-        <label for="imageUpload">Choissisez une page de couverture</label><br>
-        <input type="file" name="avatar" id="imageUpload" />
+        <label for="imageUpload">Page de couverture :</label>
+            <img class="preview" id="preview">
+        <input type="file" name="avatar" id="imageUpload" accept="image/*" onchange="previewImage()" />
     </div>
 
     <div class="title">
@@ -104,9 +105,13 @@ Ajouter un livre
             {% endfor %}
         </select>
     </div>
-    <input type="submit" value="Send">
+    <input class="submit" type="submit" value="Enregistrer">
 </form>
-{{ incompletForm }}
+<p class="incompletForm">{{ incompletForm }}</p>
+
+
+{% endblock content %}
+{% block javascript %} <script src="/assets/js/previewCover.js"></script> {% endblock %}
 
 
 
@@ -116,5 +121,3 @@ Ajouter un livre
 
 
 
-
-{% endblock %}

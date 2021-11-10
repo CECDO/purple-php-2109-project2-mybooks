@@ -55,10 +55,13 @@
                 
             </select>
         </div>
-        <div class="locationAdd">
-            <label for="location_name">Auteur :</label>
-            <input type="text" id="location_name" name="location_name" placeholder="Saissisez l'emplacement">
-            <input type="submit" value="✔️">
+        <div class="location">
+            <label for="location_name">Emplacement :</label>
+            <div class="addLocation">
+                <input type="text" id="location_name" name="location_name" placeholder="Saissisez un emplacement">
+                <input class="addElement" type="submit" value="">
+            </div>
+            <p class="errors">{{ errors[0] }}</p>
         </div>
         <div class="status">
             <label for="status">Etat :</label>
