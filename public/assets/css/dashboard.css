@@ -1,0 +1,126 @@
+/* NAVBAR */
+
+*{
+    margin: 0 0;
+    box-sizing: border-box;
+}
+nav{
+    margin-top: 1rem;
+}
+
+nav h1{
+    font-size: 1.5rem;
+}
+
+.icon-nav{
+    height: 2.5rem;
+}
+.icon a img{
+    height: 2.5rem;
+    margin-left: 1rem;
+}
+
+/* FILTER BAR */
+.select {
+    width: 17rem;
+    height: 2rem;
+    border-radius: 0.625rem;
+    margin-right: 1rem;
+}
+
+.filter{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.9rem;
+    color: white;
+}
+
+#filter{
+    display: none;    
+}
+
+.container-filter{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 1rem;
+}
+
+
+.filter-espace{
+    margin-bottom: 0.2;
+}
+
+.title-filter{
+    color: white;
+    border-bottom: 2px solid white;
+    padding-bottom: 0.3rem;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+    width: 13rem;
+}
+
+.book-card{
+    background-color: var(--third_color);
+    display: flex;
+    height: 14rem;
+    align-items: center;
+    margin: 1rem 1rem 3rem 1.7rem;
+    border-radius: 1rem;
+}
+
+.book-cover{
+    height: 15rem;
+    display: flex;
+    transform: rotate(-6deg);
+    margin-left: -0.7rem;
+
+}
+
+.book-text{
+    width: 100%;
+}
+
+.icon-del-edit{
+    display: flex;
+    height: 100%;
+    align-items: flex-end;
+}
+
+.icon-del-edit a img{
+    height: 2rem;
+}
+
+
+@media only screen and (min-width: 1024px) {
+
+    #filter{
+        display: block;    
+    }
+
+    .icon{
+        display: none;
+    }
+
+    .container{
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    .container-filter-desktop{
+        height: 100vh;
+    }
+
+    .container-book{
+        width: 100%;
+        height: 100vh;
+    }
+
+    .form-filter{
+        width: 100%;
+        border-right: 1px solid white;
+        height: 100vh;
+    }
+  }
+

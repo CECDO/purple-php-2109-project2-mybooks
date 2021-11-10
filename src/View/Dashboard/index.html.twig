@@ -1,81 +1,111 @@
-<h1><a href="/">Page Dashboard</a></h1>
-<form method="get">
-    <div class="filter">
-        <h3>Filter les produits</h3>
-        <label for="author">Auteur :</label>
-        <select name="author_id" id="author">
-            <option value="" hidden>Sélectioner</option>
-            {% for author in authors %}
-            <option name="author_id" value="{{ author.id }}">{{ author.name }}</option>
-            {% endfor %}
-        </select>
-    </div>
-    <div class="editor">
-        <label for="editor">Editeur :</label>
-        <select name="editor_id" id="editor">
-            <option value="" hidden>Sélectioner</option>
-            {% for editor in editors %}
-            <option name="editor_id" value="{{ editor.id }}">{{ editor.name }}</option>
-            {% endfor %}
-        </select>
-    </div>
-    <div class="category">
-        <label for="category">Catégorie :</label>
-        <select name="category_id" id="category">   
-            <option value="" hidden>Sélectioner</option>
-            {% for categorie in categories %}
-            <option name="category_id" value="{{ categorie.id }}">{{ categorie.name }}</option>
-            {% endfor %}
-        </select>
-    </div>
-    <div class="format">
-        <label for="format">Format :</label>
-        <select name="format_id" id="format">
-            <option value="" hidden>Sélectioner</option>
-            {% for format in formats %}
-            <option name="format_id" value="{{ format.id }}">{{ format.name }}</option>
-            {% endfor %}
-        </select>
-    </div>
-    <div class="location">
-        <label for="location">Emplacement :</label>
-        <select name="location_id" id="location">
-            <option value="" hidden>Sélectioner</option>
-            {% for location in locations %}
-            <option name="location_id" value="{{ location.id }}">{{ location.name }}</option>
-            {% endfor %}
-        </select>
-    </div>
-    <div class="status">
-        <label for="status">Etat :</label>
-        <select name="status_id" id="status">
-            <option value="" hidden>Sélectioner</option>
-            {% for statusbook in status %}
-            <option name="status_id" value="{{ statusbook.id }}">{{ statusbook.name }}</option>
-            {% endfor %}
-        </select>
-    </div>
-    <input type="submit"></input>
-</form>    
+{% extends 'layout.html.twig' %}
 
+{% block title %}
+    Accueil
+{% endblock title %}
+{% block stylesheet %}
+<link rel="stylesheet" href="/assets/css/dashboard.css">
+{% endblock %}
+{% block content %}
+    
+    <header>
+        <nav>
+            <section class="logoAndName" >
+                <a href="/"><img src="/assets/images/logo-book.png" alt="My Books Logo"></a>
+                <p>MY BOOKS</p>
+            </section>
+            <div class="icon-add-settings">
+                <section class="icon-nav">
+                    <a href="/"><img src="/assets/images/add.png" alt="Add Logo"></a>
+                </section>
+                <section class="icon-nav">
+                    <a href="/"><img src="/assets/images/settings.png" alt="settings Logo"></a>
+                </section>
+            </div>    
+        </nav>
+        <h1 class="text-white">Ma bibliothèque</h1>
+        <div class="icon"> 
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()"><img src="/assets/images/filter.png" alt="settings Logo"></a>
+        </div>
+    </header>  
 
-
-
-<h1>Ma bibliothèque</h1>
-{% for book in books %}
-title: {{ book.book_title }}
-<br>
-author: {{ book.author_name }}
-<br>
-edition: {{ book.editor_name}}
-<br>
-categorie: {{ book.category_name}}
-<br>
-format: {{ book.format_name}}
-<br>
-location: {{ book.location_name}}
-<br>
-status: {{ book.status_name}}
-
-<br><br>
-{% endfor %}
+    <div class="container">
+        <div class="container-filter-desktop" id="filter">
+            <form method="get" class="form-filter">
+                <h3 class="title-filter">FILTRER LES PRODUITS</h3>
+                <div class="container-filter"> 
+                    <div class="filter">
+                        <label for="author" class="text-white filter-espace">Auteur :</label>
+                        <select name="author_id" id="author" class="select">
+                            <option value="" hidden>Sélectioner</option>
+                            {% for author in authors %}
+                            <option name="author_id" value="{{ author.id }}">{{ author.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="filter">
+                        <label for="editor" class="text-white filter-espace">Editeur :</label>
+                        <select name="editor_id" id="editor" class="select">
+                            <option value="" hidden>Sélectioner</option>
+                            {% for editor in editors %}
+                            <option name="editor_id" value="{{ editor.id }}">{{ editor.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="filter">
+                        <label for="category" class="text-white filter-espace">Catégorie :</label>
+                        <select name="category_id" id="category" class="select">   
+                            <option value="" hidden>Sélectioner</option>
+                            {% for categorie in categories %}
+                            <option name="category_id" value="{{ categorie.id }}">{{ categorie.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="filter">
+                        <label for="format" class="text-white filter-espace">Format :</label>
+                        <select name="format_id" id="format" class="select">
+                            <option value="" hidden>Sélectioner</option>
+                            {% for format in formats %}
+                            <option name="format_id" value="{{ format.id }}">{{ format.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="filter">
+                        <label for="location" class="text-white filter-espace">Emplacement :</label>
+                        <select name="location_id" id="location" class="select">
+                            <option value="" hidden>Sélectioner</option>
+                            {% for location in locations %}
+                            <option name="location_id" value="{{ location.id }}">{{ location.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="filter">
+                        <label for="status" class="text-white filter-espace">Etat :</label>
+                        <select name="status_id" id="status" class="select">
+                            <option value="" hidden>Sélectioner</option>
+                            {% for statusbook in status %}
+                            <option name="status_id" value="{{ statusbook.id }}">{{ statusbook.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-submit">Chercher</button>
+                </div>
+            </form> 
+        </div>  
+        <div class="container-book">
+            {% for book in books %}
+            <div class="book-card">
+                <img class="book-cover" src="/assets/images/cover_page.jpeg" alt="image">
+                
+                <div class="book-text">
+                   {# affichage du livre #}
+                </div>  
+                <div class="icon-del-edit">
+                    <a href="/"><img src="/assets/images/modify.png" alt="modify Logo"></a>
+                    <a href="/"><img src="/assets/images/delete.png" alt="delete Logo"></a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>   
+    </div>    
+{% endblock content%}
