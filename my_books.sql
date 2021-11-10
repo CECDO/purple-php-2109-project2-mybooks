@@ -16,7 +16,7 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Drop table `emplacement` - first version of my_books.sql
+-- Drop table if exists `emplacement` - first version of my_books.sql
 --
 
 DROP TABLE IF EXISTS `emplacement`;
