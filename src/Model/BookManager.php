@@ -2,6 +2,7 @@
 
 namespace App\Model;
 
+use App\Model\AbstractManager;
 use PDO;
 
 class BookManager extends AbstractManager
