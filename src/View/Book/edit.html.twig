@@ -67,7 +67,7 @@
             <select name="status" id="status">
                 <option value="{{ book.status_id }}" selected hidden>{{ book.status_name }}</option>
                 {% for statut in status %}
-                <option name="status" value="{{ statut_id }}">{{ statut.name }}</option>
+                <option name="status" value="{{ statut.id }}">{{ statut.name }}</option>
                 {% endfor %}
             </select>
         </div>

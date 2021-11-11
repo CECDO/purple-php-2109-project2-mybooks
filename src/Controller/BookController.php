@@ -42,7 +42,7 @@ class BookController extends AbstractController
             $bookManager->update($book);
             header('Location: /');
         }
-        return $this->twig->render('Books/edit.html.twig', [
+        return $this->twig->render('Book/edit.html.twig', [
         'book' => $book,
         'authors' => $authors,
         'editors' => $editors,
@@ -56,6 +56,6 @@ class BookController extends AbstractController
     {
         $bookManager = new BookManager();
         $books = $bookManager->selectAllComplete();
-        return $this->twig->render('Books/index.html.twig', ['books' => $books]);
+        return $this->twig->render('Book/index.html.twig', ['books' => $books]);
     }
 }
