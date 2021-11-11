@@ -28,33 +28,31 @@ class BooksController extends AbstractController
         $categories = $categoriesManager->selectAll('name');
 
         $formatsManager = new FormatsManager();
-        $formats = $formatsManager->selectAll('name');
+        $formats = $formatsManager->selectAll('id');
 
         $locationsManager = new LocationsManager();
         $locations = $locationsManager->selectAll('name');
 
         $statusManager = new StatusManager();
-        $status = $statusManager->selectAll('name');
+        $status = $statusManager->selectAll('id');
 
 
         /**
          * ! PUT THE BOOK IN DBB
          */
         $formProcessing = new FormProcessing();
-        $incompletForm = "";
+        $errors = [];
 
         $errors = $formProcessing->verifyEmptyPost();
 
         if (empty($errors) && !empty($_FILES['avatar'])) {
             $path = $formProcessing->coverPage();
             $formProcessing->addBooktoDB($path);
-        } else {
-            $incompletForm = "Merci de remplir le formulaire";
         }
 
         return $this->twig->render('Books/addBook.html.twig', [
             'authors' => $authors, 'editors' => $editors, 'categories' => $categories, 'formats' => $formats,
-            'locations' => $locations, 'status' => $status, 'incompletForm' => $incompletForm
+            'locations' => $locations, 'status' => $status, 'errors' => $errors
         ]);
     }
 

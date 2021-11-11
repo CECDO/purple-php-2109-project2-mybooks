@@ -1,83 +1,92 @@
 {% extends 'layout.html.twig' %}
 
 {% block title %}
-    Ajouter un livre
+Ajouter un livre
 {% endblock title %}
 
 {% block content %}
 
+<nav>
+    <div class="logoAndName">
+        <img src="/assets/images/logobook.png" alt="My Books Logo">
+        <p>MY BOOKS</p>
+    </div>
+    <h1>Ajouter un nouveau livre</h1>
+    <div class="backHome">
+        <a href=""><img src="/assets/images/home.png" alt="Home Logo"><span>Retour à l'accueil</span></a>
+    </div>
+</nav>
 
-    <form action="" method="post" enctype="multipart/form-data">
-        <div class="cover_page">
-            <label for="imageUpload">Choissisez une page de couverture</label>
-            <input type="file" name="avatar" id="imageUpload" disabled/>
-        </div>
-        
-        <div class="title">
-            <label for="title">Titre :</label>
-            <input type="text" id="title" name="title" placeholder="Saissisez le titre" disabled>
-        </div>
-        <div class="authorAdd">
-            <label for="author_name">Auteur :</label>
-            <input type="text" id="author_name" name="author_name" placeholder="Saissisez l'auteur" disabled>
-        </div>
-        <div class="release_date">
-            <label for="release_date">Date de sortie :</label>
-            <input type="date" name="release_date" id="release_date" disabled>
-        </div>
-        <div class="editor">
-            <label for="editor">Editeur :</label>
-            <select name="editor" id="editor" disabled>
-                <option value="none" selected disabled hidden>Choissisez un éditeur</option>
-                {% for editor in editors %}
-                    <option value="{{ editor.editor_id }}">{{ editor.editor_name }}</option> 
-                {% endfor %}
-            </select>
-        </div>
-        
-        <div class="category">
-            <label for="category">Catégorie :</label>
-            <select name="category" id="category" disabled>
-                <option value="none" selected disabled hidden>Choissisez une catégorie</option>
-                {% for category in categories %}
-                    <option value="{{ category.category_id }}">{{ category.category_name }}</option> 
-                {% endfor %}
-            </select>
-        </div>
-        
-        <div class="format">
-            <label for="format">Format :</label>
-            <select name="format" id="format" disabled>
-                <option value="none" selected disabled hidden>Choissisez un format</option>
-                {% for format in formats %}
-                    <option value="{{ format.format_id }}">{{ format.format_name }}</option> 
-                {% endfor %}
-                
-            </select>
-        </div>
-        <div class="locationAdd">
-            <label for="location_name">Auteur :</label>
-            <input type="text" id="location_name" name="location_name" placeholder="Saissisez l'emplacement">
-            <input type="submit" value="✔️">
-        </div>
-        <div class="status">
-            <label for="status">Etat :</label>
-            <select name="status" id="status" disabled>
-                <option value="none" selected disabled hidden>Choissisez un etat</option>
-                {% for statut in status %}
-                    <option value="{{ statut.status_id }}">{{ statut.status_name }}</option> 
-                {% endfor %}
-            </select>
-        </div>
-        
-    </form>
+<form action="" method="post" enctype="multipart/form-data">
+    <div class="cover_page">
+        <label for="imageUpload">Choissisez une page de couverture</label>
+        <input type="file" name="avatar" id="imageUpload" disabled />
+    </div>
 
-{{ errors[0] }}
+    <div class="title">
+        <label for="title">Titre :</label>
+        <input type="text" id="title" name="title" placeholder="Saissisez le titre" disabled>
+    </div>
 
+    <div class="authorAdd">
+        <label for="author_name">Auteur :</label>
+        <input type="text" id="author_name" name="author_name" placeholder="Saissisez l'auteur" disabled>
+    </div>
 
+    <div class="release_date">
+        <label for="release_date">Date de sortie :</label>
+        <input type="date" name="release_date" id="release_date" disabled>
+    </div>
 
+    <div class="editor">
+        <label for="editor">Editeur :</label>
+        <select name="editor" id="editor" disabled>
+            <option value="none" selected disabled hidden>Choissisez un éditeur</option>
+            {% for editor in editors %}
+            <option value="{{ editor.editor_id }}">{{ editor.editor_name }}</option>
+            {% endfor %}
+        </select>
+    </div>
 
+    <div class="category">
+        <label for="category">Catégorie :</label>
+        <select name="category" id="category" disabled>
+            <option value="none" selected disabled hidden>Choissisez une catégorie</option>
+            {% for category in categories %}
+            <option value="{{ category.category_id }}">{{ category.category_name }}</option>
+            {% endfor %}
+        </select>
+    </div>
 
+    <div class="format">
+        <label for="format">Format :</label>
+        <select name="format" id="format" disabled>
+            <option value="none" selected disabled hidden>Choissisez un format</option>
+            {% for format in formats %}
+            <option value="{{ format.format_id }}">{{ format.format_name }}</option>
+            {% endfor %}
 
+        </select>
+    </div>
 
+    <div class="location">
+        <label for="location_name">Emplacement :</label>
+        <div class="addLocation">
+            <input type="text" id="location_name" name="location_name" placeholder="Saissisez un emplacement">
+            <input class="addElement" type="submit" value="">
+        </div>
+        <p class="errors">{{ errors[0] }}</p>
+    </div>
+
+    <div class="status">
+        <label for="status">Etat :</label>
+        <select name="status" id="status" disabled>
+            <option value="none" selected disabled hidden>Choissisez un etat</option>
+            {% for statut in status %}
+            <option value="{{ statut.status_id }}">{{ statut.status_name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+</form>
 {% endblock %}

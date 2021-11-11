@@ -46,7 +46,7 @@ class FormProcessing
         $errors = [];
         foreach ($_POST as $value) {
             if (empty($value)) {
-                $errors[] = 'empty';
+                $errors[] = 'Merci de remplir tous les champs';
             }
         }
         return $errors;
