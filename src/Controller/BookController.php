@@ -10,7 +10,6 @@ use App\Model\CategoryManager;
 use App\Model\FormatManager;
 use App\Model\StatusManager;
 
-
 class BookController extends AbstractController
 {
     public function edit(int $id)
