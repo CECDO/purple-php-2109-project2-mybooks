@@ -1,15 +1,5 @@
 <?php
 
-/**
- * Database connection
- *
- *
- *
- * @author adapted from Benjamin Besse
- *
- * @link   http://fr3.php.net/manual/fr/book.pdo.php classe PDO
- */
-
 namespace App\Model;
 
 use PDO;
@@ -24,6 +14,7 @@ use PDOException;
  *  $conn = $db->getPdoConnection();
  * </pre>
  */
+
 class Connection
 {
     private PDO $pdoConnection;
