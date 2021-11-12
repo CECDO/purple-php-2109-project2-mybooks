@@ -6,10 +6,10 @@ use App\Model\BookManager;
 
 class BookController extends AbstractController
 {
-    public function recap()
+    public function book()
     {
-        $booksManager = new BookManager();
-        $book = $booksManager->selectAll();
-        return $this->twig->render('Books/show.html.twig', ['book' => $book]);
+        $bookManager = new BookManager();
+        $book = $bookManager->selectOneByIdWithEditorCategoryFormatLocationAuthorAndStatus();
+        return $this->twig->render('Book/book.html.twig', ['book' => $book]);
     }
 }

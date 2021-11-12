@@ -6,7 +6,7 @@ use PDO;
 
 class BookManager extends AbstractManager
 {
-    public function selectOneCompleteBookById()
+    public function selectOneByIdWithEditorCategoryFormatLocationAuthorAndStatus()
     {
         $statement = 'SELECT book.id AS book_id, book.title
         AS book_title, book.release_date, editor.name
