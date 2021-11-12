@@ -2,8 +2,6 @@
 
 namespace App\Model;
 
-use PDO;
-
 class BookManager extends AbstractManager
 {
     public const TABLE = 'book';
@@ -20,7 +18,7 @@ class BookManager extends AbstractManager
         JOIN location ON book.location_id = location.id
         JOIN author ON book.author_id = author.id
         JOIN status ON book.status_id = status.id';
-        return $this->pdo->query($statement)->fetchAll(PDO::FETCH_ASSOC);
+        return $this->pdo->query($statement)->fetchAll(\PDO::FETCH_ASSOC);
     }
 
     public function bookFilterAll(array $items): array
