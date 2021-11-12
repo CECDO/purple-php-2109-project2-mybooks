@@ -13,170 +13,38 @@ class BookManager extends AbstractManager
         $statement = 'SELECT 
         book.id AS book_id, 
         book.title AS book_title, 
-        book.release_date, 
-        editor.id AS editor_id, editor.name AS editor_name,
-        category.id AS category_id, category.name AS category_name, 
-        format.id AS format_id, format.name AS format_name, 
         location.id AS location_id, location.name AS location_name, 
         author.id AS author_id, author.name AS author_name,
         status.id AS status_id, status.name AS status_name
         FROM ' . static::TABLE . '
-        JOIN editor ON book.editor_id = editor.id
-        JOIN category ON book.category_id = category.id
-        JOIN format ON Book.format_id = format.id
         JOIN location ON book.location_id = location.id
         JOIN author ON book.author_id = author.id
         JOIN status ON book.status_id = status.id';
         return $this->pdo->query($statement)->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function filterEditorId(int $id)
+    public function bookFilterAll(array $items): array
     {
         $query = 'SELECT
         book.id AS book_id, 
         book.title AS book_title, 
-        book.release_date, 
-        editor.id AS editor_id, editor.name AS editor_name,
-        category.id AS category_id, category.name AS category_name, 
-        format.id AS format_id, format.name AS format_name, 
         location.id AS location_id, location.name AS location_name, 
         author.id AS author_id, author.name AS author_name,
         status.id AS status_id, status.name AS status_name
         FROM ' . static::TABLE . '
-        JOIN editor ON book.editor_id = editor.id
-        JOIN category ON book.category_id = category.id
-        JOIN format ON Book.format_id = format.id
         JOIN location ON book.location_id = location.id
         JOIN author ON book.author_id = author.id
-        JOIN status ON book.status_id = status.id WHERE editor.id=:id';
+        JOIN status ON book.status_id = status.id
+        WHERE author_id' . $items['author_id'] . '
+        AND editor_id' . $items['editor_id'] . '
+        AND category_id' . $items['category_id'] . '
+        AND format_id' . $items['format_id'] . '
+        AND location_id' . $items['location_id'] . '
+        AND status_id' . $items['status_id'] . '
+        ;';
         $statement = $this->pdo->prepare($query);
-        $statement->bindValue(':id', $id, PDO::PARAM_INT);
         $statement->execute();
-        return $statement->fetchAll();
-    }
-
-    public function filterAuthorId(int $id)
-    {
-        $query = 'SELECT
-        book.id AS book_id, 
-        book.title AS book_title, 
-        book.release_date, 
-        editor.id AS editor_id, editor.name AS editor_name,
-        category.id AS category_id, category.name AS category_name, 
-        format.id AS format_id, format.name AS format_name, 
-        location.id AS location_id, location.name AS location_name, 
-        author.id AS author_id, author.name AS author_name,
-        status.id AS status_id, status.name AS status_name
-        FROM ' . static::TABLE . '
-        JOIN editor ON book.editor_id = editor.id
-        JOIN category ON book.category_id = category.id
-        JOIN format ON Book.format_id = format.id
-        JOIN location ON book.location_id = location.id
-        JOIN author ON book.author_id = author.id
-        JOIN status ON book.status_id = status.id WHERE author.id=:id';
-        $statement = $this->pdo->prepare($query);
-        $statement->bindValue(':id', $id, PDO::PARAM_INT);
-        $statement->execute();
-        return $statement->fetchAll();
-    }
-
-    public function filterCategoryId(int $id)
-    {
-        $query = 'SELECT
-        book.id AS book_id, 
-        book.title AS book_title, 
-        book.release_date, 
-        editor.id AS editor_id, editor.name AS editor_name,
-        category.id AS category_id, category.name AS category_name, 
-        format.id AS format_id, format.name AS format_name, 
-        location.id AS location_id, location.name AS location_name, 
-        author.id AS author_id, author.name AS author_name,
-        status.id AS status_id, status.name AS status_name
-        FROM ' . static::TABLE . '
-        JOIN editor ON book.editor_id = editor.id
-        JOIN category ON book.category_id = category.id
-        JOIN format ON Book.format_id = format.id
-        JOIN location ON book.location_id = location.id
-        JOIN author ON book.author_id = author.id
-        JOIN status ON book.status_id = status.id WHERE category.id=:id';
-        $statement = $this->pdo->prepare($query);
-        $statement->bindValue(':id', $id, PDO::PARAM_INT);
-        $statement->execute();
-        return $statement->fetchAll();
-    }
-
-    public function filterFormatId(int $id)
-    {
-        $query = 'SELECT
-        book.id AS book_id, 
-        book.title AS book_title, 
-        book.release_date, 
-        editor.id AS editor_id, editor.name AS editor_name,
-        category.id AS category_id, category.name AS category_name, 
-        format.id AS format_id, format.name AS format_name, 
-        location.id AS location_id, location.name AS location_name, 
-        author.id AS author_id, author.name AS author_name,
-        status.id AS status_id, status.name AS status_name
-        FROM ' . static::TABLE . '
-        JOIN editor ON book.editor_id = editor.id
-        JOIN category ON book.category_id = category.id
-        JOIN format ON Book.format_id = format.id
-        JOIN location ON book.location_id = location.id
-        JOIN author ON book.author_id = author.id
-        JOIN status ON book.status_id = status.id WHERE format.id=:id';
-        $statement = $this->pdo->prepare($query);
-        $statement->bindValue(':id', $id, PDO::PARAM_INT);
-        $statement->execute();
-        return $statement->fetchAll();
-    }
-
-    public function filterLocationId(int $id)
-    {
-        $query = 'SELECT
-        book.id AS book_id, 
-        book.title AS book_title, 
-        book.release_date, 
-        editor.id AS editor_id, editor.name AS editor_name,
-        category.id AS category_id, category.name AS category_name, 
-        format.id AS format_id, format.name AS format_name, 
-        location.id AS location_id, location.name AS location_name, 
-        author.id AS author_id, author.name AS author_name,
-        status.id AS status_id, status.name AS status_name
-        FROM ' . static::TABLE . '
-        JOIN editor ON book.editor_id = editor.id
-        JOIN category ON book.category_id = category.id
-        JOIN format ON Book.format_id = format.id
-        JOIN location ON book.location_id = location.id
-        JOIN author ON book.author_id = author.id
-        JOIN status ON book.status_id = status.id WHERE location.id=:id';
-        $statement = $this->pdo->prepare($query);
-        $statement->bindValue(':id', $id, PDO::PARAM_INT);
-        $statement->execute();
-        return $statement->fetchAll();
-    }
-
-    public function filterStatusId(int $id)
-    {
-        $query = 'SELECT
-        book.id AS book_id, 
-        book.title AS book_title, 
-        book.release_date, 
-        editor.id AS editor_id, editor.name AS editor_name,
-        category.id AS category_id, category.name AS category_name, 
-        format.id AS format_id, format.name AS format_name, 
-        location.id AS location_id, location.name AS location_name, 
-        author.id AS author_id, author.name AS author_name,
-        status.id AS status_id, status.name AS status_name
-        FROM ' . static::TABLE . '
-        JOIN editor ON book.editor_id = editor.id
-        JOIN category ON book.category_id = category.id
-        JOIN format ON Book.format_id = format.id
-        JOIN location ON book.location_id = location.id
-        JOIN author ON book.author_id = author.id
-        JOIN status ON book.status_id = status.id WHERE status.id=:id';
-        $statement = $this->pdo->prepare($query);
-        $statement->bindValue(':id', $id, PDO::PARAM_INT);
-        $statement->execute();
-        return $statement->fetchAll();
+        $result = $statement->fetchAll();
+        return $result;
     }
 }

@@ -9,6 +9,7 @@ use App\Model\CategoryManager;
 use App\Model\FormatManager;
 use App\Model\LocationManager;
 use App\Model\StatusManager;
+use App\Model\FormProcessing;
 
 class BookController extends AbstractController
 {
@@ -34,24 +35,10 @@ class BookController extends AbstractController
         $statusManager = new StatusManager();
         $status = $statusManager->selectAll();
 
-        if (!empty($_GET['author_id'])) {
-            $id = $_GET['author_id'];
-            $books = $bookManager->filterAuthorId($id);
-        } elseif (!empty($_GET['editor_id'])) {
-            $id = $_GET['editor_id'];
-            $books = $bookManager->filterEditorId($id);
-        } elseif (!empty($_GET['category_id'])) {
-            $id = $_GET['category_id'];
-            $books = $bookManager->filterCategoryId($id);
-        } elseif ((!empty($_GET['format_id']))) {
-            $id = $_GET['format_id'];
-            $books = $bookManager->filterFormatId($id);
-        } elseif ((!empty($_GET['location_id']))) {
-            $id = $_GET['location_id'];
-            $books = $bookManager->filterLocationId($id);
-        } elseif ((!empty($_GET['status_id']))) {
-            $id = $_GET['status_id'];
-            $books = $bookManager->filterStatusId($id);
+        if (!empty($_GET)) {
+            $form = new FormProcessing();
+            $items = $form->verifyGetToFilter();
+            $books = $bookManager->bookFilterAll($items);
         } else {
             $books = $bookManager->selectAllComplete();
         }
