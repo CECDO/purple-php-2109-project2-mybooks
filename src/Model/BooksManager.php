@@ -19,7 +19,7 @@ class BooksManager extends AbstractManager
         FROM book
         JOIN editor ON book.editor_id = editor.id
         JOIN category ON book.category_id = category.id
-        JOIN format ON Book.format_id = format.id
+        JOIN format ON book.format_id = format.id
         JOIN location ON book.location_id = location.id
         JOIN author ON book.author_id = author.id
         JOIN status ON book.status_id = status.id';
