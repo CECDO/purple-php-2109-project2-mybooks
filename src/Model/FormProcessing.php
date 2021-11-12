@@ -57,7 +57,7 @@ class FormProcessing
      */
     public function addBooktoDB(string $path): void
     {
-        $book = new BookManager();
+        $book = new BooksManager();
 
         $items = [
             'cover_page' => $path,
