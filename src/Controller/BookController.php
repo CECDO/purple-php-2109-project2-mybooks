@@ -39,7 +39,7 @@ class BookController extends AbstractController
 
         if (!empty($_POST)) {
             $verification  = new VerificationProcess();
-            $book = $verification->TestInputVerification($book);
+            $book = $verification->TestInputVerification();
         }
         return $this->twig->render('Book/edit.html.twig', [
         'book' => $book,
