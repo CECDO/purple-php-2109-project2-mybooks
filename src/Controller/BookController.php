@@ -36,12 +36,13 @@ class BookController extends AbstractController
 
         $statusManager = new StatusManager();
         $status = $statusManager->selectAll();
-
+        $errors = [];
         if (!empty($_POST)) {
             $verification  = new VerificationProcess();
-            $book = $verification->TestInputVerification();
+            $errors = $verification->TestInputVerification();
         }
         return $this->twig->render('Book/edit.html.twig', [
+        'errors' => $errors,
         'book' => $book,
         'authors' => $authors,
         'editors' => $editors,

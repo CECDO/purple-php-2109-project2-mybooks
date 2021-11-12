@@ -8,17 +8,30 @@ class VerificationProcess extends AbstractManager
 {
     public function testInputVerification()
     {
-        $formverif = trim($_POST['title']) && $_POST['author'] && $_POST['editor']
-        && $_POST['category'] && $_POST['format']
-        && $_POST['release_date'] && $_POST['location'] && $_POST['status'];
-        if (!empty($formverif)) {
-            $bookManager = new BookManager();
-            $book = array_map('trim', $_POST);
-            $bookManager->update($book);
-            header("Location: /");
-        } else {
-            echo 'Merci de remplir tout les champs';
-            header("Location: /");
+        if (!empty($_POST)) {
+            $items = [
+                'id' => intval($_POST['id']),
+                'title' => ucwords(trim($_POST['title'])),
+                'author' => $_POST['author'],
+                'editor' => $_POST['editor'],
+                'category' => $_POST['category'],
+                'format' => $_POST['format'],
+                'release_date' => $_POST['release_date'],
+                'location' => $_POST['location'],
+                'status' => $_POST['status']
+                ];
+            $errors = [];
+            foreach ($items as $item) {
+                if (empty($item)) {
+                    $errors[] = 'Empty value';
+                }
+            }
+            if (empty($errors)) {
+                $booksManager = new BookManager();
+                $booksManager->update($items);
+            } else {
+                return $errors;
+            }
         }
     }
 }

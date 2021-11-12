@@ -32,7 +32,7 @@ class BookManager extends AbstractManager
         return $statement->fetch();
     }
 
-    public function update(array $book): bool
+    public function update(array $items): void
     {
         $statement = $this->pdo->prepare('UPDATE Book SET 
         `title` = :title,
@@ -44,16 +44,16 @@ class BookManager extends AbstractManager
         `location_id` = :location_id,
         `status_id` = :status_id
         WHERE id=:id');
-        $statement->bindValue('id', $book['id'], \PDO::PARAM_INT);
-        $statement->bindValue(':title', $book['title'], \PDO::PARAM_STR);
-        $statement->bindValue(':author_id', $book['author'], \PDO::PARAM_STR);
-        $statement->bindValue(':editor_id', $book['editor'], \PDO::PARAM_STR);
-        $statement->bindValue(':category_id', $book['category'], \PDO::PARAM_STR);
-        $statement->bindValue(':format_id', $book['format'], \PDO::PARAM_STR);
-        $statement->bindValue(':release_date', $book['release_date'], \PDO::PARAM_STR);
-        $statement->bindValue(':location_id', $book['location'], \PDO::PARAM_STR);
-        $statement->bindValue(':status_id', $book['status'], \PDO::PARAM_STR);
-        return $statement->execute();
+        $statement->bindValue(':id', $items['id'], \PDO::PARAM_INT);
+        $statement->bindValue(':title', $items['title'], \PDO::PARAM_STR);
+        $statement->bindValue(':author_id', $items['author'], \PDO::PARAM_STR);
+        $statement->bindValue(':editor_id', $items['editor'], \PDO::PARAM_STR);
+        $statement->bindValue(':category_id', $items['category'], \PDO::PARAM_STR);
+        $statement->bindValue(':format_id', $items['format'], \PDO::PARAM_STR);
+        $statement->bindValue(':release_date', $items['release_date'], \PDO::PARAM_STR);
+        $statement->bindValue(':location_id', $items['location'], \PDO::PARAM_STR);
+        $statement->bindValue(':status_id', $items['status'], \PDO::PARAM_STR);
+        $statement->execute();
     }
 
     public function selectAllComplete(): array
