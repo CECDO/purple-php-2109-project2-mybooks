@@ -4,7 +4,7 @@ namespace App\Model;
 
 use PDO;
 
-class BookManager extends AbstractManager
+class BooksManager extends AbstractManager
 {
     public function selectOneByIdWithEditorCategoryFormatLocationAuthorAndStatus()
     {

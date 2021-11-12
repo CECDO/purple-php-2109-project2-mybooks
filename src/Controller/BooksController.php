@@ -2,13 +2,13 @@
 
 namespace App\Controller;
 
-use App\Model\BookManager;
+use App\Model\BooksManager;
 
-class BookController extends AbstractController
+class BooksController extends AbstractController
 {
     public function book()
     {
-        $bookManager = new BookManager();
+        $bookManager = new BooksManager();
         $book = $bookManager->selectOneByIdWithEditorCategoryFormatLocationAuthorAndStatus();
         return $this->twig->render('Book/book.html.twig', ['book' => $book]);
     }
