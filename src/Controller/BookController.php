@@ -9,6 +9,7 @@ use App\Model\EditorManager;
 use App\Model\CategoryManager;
 use App\Model\FormatManager;
 use App\Model\StatusManager;
+use App\Model\VerificationProcess;
 
 class BookController extends AbstractController
 {
@@ -36,10 +37,9 @@ class BookController extends AbstractController
         $statusManager = new StatusManager();
         $status = $statusManager->selectAll();
 
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $book = array_map('trim', $_POST);
-            $bookManager->update($book);
-            header('Location: /');
+        if (!empty($_POST)) {
+            $verification  = new VerificationProcess();
+            $book = $verification->TestInputVerification($book);
         }
         return $this->twig->render('Book/edit.html.twig', [
         'book' => $book,
