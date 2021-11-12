@@ -6,14 +6,14 @@ use App\Model\BookManager;
 
 class VerificationProcess extends AbstractManager
 {
-    public function testInputVerification(array $book)
+    public function testInputVerification()
     {
-        $book = $_POST;
-        $formverif = $book['title'] && $book['author'] && $book['editor']
-        && $book['category'] && $book['format']
-        && $book['release_date'] && $book['location'] && $book['status'];
+        $formverif = trim($_POST['title']) && $_POST['author'] && $_POST['editor']
+        && $_POST['category'] && $_POST['format']
+        && $_POST['release_date'] && $_POST['location'] && $_POST['status'];
         if (!empty($formverif)) {
             $bookManager = new BookManager();
+            $book = array_map('trim', $_POST);
             $bookManager->update($book);
             header("Location: /");
         } else {
