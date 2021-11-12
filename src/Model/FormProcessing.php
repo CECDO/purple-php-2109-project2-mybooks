@@ -72,6 +72,7 @@ class FormProcessing
         ];
 
         $book->addBook($items);
+        header('Location: /book/add');
     }
 
     /**
