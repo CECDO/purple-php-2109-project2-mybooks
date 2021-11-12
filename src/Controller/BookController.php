@@ -50,7 +50,7 @@ class BookController extends AbstractController
             $formProcessing->addBooktoDB($path);
         }
 
-        return $this->twig->render('Book/addBook.html.twig', [
+        return $this->twig->render('Books/addBook.html.twig', [
             'authors' => $authors, 'editors' => $editors, 'categories' => $categories, 'formats' => $formats,
             'locations' => $locations, 'status' => $status, 'errors' => $errors
         ]);
