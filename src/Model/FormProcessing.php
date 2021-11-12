@@ -91,7 +91,7 @@ class FormProcessing
         }
         if (empty($errors)) {
             $authorsManager->addAuthor($_POST['author_name']);
-            header('Location: /books/add');
+            header('Location: /book/add');
             return $errors;
         } else {
             return $errors;
@@ -116,7 +116,7 @@ class FormProcessing
         if (empty($errors)) {
             $editorsManager->addEditor($_POST['editor_name']);
 
-            header('Location: /books/add');
+            header('Location: /book/add');
             return $errors;
         } else {
             return $errors;
@@ -140,7 +140,7 @@ class FormProcessing
         }
         if (empty($errors)) {
             $categoriesManager->addCategory($_POST['category_name']);
-            header('Location: /books/add');
+            header('Location: /book/add');
             return $errors;
         } else {
             return $errors;
@@ -164,7 +164,7 @@ class FormProcessing
         }
         if (empty($errors)) {
             $locationsManager->addLocation($_POST['location_name']);
-            header('Location: /books/add');
+            header('Location: /book/add');
             return $errors;
         } else {
             return $errors;

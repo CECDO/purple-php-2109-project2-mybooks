@@ -17,10 +17,10 @@ Ajouter un livre
     </div>
 </nav>
 
-<form class="addForm" action="" method="post" enctype="multipart/form-data">
+<form class="addForm" action="/" method="post" enctype="multipart/form-data">
     <div class="cover_page">
         <label for="imageUpload">Page de couverture :</label>
-        <img class="preview" id="preview">
+        <img class="preview" src="" id="preview" alt="preview cover page">
         <input type="file" name="avatar" id="imageUpload" accept="image/*" onchange="previewImage()" />
     </div>
 
@@ -37,7 +37,7 @@ Ajouter un livre
                 <option value="{{ author.id }}">{{ author.name }}</option>
                 {% endfor %}
             </select><br>
-            <a href="/authors/add"><img class="more" src="/assets/images/more.png" alt=""></a>
+            <a href="/author/add"><img class="more" src="/assets/images/more.png" alt=""></a>
         </div>
     </div>
 
@@ -54,7 +54,7 @@ Ajouter un livre
                 <option value="{{ editor.id }}">{{ editor.name }}</option>
                 {% endfor %}
             </select><br>
-            <a href="/editors/add"><img class="more" src="/assets/images/more.png" alt=""></a>
+            <a href="/editor/add"><img class="more" src="/assets/images/more.png" alt=""></a>
         </div>
     </div>
 
@@ -67,7 +67,7 @@ Ajouter un livre
                 <option value="{{ category.id }}">{{ category.name }}</option>
                 {% endfor %}
             </select><br>
-            <a href="/categories/add"><img class="more" src="/assets/images/more.png" alt=""></a>
+            <a href="/category/add"><img class="more" src="/assets/images/more.png" alt=""></a>
         </div>
     </div>
 
@@ -90,7 +90,7 @@ Ajouter un livre
                 <option value="{{ location.id }}">{{ location.name }}</option>
                 {% endfor %}
             </select><br>
-            <a href="/locations/add"><img class="more" src="/assets/images/more.png" alt=""></a>
+            <a href="/location/add"><img class="more" src="/assets/images/more.png" alt=""></a>
         </div>
     </div>
 

@@ -9,9 +9,9 @@
 
 return [
     '' => ['HomeController', 'index',],
-    'books/add' => ['BookController', 'addBook'],
-    'authors/add' => ['BookController', 'addAuthor'],
-    'editors/add' => ['BookController', 'addEditor'],
-    'categories/add' => ['BookController', 'addCategory'],
-    'locations/add' => ['BookController', 'addLocation'],
+    'book/add' => ['BookController', 'addBook'],
+    'author/add' => ['BookController', 'addAuthor'],
+    'editor/add' => ['BookController', 'addEditor'],
+    'category/add' => ['BookController', 'addCategory'],
+    'location/add' => ['BookController', 'addLocation'],
 ];
