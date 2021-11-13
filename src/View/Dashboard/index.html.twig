@@ -1,0 +1,134 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+    Accueil
+{% endblock title %}
+{% block stylesheet %}
+<link rel="stylesheet" href="/assets/css/dashboard.css">
+{% endblock %}
+{% block content %}
+    
+    <header>
+        <nav>
+            <section class="logoAndName" >
+                <a href="/"><img src="/assets/images/logo-book.png" alt="My Books Logo"></a>
+                <p>MY BOOKS</p>
+            </section>
+            <div class="icon-add-settings">
+                <section class="icon-nav">
+                    <a href="/"><img src="/assets/images/add.png" alt="Add Logo"></a>
+                </section>
+                <section class="icon-nav">
+                    <a href="/"><img src="/assets/images/settings.png" alt="settings Logo"></a>
+                </section>
+            </div>    
+        </nav>
+        <h1 class="text-white">Ma bibliothèque</h1>
+        <div class="icon"> 
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()"><img src="/assets/images/filter.png" alt="settings Logo"></a>
+        </div>
+    </header>  
+
+    <div class="container">
+        <div class="sort-by">
+            <form action="" method="get">
+                <label for="sort" class="text-white filter-espace">Trier par :</label>
+                <select name="sort" id="sort" class="select">
+                    <option value="title-az">Titre A-Z</option>
+                    <option value="title-za">Titre Z-A</option>
+                    <option value="author-az">Auteur A-Z</option>
+                    <option value="author-za">Auteur Z-A</option>
+                    <option value="first-added">Premier ajouté</option>
+                    <option value="last-added" selected>Dernier ajouté</option>
+                </select>
+                <button type="submit" >Chercher</button>
+
+            </form>
+        </div>
+        <div class="container-filter-desktop" id="filter">
+            <form method="get" class="form-filter">
+                <h3 class="title-filter">FILTRER LES PRODUITS</h3>
+                <div class="container-filter"> 
+                    <div class="filter">
+                        <label for="author" class="text-white filter-espace">Auteur :</label>
+                        <select name="author_id" id="author" class="select">
+                            <option value="" hidden>Sélectioner</option>
+                            {% for author in authors %}
+                            <option name="author_id" value="{{ author.id }}">{{ author.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="filter">
+                        <label for="editor" class="text-white filter-espace">Editeur :</label>
+                        <select name="editor_id" id="editor" class="select">
+                            <option value="" hidden>Sélectioner</option>
+                            {% for editor in editors %}
+                            <option name="editor_id" value="{{ editor.id }}">{{ editor.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="filter">
+                        <label for="category" class="text-white filter-espace">Catégorie :</label>
+                        <select name="category_id" id="category" class="select">   
+                            <option value="" hidden>Sélectioner</option>
+                            {% for categorie in categories %}
+                            <option name="category_id" value="{{ categorie.id }}">{{ categorie.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="filter">
+                        <label for="format" class="text-white filter-espace">Format :</label>
+                        <select name="format_id" id="format" class="select">
+                            <option value="" hidden>Sélectioner</option>
+                            {% for format in formats %}
+                            <option name="format_id" value="{{ format.id }}">{{ format.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="filter">
+                        <label for="location" class="text-white filter-espace">Emplacement :</label>
+                        <select name="location_id" id="location" class="select">
+                            <option value="" hidden>Sélectioner</option>
+                            {% for location in locations %}
+                            <option name="location_id" value="{{ location.id }}">{{ location.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="filter">
+                        <label for="status" class="text-white filter-espace">Etat :</label>
+                        <select name="status_id" id="status" class="select">
+                            <option value="" hidden>Sélectioner</option>
+                            {% for statusbook in status %}
+                            <option name="status_id" value="{{ statusbook.id }}">{{ statusbook.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-submit">Chercher</button>
+                </div>
+            </form> 
+        </div>  
+        <div class="container-book">
+            {% for book in books %}
+            <div class="book-card">
+                <img class="book-cover" src="/assets/images/cover_page.jpeg" alt="image">
+                
+                <div class="book-text">
+                    <h3 class="text-white text-title">Title</h3>
+                    <p class="text-white sub-text m-1">{{book.book_title}}</p>
+                    <h3 class="text-white text-title m-2">Auteur</h3>
+                    <p class="text-white sub-text m-2">{{book.author_name}}</p>
+                    <h3 class="text-white text-title m-3">Emplacement</h3>
+                    <p class="text-white sub-text m-3">{{book.location_name}}</p>
+                    <h3 class="text-white text-title m-4">Statut</h3>
+                    <p class="text-white sub-text m-4">{{book.status_name}}</p>
+                </div>  
+                <div class="icon-del-edit">
+                    <a href="/"><img src="/assets/images/modify.png" alt="modify Logo"></a>
+                    <a href="/"><img src="/assets/images/delete.png" alt="delete Logo"></a>
+                </div>
+            
+            </div>
+            {% endfor %}
+        </div>   
+    </div>    
+{% endblock content%}
