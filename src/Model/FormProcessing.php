@@ -70,7 +70,7 @@ class FormProcessing
                     'direction' => 'ASC',
                 ];
                 return $sort;
-            } elseif ($_GET['sort'] === 'author-az') {
+            } elseif ($_GET['sort'] === 'author-za') {
                 $sort = [
                     'field' =>  'author_name',
                     'direction' => 'DESC',
@@ -82,7 +82,6 @@ class FormProcessing
                     'direction' => 'ASC',
                 ];
                 return $sort;
-            
             } else {
                 $sort = [
                     'field' =>  'added_date',
@@ -97,6 +96,5 @@ class FormProcessing
             ];
             return $sort;
         }
-       
     }
 }

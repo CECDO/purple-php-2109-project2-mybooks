@@ -47,6 +47,5 @@ class BookManager extends AbstractManager
         $statement->execute();
         $result = $statement->fetchAll();
         return $result;
-
     }
 }

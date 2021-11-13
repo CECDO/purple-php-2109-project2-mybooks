@@ -40,15 +40,12 @@ class BookController extends AbstractController
 
 
         if (!empty($_GET)) {
-            
             $items = $form->verifyGetToFilter();
             $books = $bookManager->bookFilterAll($items, $sort);
         } else {
             var_dump($sort);
             $books = $bookManager->selectAllComplete($sort);
         }
-
-
 
         return $this->twig->render('Dashboard/index.html.twig', [
             'authors' => $authors,
