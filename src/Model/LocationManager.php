@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-class LocationsManager extends AbstractManager
+class LocationManager extends AbstractManager
 {
     /* Get element about book to choose in form */
     public const TABLE = 'location';

@@ -5,11 +5,11 @@ namespace App\Controller;
 use App\Model\BookManager;
 use App\Model\FormProcessing;
 use App\Model\StatusManager;
-use App\Model\AuthorsManager;
-use App\Model\EditorsManager;
-use App\Model\FormatsManager;
-use App\Model\CategoriesManager;
-use App\Model\LocationsManager;
+use App\Model\AuthorManager;
+use App\Model\EditorManager;
+use App\Model\FormatManager;
+use App\Model\CategoryManager;
+use App\Model\LocationManager;
 
 class BookController extends AbstractController
 {
@@ -18,19 +18,19 @@ class BookController extends AbstractController
         /**
          * ! GET ELEMENT FOR LIST IN FORM
          */
-        $authorsManager = new AuthorsManager();
+        $authorsManager = new AuthorManager();
         $authors = $authorsManager->selectAll('name');
 
-        $editorsManager = new EditorsManager();
+        $editorsManager = new EditorManager();
         $editors = $editorsManager->selectAll('name');
 
-        $categoriesManager = new CategoriesManager();
+        $categoriesManager = new CategoryManager();
         $categories = $categoriesManager->selectAll('name');
 
-        $formatsManager = new FormatsManager();
+        $formatsManager = new FormatManager();
         $formats = $formatsManager->selectAll('id');
 
-        $locationsManager = new LocationsManager();
+        $locationsManager = new LocationManager();
         $locations = $locationsManager->selectAll('name');
 
         $statusManager = new StatusManager();

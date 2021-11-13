@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-class AuthorsManager extends AbstractManager
+class AuthorManager extends AbstractManager
 {
     public const TABLE = 'author';
 

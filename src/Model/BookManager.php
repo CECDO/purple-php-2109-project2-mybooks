@@ -4,7 +4,7 @@ namespace App\Model;
 
 use App\Model\AbstractManager;
 
-class BooksManager extends AbstractManager
+class BookManager extends AbstractManager
 {
     public const TABLE = "book";
     /* Insert element aboot the book into bdd */

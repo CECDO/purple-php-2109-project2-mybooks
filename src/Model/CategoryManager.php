@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-class CategoriesManager extends AbstractManager
+class CategoryManager extends AbstractManager
 {
     public const TABLE = 'category';
 
