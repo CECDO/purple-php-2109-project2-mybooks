@@ -2,6 +2,9 @@
 
 {% block content %}
     <h1>Page EDIT</h1>
+    {% for error in errors %}
+        <div style="color: red;">{{error}}</div>
+    {% endfor %}
     <form action="" method="post">
     	<input type="hidden" value="{{ book.book_id }}" name="id">
         <div class="cover_page">

@@ -23,12 +23,13 @@ class VerificationProcess extends AbstractManager
             $errors = [];
             foreach ($items as $item) {
                 if (empty($item)) {
-                    $errors[] = 'Empty value';
+                    $errors[] = 'Merci de remplir les champs manquants';
                 }
             }
             if (empty($errors)) {
                 $booksManager = new BookManager();
                 $booksManager->update($items);
+                header("Location: /");
             } else {
                 return $errors;
             }
