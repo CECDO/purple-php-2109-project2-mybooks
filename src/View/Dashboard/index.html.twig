@@ -6,8 +6,8 @@
 {% block stylesheet %}
 <link rel="stylesheet" href="/assets/css/dashboard.css">
 {% endblock %}
+
 {% block content %}
-    
     <header>
         <nav>
             <section class="logoAndName" >
@@ -25,30 +25,31 @@
         </nav>
         <h1 class="text-white">Ma bibliothèque</h1>
         <div class="icon"> 
-            <a href="javascript:void(0);" class="icon" onclick="myFunction()"><img src="/assets/images/filter.png" alt="settings Logo"></a>
+            <a href="javascript:void(0);" class="icon" onclick="filterFunction()"><img src="/assets/images/filter.png" alt="settings Logo"></a>
         </div>
     </header>  
 
     <div class="container">
-        <div class="sort-by">
-            <form action="" method="get">
-                <label for="sort" class="text-white filter-espace">Trier par :</label>
-                <select name="sort" id="sort" class="select">
-                    <option value="title-az">Titre A-Z</option>
-                    <option value="title-za">Titre Z-A</option>
-                    <option value="author-az">Auteur A-Z</option>
-                    <option value="author-za">Auteur Z-A</option>
-                    <option value="first-added">Premier ajouté</option>
-                    <option value="last-added" selected>Dernier ajouté</option>
-                </select>
-                <button type="submit" >Chercher</button>
-
-            </form>
-        </div>
         <div class="container-filter-desktop" id="filter">
             <form method="get" class="form-filter">
                 <h3 class="title-filter">FILTRER LES PRODUITS</h3>
                 <div class="container-filter"> 
+                    <div class="filter">
+                        <input type="text" id="search-title" value="" placeholder="Rechercher sur un ou plusieurs titre de livre">
+                    </div>
+                    <div class="filter">
+                        <form action="" method="get">
+                            <label for="sort" class="text-white filter-espace">Trier par :</label>
+                            <select name="sort" id="sort" class="select">
+                                <option value="title-az">Titre A-Z</option>
+                                <option value="title-za">Titre Z-A</option>
+                                <option value="author-az">Auteur A-Z</option>
+                                <option value="author-za">Auteur Z-A</option>
+                                <option value="first-added">Premier ajouté</option>
+                                <option value="last-added" selected>Dernier ajouté</option>
+                            </select>
+                        </form>
+                    </div>
                     <div class="filter">
                         <label for="author" class="text-white filter-espace">Auteur :</label>
                         <select name="author_id" id="author" class="select">
@@ -107,28 +108,30 @@
                 </div>
             </form> 
         </div>  
-        <div class="container-book">
-            {% for book in books %}
-            <div class="book-card">
-                <img class="book-cover" src="/assets/images/cover_page.jpeg" alt="image">
-                
-                <div class="book-text">
-                    <h3 class="text-white text-title">Title</h3>
-                    <p class="text-white sub-text m-1">{{book.book_title}}</p>
-                    <h3 class="text-white text-title m-2">Auteur</h3>
-                    <p class="text-white sub-text m-2">{{book.author_name}}</p>
-                    <h3 class="text-white text-title m-3">Emplacement</h3>
-                    <p class="text-white sub-text m-3">{{book.location_name}}</p>
-                    <h3 class="text-white text-title m-4">Statut</h3>
-                    <p class="text-white sub-text m-4">{{book.status_name}}</p>
-                </div>  
-                <div class="icon-del-edit">
-                    <a href="/"><img src="/assets/images/modify.png" alt="modify Logo"></a>
-                    <a href="/"><img src="/assets/images/delete.png" alt="delete Logo"></a>
-                </div>
-            
-            </div>
-            {% endfor %}
+        <div class="container-book" id="container-book" >
+                {% for book in books %}
+                    <div class="book-card">
+                        <img class="book-cover" src="/assets/images/cover_page.jpeg" alt="image">
+                        
+                        <div class="book-text">
+                            <h3 class="text-white text-title">Title</h3>
+                            <p class="text-white sub-text m-1">{{book.book_title}}</p>
+                            <h3 class="text-white text-title m-2">Auteur</h3>
+                            <p class="text-white sub-text m-2">{{book.author_name}}</p>
+                            <h3 class="text-white text-title m-3">Emplacement</h3>
+                            <p class="text-white sub-text m-3">{{book.location_name}}</p>
+                            <h3 class="text-white text-title m-4">Statut</h3>
+                            <p class="text-white sub-text m-4">{{book.status_name}}</p>
+                        </div>  
+                        <div class="icon-del-edit">
+                            <a href="/"><img src="/assets/images/modify.png" alt="modify Logo"></a>
+                            <a href="/"><img src="/assets/images/delete.png" alt="delete Logo"></a>
+                        </div>
+                    </div>
+                {% endfor %}
         </div>   
     </div>    
 {% endblock content%}
+{% block javascript %}
+    <script src="/assets/js/dashboard.js"></script>
+{% endblock %}

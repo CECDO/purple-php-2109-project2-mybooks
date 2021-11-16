@@ -10,6 +10,7 @@ use App\Model\FormatManager;
 use App\Model\LocationManager;
 use App\Model\StatusManager;
 use App\Model\FormProcessing;
+use App\Model\SearchBar;
 
 class BookController extends AbstractController
 {
@@ -34,16 +35,21 @@ class BookController extends AbstractController
 
         $statusManager = new StatusManager();
         $status = $statusManager->selectAll();
-
         $form = new FormProcessing();
         $sort = $form->verifyGetToSort();
 
-
-        if (!empty($_GET)) {
+        if (
+            !empty($_GET['author_id'])
+            || !empty($_GET['editor_id'])
+            || !empty($_GET['category_id'])
+            || !empty($_GET['format_id'])
+            || !empty($_GET['location_id'])
+            || !empty($_GET['status_id'])
+            || !empty($_GET['sort'])
+        ) {
             $items = $form->verifyGetToFilter();
             $books = $bookManager->bookFilterAll($items, $sort);
         } else {
-            var_dump($sort);
             $books = $bookManager->selectAllComplete($sort);
         }
 
@@ -56,5 +62,13 @@ class BookController extends AbstractController
             'status' => $status,
             'books' => $books,
         ]);
+    }
+
+
+    public function searchbar(string $title = "")
+    {
+        $bookManager = new BookManager();
+        $books = $bookManager->selectByUnCompleteTitle($title);
+        return $this->twig->render('Dashboard/_books.html.twig', ['books' => $books,]);
     }
 }

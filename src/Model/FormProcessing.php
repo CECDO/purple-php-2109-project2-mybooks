@@ -22,17 +22,17 @@ class FormProcessing
 
     public function verifyGetToFilter(): array
     {
-
         $errors = [];
         if (!empty($_GET)) {
             $items = [
-                'author_id' => $_GET['author_id'] ?? "",
-                'editor_id' => $_GET['editor_id'] ?? "",
-                'category_id' => $_GET['category_id'] ?? "",
-                'format_id' => $_GET['format_id'] ?? "",
-                'location_id' => $_GET['location_id'] ?? "",
-                'status_id' => $_GET['status_id'] ?? "",
+                'author_id' => $_GET['author_id'],
+                'editor_id' => $_GET['editor_id'],
+                'category_id' => $_GET['category_id'],
+                'format_id' => $_GET['format_id'],
+                'location_id' => $_GET['location_id'],
+                'status_id' => $_GET['status_id'],
             ];
+
 
             $errors = [];
             foreach ($items as $key => $item) {

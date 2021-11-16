@@ -9,4 +9,5 @@
 
 return [
     '' => ['BookController', 'dashboard',],
+    'books' => ['BookController', 'searchbar', ['title']],
 ];

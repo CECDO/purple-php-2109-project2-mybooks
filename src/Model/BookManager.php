@@ -48,4 +48,28 @@ class BookManager extends AbstractManager
         $result = $statement->fetchAll();
         return $result;
     }
+
+
+    public function selectByUnCompleteTitle(string $titlePart): array
+    {
+        $query = "SELECT 
+        book.id AS book_id, 
+        book.title AS book_title, 
+        location.id AS location_id, 
+        location.name AS location_name, 
+        author.id AS author_id, 
+        author.name AS author_name,
+        status.id AS status_id, 
+        status.name AS status_name
+        FROM " . static::TABLE . "
+        JOIN location ON book.location_id = location.id
+        JOIN author ON book.author_id = author.id
+        JOIN status ON book.status_id = status.id 
+        WHERE book.title LIKE CONCAT('%', :part, '%')
+        ;";
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue(':part', $titlePart, \PDO::PARAM_STR);
+        $statement->execute();
+        return $statement->fetchAll(\PDO::FETCH_ASSOC);
+    }
 }
