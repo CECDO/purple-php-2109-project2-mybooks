@@ -95,8 +95,7 @@
         <div class="container-book">
             {% for book in books %}
             <div class="book-card">
-                <img class="book-cover" src="/assets/images/cover_page.jpeg" alt="image">
-                
+                    <a href="show/?id={{book.book_id}}"><img class="book-cover" src="/assets/images/cover_page.jpeg" alt="image"></a>
                 <div class="book-text">
                     <h3 class="text-white text-title">Title</h3>
                     <p class="text-white sub-text m-1">{{book.book_title}}</p>
