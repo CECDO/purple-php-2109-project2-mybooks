@@ -45,7 +45,7 @@ class FormProcessing
     {
         $errors = [];
         foreach ($_POST as $value) {
-            if (empty($value)) {
+            if (empty(trim($value))) {
                 $errors[] = 'Merci de remplir tous les champs';
             }
         }
@@ -91,9 +91,14 @@ class FormProcessing
             }
         }
         if (empty($errors)) {
-            $authorsManager->addAuthor($_POST['author_name']);
-            header('Location: /book/add');
-            return $errors;
+            if (!empty($item)) {
+                $authorsManager->addAuthor($item);
+                header('Location: /book/add');
+                return $errors;
+            } else {
+                $errors[0] = 'Veuillez remplir le champ auteur';
+                return $errors;
+            }
         } else {
             return $errors;
         }
@@ -115,10 +120,14 @@ class FormProcessing
             }
         }
         if (empty($errors)) {
-            $editorsManager->addEditor($_POST['editor_name']);
-
-            header('Location: /book/add');
-            return $errors;
+            if (!empty($item)) {
+                $editorsManager->addEditor($item);
+                header('Location: /book/add');
+                return $errors;
+            } else {
+                $errors[0] = 'Veuillez remplir le champ editeur';
+                return $errors;
+            }
         } else {
             return $errors;
         }
@@ -140,9 +149,14 @@ class FormProcessing
             }
         }
         if (empty($errors)) {
-            $categoriesManager->addCategory($_POST['category_name']);
-            header('Location: /book/add');
-            return $errors;
+            if (!empty($item)) {
+                $categoriesManager->addCategory($item);
+                header('Location: /book/add');
+                return $errors;
+            } else {
+                $errors[0] = 'Veuillez remplir le champ catégorie';
+                return $errors;
+            }
         } else {
             return $errors;
         }
@@ -164,9 +178,14 @@ class FormProcessing
             }
         }
         if (empty($errors)) {
-            $locationsManager->addLocation($_POST['location_name']);
-            header('Location: /book/add');
-            return $errors;
+            if (!empty($item)) {
+                $locationsManager->addLocation($item);
+                header('Location: /book/add');
+                return $errors;
+            } else {
+                $errors[0] = 'Veuillez remplir le champ emplacement';
+                return $errors;
+            }
         } else {
             return $errors;
         }

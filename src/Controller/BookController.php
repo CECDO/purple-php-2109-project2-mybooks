@@ -36,7 +36,6 @@ class BookController extends AbstractController
         $statusManager = new StatusManager();
         $status = $statusManager->selectAll('id');
 
-
         /**
          * ! PUT THE BOOK IN DBB
          */
@@ -61,8 +60,8 @@ class BookController extends AbstractController
      */
     public function addAuthor(): string
     {
-
         $errors = [];
+
         if (!empty($_POST['author_name'])) {
             $formProcessing = new FormProcessing();
             $errors = $formProcessing->verifyAndAddAuthor();
@@ -75,7 +74,6 @@ class BookController extends AbstractController
      */
     public function addEditor(): string
     {
-
         $errors = [];
         if (!empty($_POST['editor_name'])) {
             $formProcessing = new FormProcessing();
@@ -89,7 +87,6 @@ class BookController extends AbstractController
      */
     public function addCategory(): string
     {
-
         $errors = [];
         if (!empty($_POST['category_name'])) {
             $formProcessing = new FormProcessing();
@@ -103,7 +100,6 @@ class BookController extends AbstractController
      */
     public function addLocation(): string
     {
-
         $errors = [];
         if (!empty($_POST['location_name'])) {
             $formProcessing = new FormProcessing();
