@@ -28,8 +28,9 @@ class FormProcessing
         $formatId = $_GET['format_id'];
         $locationId = $_GET['location_id'];
         $statusId = $_GET['status_id'];
+        $sortBy = $_GET['sort'];
         $errors = [];
-        if (!empty($authorId || $editorId || $categoryId || $formatId || $locationId || $statusId)) {
+        if (!empty($authorId || $editorId || $categoryId || $formatId || $locationId || $statusId || $sortBy)) {
             $items = [
                 'author_id' => $_GET['author_id'] ?? "",
                 'editor_id' => $_GET['editor_id'] ?? "",
@@ -58,48 +59,28 @@ class FormProcessing
     {
         if (!empty($_GET['sort'])) {
             if ($_GET['sort'] === 'title-az') {
-                $sort = [
-                    'field' =>  'title',
-                    'direction' => 'ASC',
-                ];
-                return $sort;
-            } elseif ($_GET['sort'] === 'title-za') {
-                $sort = [
-                    'field' =>  'title',
-                    'direction' => 'DESC',
-                ];
-                return $sort;
-            } elseif ($_GET['sort'] === 'author-az') {
-                $sort = [
-                    'field' =>  'author_name',
-                    'direction' => 'ASC',
-                ];
-                return $sort;
-            } elseif ($_GET['sort'] === 'author-za') {
-                $sort = [
-                    'field' =>  'author_name',
-                    'direction' => 'DESC',
-                ];
-                return $sort;
-            } elseif ($_GET['sort'] === 'first-added') {
-                $sort = [
-                    'field' =>  'added_date',
-                    'direction' => 'ASC',
-                ];
-                return $sort;
-            } else {
-                $sort = [
-                    'field' =>  'added_date',
-                    'direction' => 'DESC',
-                ];
-                return $sort;
+                return ['field' => 'title', 'direction' => 'ASC'];
             }
-        } else {
-            $sort = [
-                'field' =>  'added_date',
-                'direction' => 'DESC',
-            ];
-            return $sort;
+
+            if ($_GET['sort'] === 'title-za') {
+                return ['field' => 'title', 'direction' => 'DESC'];
+            }
+
+            if ($_GET['sort'] === 'author-az') {
+                return ['field' => 'author_name', 'direction' => 'ASC'];
+            }
+
+            if ($_GET['sort'] === 'author-za') {
+                return ['field' => 'author_name', 'direction' => 'DESC'];
+            }
+
+            if ($_GET['sort'] === 'first-added') {
+                return ['field' => 'added_date', 'direction' => 'ASC'];
+            }
+            if ($_GET['sort'] === 'last-added') {
+                return ['field' => 'added_date', 'direction' => 'DESC'];
+            }
         }
+        return ['field' => 'added_date', 'direction' => 'DESC'];
     }
 }
