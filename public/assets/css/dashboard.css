@@ -60,6 +60,14 @@ nav h1{
     width: 13rem;
 }
 
+.search-bar{
+    width: 17rem;
+    height: 2rem;
+    border-radius: 0.625rem;
+    margin-right: 1em;
+    margin-bottom: 1rem;
+}
+
 .book-card{
     background-color: var(--third_color);
     display: flex;
@@ -351,4 +359,5 @@ nav h1{
     .book-card{
         width: 40rem;
     }
+
 }
