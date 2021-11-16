@@ -2,12 +2,11 @@
 
 namespace App\Model;
 
-use App\Model\AuthorsManager;
+use App\Model\AbstractManager;
 
-class BooksManager extends AbstractManager
+class BookManager extends AbstractManager
 {
-    public const TABLE = 'book';
-
+    public const TABLE = "book";
     /* Insert element aboot the book into bdd */
     public function addBook(array $properties): void
     {

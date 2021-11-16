@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-class EditorsManager extends AbstractManager
+class EditorManager extends AbstractManager
 {
     public const TABLE = 'editor';
 

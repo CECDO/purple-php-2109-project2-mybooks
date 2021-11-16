@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url();
+}
+
 * {
     padding: 0 auto;
     --primary_color: #1C2238;
@@ -5,7 +10,7 @@
     --third_color: #929292;
     --dark_color: #212121;
     --btn-color: #2F5BFA;
-    
+
     --font: 'Roboto', sans-serif;
 
     --title_weight: bold;
@@ -14,16 +19,16 @@
 
     box-sizing: border-box;
 
-    }
+}
 
-    
+
 body {
     background-color: var(--primary_color);
     font-family: var(--font);
     color: var(--second_color);
 }
 
-nav{
+nav {
     display: flex;
     justify-content: space-between;
     align-content: flex-start;
@@ -34,7 +39,7 @@ nav{
 
 .logoAndName {
     display: flex;
-    
+
 }
 
 .logoAndName img {
@@ -46,16 +51,16 @@ nav{
     display: none;
 }
 
-nav h1{
+nav h1 {
     font-size: var(--title_size_mobile);
     font-weight: var(--title_weight);
     padding-top: 3.5rem;
     margin: 0;
     text-align: center;
-    
+
 }
 
-.backHome img{
+.backHome img {
     width: 2.5rem;
     height: 2.5rem;
 }
@@ -131,9 +136,8 @@ select {
 }
 
 
-.submit
-{
-    
+.submit {
+
     font-size: 1rem;
     background-color: var(--btn-color);
     border-radius: 0.5rem;

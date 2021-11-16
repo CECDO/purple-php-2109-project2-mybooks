@@ -57,7 +57,7 @@ class FormProcessing
      */
     public function addBooktoDB(string $path): void
     {
-        $book = new BooksManager();
+        $book = new BookManager();
 
         $items = [
             'cover_page' => $path,
@@ -72,6 +72,7 @@ class FormProcessing
         ];
 
         $book->addBook($items);
+        header('Location: /book/add');
     }
 
     /**
@@ -79,7 +80,7 @@ class FormProcessing
      */
     public function verifyAndAddAuthor(): array
     {
-        $authorsManager = new AuthorsManager();
+        $authorsManager = new AuthorManager();
         $elements = $authorsManager->selectAll();
 
         $errors = [];
@@ -91,7 +92,7 @@ class FormProcessing
         }
         if (empty($errors)) {
             $authorsManager->addAuthor($_POST['author_name']);
-            header('Location: /books/add');
+            header('Location: /book/add');
             return $errors;
         } else {
             return $errors;
@@ -103,7 +104,7 @@ class FormProcessing
      */
     public function verifyAndAddEditor(): array
     {
-        $editorsManager = new EditorsManager();
+        $editorsManager = new EditorManager();
         $elements = $editorsManager->selectAll();
 
         $errors = [];
@@ -116,7 +117,7 @@ class FormProcessing
         if (empty($errors)) {
             $editorsManager->addEditor($_POST['editor_name']);
 
-            header('Location: /books/add');
+            header('Location: /book/add');
             return $errors;
         } else {
             return $errors;
@@ -128,7 +129,7 @@ class FormProcessing
      */
     public function verifyAndAddCategory(): array
     {
-        $categoriesManager = new CategoriesManager();
+        $categoriesManager = new CategoryManager();
         $elements = $categoriesManager->selectAll();
 
         $errors = [];
@@ -140,7 +141,7 @@ class FormProcessing
         }
         if (empty($errors)) {
             $categoriesManager->addCategory($_POST['category_name']);
-            header('Location: /books/add');
+            header('Location: /book/add');
             return $errors;
         } else {
             return $errors;
@@ -152,7 +153,7 @@ class FormProcessing
      */
     public function verifyAndAddLocation(): array
     {
-        $locationsManager = new LocationsManager();
+        $locationsManager = new LocationManager();
         $elements = $locationsManager->selectAll();
 
         $errors = [];
@@ -164,7 +165,7 @@ class FormProcessing
         }
         if (empty($errors)) {
             $locationsManager->addLocation($_POST['location_name']);
-            header('Location: /books/add');
+            header('Location: /book/add');
             return $errors;
         } else {
             return $errors;

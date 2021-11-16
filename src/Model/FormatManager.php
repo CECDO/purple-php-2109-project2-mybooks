@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-class FormatsManager extends AbstractManager
+class FormatManager extends AbstractManager
 {
     public const TABLE = 'format';
 

@@ -7,22 +7,20 @@ Ajouter un livre
 {% block content %}
 
 <nav>
-    <section class="logoAndName">
+    <div class="logoAndName">
         <img src="/assets/images/logobook.png" alt="My Books Logo">
         <p>MY BOOKS</p>
-    </section>
+    </div>
     <h1>Ajouter un nouveau livre</h1>
-    <section class="backHome">
+    <div class="backHome">
         <a href=""><img src="/assets/images/home.png" alt="Home Logo"><span>Retour à l'accueil</span></a>
-    </section>
-
-
+    </div>
 </nav>
 
-<form class="addForm" action="" method="post" enctype="multipart/form-data">
+<form class="addForm" action="/book/add" method="post" enctype="multipart/form-data">
     <div class="cover_page">
         <label for="imageUpload">Page de couverture :</label>
-            <img class="preview" id="preview">
+        <img class="preview" src="" id="preview" alt="preview cover page">
         <input type="file" name="avatar" id="imageUpload" accept="image/*" onchange="previewImage()" />
     </div>
 
@@ -39,7 +37,11 @@ Ajouter un livre
                 <option value="{{ author.id }}">{{ author.name }}</option>
                 {% endfor %}
             </select><br>
+<<<<<<< HEAD
             <a href="/authors/add"><img class="more" src="/assets/images/more.png" alt=""></a>
+=======
+            <a href="/author/add"><img class="more" src="/assets/images/more.png" alt=""></a>
+>>>>>>> US1_add_book
         </div>
     </div>
 
@@ -56,7 +58,11 @@ Ajouter un livre
                 <option value="{{ editor.id }}">{{ editor.name }}</option>
                 {% endfor %}
             </select><br>
+<<<<<<< HEAD
             <a href="/editors/add"><img class="more" src="/assets/images/more.png" alt=""></a>
+=======
+            <a href="/editor/add"><img class="more" src="/assets/images/more.png" alt=""></a>
+>>>>>>> US1_add_book
         </div>
     </div>
 
@@ -69,7 +75,11 @@ Ajouter un livre
                 <option value="{{ category.id }}">{{ category.name }}</option>
                 {% endfor %}
             </select><br>
+<<<<<<< HEAD
             <a href="/categories/add"><img class="more" src="/assets/images/more.png" alt=""></a>
+=======
+            <a href="/category/add"><img class="more" src="/assets/images/more.png" alt=""></a>
+>>>>>>> US1_add_book
         </div>
     </div>
 
@@ -92,6 +102,7 @@ Ajouter un livre
                 <option value="{{ location.id }}">{{ location.name }}</option>
                 {% endfor %}
             </select><br>
+<<<<<<< HEAD
             <a href="/locations/add"><img class="more" src="/assets/images/more.png" alt=""></a>
         </div>
     </div>
@@ -118,6 +129,28 @@ Ajouter un livre
 
 
 
+=======
+            <a href="/location/add"><img class="more" src="/assets/images/more.png" alt=""></a>
+        </div>
+    </div>
+>>>>>>> US1_add_book
+
+    <div class="status">
+        <label for="status">Etat :</label><br>
+        <select name="status" id="status">
+            <option value="none" selected disabled hidden>Choissisez un etat</option>
+            {% for statut in status %}
+            <option value="{{ statut.id }}">{{ statut.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <input class="submit" type="submit" value="Enregistrer">
+</form>
+<p class="incompletForm">{{ errors[0] }}</p>
 
 
-
+<<<<<<< HEAD
+=======
+{% endblock content %}
+{% block javascript %} <script src="/assets/js/previewCover.js"></script> {% endblock %}
+>>>>>>> US1_add_book
