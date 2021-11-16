@@ -75,13 +75,13 @@ form img {
     margin-left: 0.25rem;
 }
 
-form {
+.addForm {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: start;
     width: 20rem;
-    margin: 0 auto;
+    margin: 2rem auto;
 }
 
 
@@ -90,6 +90,7 @@ form {
     width: 20rem;
     height: 32rem;
     margin: 0.25rem auto;
+
 }
 
 input[type="file"] {
@@ -172,4 +173,119 @@ select {
     text-align: center;
     font-size: 1.25rem;
     color: var(--second_color);
+}
+
+
+@media only screen and (min-width: 768px) {
+
+    .addForm {
+        margin-top: 2.5rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        width: 97.5%;
+        grid-template-areas:
+            "cover_page title"
+            "cover_page author"
+            "cover_page release_date"
+            "cover_page editor"
+            "cover_page category"
+            "cover_page format"
+            "cover_page location"
+            "cover_page statut"
+            "cover_page submit";
+    }
+
+    .cover_page {
+        grid-area: cover_page;
+    }
+
+    .submit {
+        width: 10rem;
+    }
+
+    .cover_page {
+        width: 25rem;
+    }
+
+    .addAuthor,
+    .addEditor,
+    .addCategory,
+    .addLocation {
+        justify-content: flex-start;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+
+    .cover_page,
+    .title,
+    .author,
+    .release_date,
+    .editor,
+    .category,
+    .format,
+    .location,
+    .status,
+    .submit {
+        margin-left: 20%;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    .addForm {
+        margin-top: 5rem;
+        display: grid;
+        grid-auto-columns: 1fr;
+        grid-auto-rows: 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 0.5fr;
+        gap: 3.5rem 0;
+        grid-template-areas:
+            "cover_page title category"
+            "cover_page author format"
+            "cover_page release_date location"
+            "cover_page editor status"
+            "cover_page . submit";
+    }
+
+    .title {
+        grid-area: title;
+    }
+
+    .author {
+        grid-area: author;
+    }
+
+    .release_date {
+        grid-area: release_date;
+    }
+
+    .editor {
+        grid-area: editor;
+    }
+
+    .category {
+        grid-area: category;
+    }
+
+    .format {
+        grid-area: format;
+    }
+
+    .location {
+        grid-area: location;
+    }
+
+    .status {
+        grid-area: status;
+    }
+
+    .submit {
+        grid-area: submit;
+    }
+
+    .cover_page {
+        grid-area: cover_page;
+    }
 }
