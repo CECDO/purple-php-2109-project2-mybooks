@@ -48,8 +48,8 @@ class BookManager extends AbstractManager
         $result = $statement->fetchAll();
         return $result;
     }
-    
-            /* Insert element aboot the book into bdd */
+
+    /* Insert element aboot the book into bdd */
     public function addBook(array $properties): void
     {
         $statement = $this->pdo->prepare("INSERT INTO book 
@@ -69,4 +69,3 @@ class BookManager extends AbstractManager
         $statement->execute();
     }
 }
-

@@ -37,7 +37,6 @@ class FormProcessing
     {
         $errors = [];
         foreach ($_POST as $value) {
-
             if (empty(trim($value))) {
                 $errors[] = 'Merci de remplir tous les champs';
             }
@@ -67,9 +66,11 @@ class FormProcessing
                 }
             }
             return $items;
-            } 
-       }
-       
+        } else {
+            return $errors;
+        }
+    }
+
     /**
      * ! ADD THE BOOK TO DB
      */
@@ -236,6 +237,5 @@ class FormProcessing
         } else {
             return $errors;
         }
-
     }
 }
