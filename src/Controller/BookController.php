@@ -14,6 +14,7 @@ use App\Model\FormProcessing;
 
 class BookController extends AbstractController
 {
+
     public function addBook(): string
     {
         /**
@@ -153,5 +154,37 @@ class BookController extends AbstractController
         $bookManager = new BookManager();
         $books = $bookManager->selectAllComplete();
         return $this->twig->render('Book/index.html.twig', ['books' => $books]);
+    }
+    /**
+     * ! GET ELEMENT FOR RECAPBOOK
+     */
+    public function book()
+    {
+        $bookManager = new BookManager();
+        $booksId = $bookManager->selectAllBookId();
+
+        if (in_array($_GET['id'], array_column($booksId, 'id'))) {
+            $book = $bookManager->selectOneByIdWithForeignKeys($_GET['id']);
+            return $this->twig->render('Books/bookRecap.html.twig', ['book' => $book]);
+        } else {
+            header('Location: /');
+        }
+    }
+
+    /**
+     * ! DELETE BOOK BY ID
+     */
+    public function deleteBook(): void
+    {
+        $bookManager = new BookManager();
+        $booksId = $bookManager->selectAllBookId();
+
+        if (in_array($_GET['id'], array_column($booksId, 'id'))) {
+            $bookManager = new BookManager();
+            $bookManager->delete($_GET['id']);
+            header('Location: /');
+        } else {
+            echo "error";
+        }
     }
 }

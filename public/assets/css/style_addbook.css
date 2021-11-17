@@ -77,6 +77,32 @@ form img {
     margin: 2rem auto;
 }
 
+.recapForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 20rem;
+    margin: 1rem auto;
+}
+
+.cover_page img {
+    display: block;
+    margin: 0 auto;
+    align-self: center;
+}
+
+.recapForm h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    margin-top: 0;
+}
+
+.recapForm p {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+}
+
 .preview {
     display: none;
     width: 20rem;
@@ -150,6 +176,29 @@ input[type="text"], input[type="date"], select {
 }
 
 @media only screen and (min-width: 768px) {
+    .modify_delete {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        width: 100%;
+        margin-top: 2.5rem;
+    }
+    .modify_delete img {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+    .delete {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+    .recapForm {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        width: 97.5%;
+        margin: 2.5rem auto 0 auto;
+        grid-template-areas: "cover_page title" "cover_page author" "cover_page release_date" "cover_page editor" "cover_page category" "cover_page format" "cover_page location" "cover_page statut";
+    }
     .addForm {
         margin-top: 2.5rem;
         display: grid;
@@ -170,6 +219,9 @@ input[type="text"], input[type="date"], select {
     .addAuthor, .addEditor, .addCategory, .addLocation {
         justify-content: flex-start;
     }
+    .cover_page, .title, .author, .release_date, .editor, .category, .format, .location, .status {
+        margin-left: 20%;
+    }
 }
 
 @media only screen and (min-width: 1024px) {
@@ -179,6 +231,16 @@ input[type="text"], input[type="date"], select {
 }
 
 @media only screen and (min-width: 1440px) {
+    .recapForm {
+        margin-top: 5rem;
+        display: grid;
+        grid-auto-columns: 1fr;
+        grid-auto-rows: 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        gap: 3.5rem 0;
+        grid-template-areas: "cover_page title category" "cover_page author format" "cover_page release_date location" "cover_page editor status";
+    }
     .addForm {
         margin-top: 5rem;
         display: grid;

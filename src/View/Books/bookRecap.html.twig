@@ -1,0 +1,71 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+Informations du livre
+{% endblock title %}
+
+{% block content %}
+
+<nav>
+    <div class="logoAndName">
+        <img src="/assets/images/logobook.png" alt="My Books Logo">
+        <p>MY BOOKS</p>
+    </div>
+    <h1>Informations du livre</h1>
+    <div class="backHome">
+        <a href=""><img src="/assets/images/home.png" alt="Home Logo"><span>Retour à l'accueil</span></a>
+    </div>
+</nav>
+
+<div class="recapForm">
+    <div class="cover_page">
+        <h2>Page de couverture :</h2>
+        <img class="preview" src="/{{ book.cover_page }}" id="preview" alt="Cover page of the book">
+    </div>
+
+    <div class="title">
+        <h2>Titre :</h2>
+        <p>{{ book.book_title }}</p>
+    </div>
+
+    <div class="author">
+        <h2>Auteur :</h2>
+        <p>{{ book.author_name }}</p>
+    </div>
+
+    <div class="release_date">
+        <h2>Date de sortie :</h2>
+        <p>{{ book.release_date }}</p>
+    </div>
+
+    <div class="editor">
+        <h2>Editeur :</h2>
+        <p>{{ book.editor_name }}</p>
+    </div>
+
+    <div class="category">
+        <h2>Catégorie :</h2>
+        <p>{{ book.category_name }}</p>
+    </div>
+
+    <div class="format">
+        <h2>Format :</h2>
+        <p>{{ book.format_name }}</p>
+    </div>
+
+    <div class="location">
+        <h2>Emplacement :</h2>
+        <p>{{ book.location_name }}</p>
+    </div>
+
+    <div class="status">
+        <h2>Etat :</h2>
+        <p>{{ book.status_name }}</p>
+    </div>
+</div>
+
+<div class="modify_delete">
+    <a class="modify" href="/book/edit?id={{ book.book_id }}"><img src="/assets/images/modify.png" alt="logo to modify book"></a>
+    <a class="delete" href="/book/delete?id={{ book.book_id }}" onclick="confirm('Voulez vous vraiment supprimer ce livre?')"><img src="/assets/images/delete.png" alt="logo to delete book"></a>
+</div>
+{% endblock %}

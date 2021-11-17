@@ -17,8 +17,7 @@
 <form class="addForm" method="post" enctype="multipart/form-data">
     <div class="cover_page">
         <label for="imageUpload">Page de couverture :</label>
-        <img class="preview" src="" id="preview" alt="preview cover page">
-        <input type="file" name="avatar" id="imageUpload" accept="image/*" onchange="previewImage()" />
+        <img class="preview" src="/{{book.cover_page}}" id="preview" alt="preview cover page">
     </div>
     <input type="hidden" value="{{ book.book_id }}" name="id">
     <div class="title">
@@ -100,3 +99,4 @@
 </form>
 
 {% endblock %}
+{% block javascript %} <script src="/assets/js/previewCover.js"></script> {% endblock %}
