@@ -193,6 +193,12 @@ input[type="text"], input[type="date"], select {
     margin-right: 1rem;
 }
 
+.addInformation{
+    margin: 2rem auto;
+    width: 20rem;
+    display: flex;
+    
+}
 @media only screen and (min-width: 768px) {
     .recapForm {
         display: grid;
@@ -225,12 +231,14 @@ input[type="text"], input[type="date"], select {
     .cover_page, .title, .author, .release_date, .editor, .category, .format, .location, .status {
         margin-left: 20%;
     }
+    
 }
 
 @media only screen and (min-width: 1024px) {
     .cover_page, .title, .author, .release_date, .editor, .category, .format, .location, .status, .submit {
         margin-left: 20%;
     }
+    
 }
 
 @media only screen and (min-width: 1440px) {
