@@ -171,7 +171,6 @@ class BookController extends AbstractController
             $items = $form->verifyGetToFilter();
             $books = $bookManager->bookFilterAll($items, $sort);
         } else {
-            var_dump($sort);
             $books = $bookManager->selectAllComplete($sort);
         }
 
