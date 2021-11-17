@@ -61,7 +61,7 @@ class FormProcessing
 
         $items = [
             'cover_page' => $path,
-            'title' => ucwords(strtolower(trim($_POST['title']))),
+            'title' => strtolower(trim($_POST['title'])),
             'author' => $_POST['author'],
             'release_date' => $_POST['release_date'],
             'editor' => $_POST['editor'],

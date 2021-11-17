@@ -69,7 +69,7 @@ Informations du livre
 </div>
 
 <div class="modify_delete">
-    <a class="modify" href="/book/edit?={{ book.book_id }}"><img src="/assets/images/modify.png" alt="logo to modify book"></a>
+    <a class="modify" href="/book/edit?id={{ book.book_id }}"><img src="/assets/images/modify.png" alt="logo to modify book"></a>
     <a class="delete" href="/book/delete?id={{ book.book_id }}" onclick="confirm('Voulez vous vraiment supprimer ce livre?')"><img src="/assets/images/delete.png" alt="logo to delete book"></a>
 </div>
 {% endblock %}
