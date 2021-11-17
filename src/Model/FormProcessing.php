@@ -22,8 +22,8 @@ class FormProcessing
         $extension = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
         $uploadFile = $uploadDir . uniqid("", false) . "." . $extension;
 
-        $authorizedExtensions = ['jpg', 'png', 'gif', 'webp'];
-        $maxFileSize = 1000000;
+        $authorizedExtensions = ['jpg', 'png', 'jpeg'];
+        $maxFileSize = 2000000;
 
         if ((!in_array($extension, $authorizedExtensions))) {
             $errors = 'Veuillez sélectionner une image de type Jpg ou Jpeg ou Png !';
@@ -61,7 +61,7 @@ class FormProcessing
 
         $items = [
             'cover_page' => $path,
-            'title' => strtolower(trim($_POST['title'])),
+            'title' => ucfirst(strtolower(trim($_POST['title']))),
             'author' => $_POST['author'],
             'release_date' => $_POST['release_date'],
             'editor' => $_POST['editor'],

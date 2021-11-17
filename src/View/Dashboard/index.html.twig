@@ -11,14 +11,14 @@
 {% block content %}
     <header>
         <nav>
-            <section class="logoAndName" >
+            <div class="logoAndName" >
                 <a href="/"><img src="/assets/images/logo-book.png" alt="My Books Logo"></a>
-                <p>MY BOOKS</p>
-            </section>
+                <h3>MY BOOKS</h3>
+            </div>
             <div class="icon-add-settings">
-                <section class="icon-nav">
+                <div class="icon-nav">
                     <a href="/book/add"><img src="/assets/images/add.png" alt="Add Logo"></a>
-                </section>
+                </div>
             </div>    
         </nav>
         <h1 class="text-white">Ma bibliothèque</h1>
@@ -32,27 +32,25 @@
             <form method="get" class="form-filter">
                 <h3 class="title-filter">FILTRER LES PRODUITS</h3>
                 <div class="container-filter"> 
-                    <label for="search-bar" class="text-white filter-espace">Chercher un livre</label>
+                    <label for="search-title" class="text-white filter-espace">Chercher un livre</label>
                     <input class="search-bar" type="text" id="search-title" value="" placeholder="Rechercher un titre de livre">
                     <div class="filter">
-                        <form action="" method="get">
-                            <label for="sort" class="text-white filter-espace">Trier par :</label>
-                            <select name="sort" id="sort" class="select">
-                                <option value="title-az">Titre A-Z</option>
-                                <option value="title-za">Titre Z-A</option>
-                                <option value="author-az">Auteur A-Z</option>
-                                <option value="author-za">Auteur Z-A</option>
-                                <option value="first-added">Premier ajouté</option>
-                                <option value="last-added" selected>Dernier ajouté</option>
-                            </select>
-                        </form>
+                        <label for="sort" class="text-white filter-espace">Trier par :</label>
+                        <select name="sort" id="sort" class="select">
+                            <option value="title-az">Titre A-Z</option>
+                            <option value="title-za">Titre Z-A</option>
+                            <option value="author-az">Auteur A-Z</option>
+                            <option value="author-za">Auteur Z-A</option>
+                            <option value="first-added">Premier ajouté</option>
+                            <option value="last-added" selected>Dernier ajouté</option>
+                        </select>
                     </div>
                     <div class="filter">
                         <label for="author" class="text-white filter-espace">Auteur :</label>
                         <select name="author_id" id="author" class="select">
                             <option value="" hidden>Sélectioner</option>
                             {% for author in authors %}
-                            <option name="author_id" value="{{ author.id }}">{{ author.name }}</option>
+                            <option value="{{ author.id }}">{{ author.name }}</option>
                             {% endfor %}
                         </select>
                     </div>
@@ -61,7 +59,7 @@
                         <select name="editor_id" id="editor" class="select">
                             <option value="" hidden>Sélectioner</option>
                             {% for editor in editors %}
-                            <option name="editor_id" value="{{ editor.id }}">{{ editor.name }}</option>
+                            <option value="{{ editor.id }}">{{ editor.name }}</option>
                             {% endfor %}
                         </select>
                     </div>
@@ -70,7 +68,7 @@
                         <select name="category_id" id="category" class="select">   
                             <option value="" hidden>Sélectioner</option>
                             {% for categorie in categories %}
-                            <option name="category_id" value="{{ categorie.id }}">{{ categorie.name }}</option>
+                            <option value="{{ categorie.id }}">{{ categorie.name }}</option>
                             {% endfor %}
                         </select>
                     </div>
@@ -79,7 +77,7 @@
                         <select name="format_id" id="format" class="select">
                             <option value="" hidden>Sélectioner</option>
                             {% for format in formats %}
-                            <option name="format_id" value="{{ format.id }}">{{ format.name }}</option>
+                            <option value="{{ format.id }}">{{ format.name }}</option>
                             {% endfor %}
                         </select>
                     </div>
@@ -88,7 +86,7 @@
                         <select name="location_id" id="location" class="select">
                             <option value="" hidden>Sélectioner</option>
                             {% for location in locations %}
-                            <option name="location_id" value="{{ location.id }}">{{ location.name }}</option>
+                            <option value="{{ location.id }}">{{ location.name }}</option>
                             {% endfor %}
                         </select>
                     </div>
@@ -97,7 +95,7 @@
                         <select name="status_id" id="status" class="select">
                             <option value="" hidden>Sélectioner</option>
                             {% for statusbook in status %}
-                            <option name="status_id" value="{{ statusbook.id }}">{{ statusbook.name }}</option>
+                            <option value="{{ statusbook.id }}">{{ statusbook.name }}</option>
                             {% endfor %}
                         </select>
                     </div>
@@ -108,7 +106,7 @@
         <div class="container-book" id="container-book" >
                 {% for book in books %}
                     <div class="book-card">
-                        <a href="book?id={{book.book_id}}"><img class="book-cover" src="/assets/images/cover_page.jpeg" alt="image"></a>                        
+                        <a href="book?id={{book.book_id}}"><img class="book-cover" src="/{{book.cover_page}}" alt="image"></a>                        
                         <div class="book-text">
                             <h3 class="text-white text-title">Title</h3>
                             <p class="text-white sub-text m-1">{{book.book_title}}</p>
@@ -120,8 +118,8 @@
                             <p class="text-white sub-text m-4">{{book.status_name}}</p>
                         </div>  
                         <div class="icon-del-edit">
-                            <a href="/"><img src="/assets/images/modify.png" alt="modify Logo"></a>
-                            <a href="/"><img src="/assets/images/delete.png" alt="delete Logo"></a>
+                            <a href="/book/edit?id={{book.book_id}}"><img src="/assets/images/modify.png" alt="modify Logo"></a>
+                            <a href="/book/delete?id={{book.book_id}}"><img src="/assets/images/delete.png" alt="delete Logo"></a>
                         </div>
                     </div>
                 {% endfor %}

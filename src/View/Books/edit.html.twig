@@ -1,5 +1,6 @@
 {% extends 'layout.html.twig' %}
-
+{% block stylesheet %}<link rel="stylesheet" href="/assets/css/style_addbook.css">{% endblock %}
+{% block title %}Modification d'un livre{% endblock %}
 {% block content %}
     <nav>
         <div class="logoAndName">
@@ -16,7 +17,7 @@
     {% endfor %}
 <form class="addForm" method="post" enctype="multipart/form-data">
     <div class="cover_page">
-        <label for="imageUpload">Page de couverture :</label>
+        <h2>Page de couverture :</h2>
         <img class="preview" src="/{{book.cover_page}}" id="preview" alt="preview cover page">
     </div>
     <input type="hidden" value="{{ book.book_id }}" name="id">
@@ -30,7 +31,7 @@
             <select name="author" id="author">
                 <option value="{{ book.editor_id }}" selected hidden>{{ book.author_name }}</option>
                 {% for author in authors %}
-                <option name="editor" value="{{ author.id }}">{{ author.name }}</option>
+                <option value="{{ author.id }}">{{ author.name }}</option>
                 {% endfor %}
             </select>
         </div>
@@ -46,7 +47,7 @@
             <select name="editor" id="editor">
                 <option value="{{ book.editor_id }}" selected hidden>{{ book.editor_name }}</option>
                 {% for editor in editors %}
-                <option name="editor" value="{{ editor.id }}">{{ editor.name }}</option>
+                <option value="{{ editor.id }}">{{ editor.name }}</option>
                 {% endfor %}
             </select>
         </div>
@@ -70,7 +71,7 @@
         <select name="format" id="format">
             <option value="{{ book.format_id }}" selected hidden>{{ book.format_name }}</option>
             {% for format in formats %}
-            <option name="format" value="{{ format.id }}">{{ format.name }}</option>
+            <option value="{{ format.id }}">{{ format.name }}</option>
             {% endfor %}
         </select>
     </div>
@@ -80,7 +81,7 @@
             <select name="location" id="location">
                 <option value="{{ book.location_id }}" selected hidden>{{ book.location_name }}</option>
                 {% for location in locations %}
-                <option name="location" value="{{ location.id }}">{{ location.name }}</option>
+                <option value="{{ location.id }}">{{ location.name }}</option>
                 {% endfor %}
             </select>
         </div>
@@ -91,7 +92,7 @@
         <select name="status" id="status">
             <option value="{{ book.status_id }}" selected hidden>{{ book.status_name }}</option>
             {% for statut in status %}
-            <option name="status" value="{{ statut.id }}">{{ statut.name }}</option>
+            <option value="{{ statut.id }}">{{ statut.name }}</option>
             {% endfor %}
         </select>
     </div>

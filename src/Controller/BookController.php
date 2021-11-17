@@ -141,7 +141,7 @@ class BookController extends AbstractController
             $verification  = new VerificationProcess();
             $errors = $verification->TestInputVerification();
         }
-        return $this->twig->render('Book/edit.html.twig', [
+        return $this->twig->render('Books/edit.html.twig', [
             'errors' => $errors,
             'book' => $book,
             'authors' => $authors,

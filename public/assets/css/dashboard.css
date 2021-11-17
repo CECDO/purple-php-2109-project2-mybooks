@@ -20,6 +20,10 @@ nav h1{
     margin-left: 1rem;
 }
 
+.logoAndName h3{
+    margin: auto auto auto 1.5rem;
+}
+
 /* FILTER BAR */
 .select {
     width: 17rem;
@@ -83,10 +87,11 @@ nav h1{
 }
 
 .book-cover{
-    height: 13rem;
+    height: 15rem;
     display: flex;
     transform: rotate(-6deg);
     margin-left: -0.7rem;
+    width: 10rem;
 
 }
 
@@ -318,8 +323,8 @@ nav h1{
         overflow: hidden; 
         white-space: nowrap; 
         text-overflow: ellipsis; 
-        max-width: 25rem;
-        max-height: 100px;
+        max-width: 11rem;
+        max-height: 70px;
     }
 
     #filter{
@@ -338,6 +343,8 @@ nav h1{
 
     .container-book{
         width: 100%;
+        margin-left: 1.5rem;
+        margin-top: 2rem;
     }
 
     .form-filter{
@@ -357,7 +364,11 @@ nav h1{
     }
 
     .book-card{
-        width: 30rem;
+        width: 25rem;
+    }
+
+    .book-text h3{
+        margin-top: 0.20rem;
     }
 
 }

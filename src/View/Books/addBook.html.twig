@@ -24,7 +24,7 @@ Ajouter un livre
 <form class="addForm" action="/book/add" method="post" enctype="multipart/form-data">
     <div class="cover_page">
         <label for="imageUpload">Page de couverture :</label>
-        <img class="preview" src="" id="preview" alt="preview cover page">
+        <img class="preview" src="#" id="preview" alt="preview cover page">
         <input type="file" name="avatar" id="imageUpload" accept="image/*" onchange="previewImage()" required/>
     </div>
 
@@ -36,7 +36,7 @@ Ajouter un livre
         <label for="author">Auteur :</label><br>
         <div class="addAuthor">
             <select name="author" id="author" required>
-                <option value="none" selected disabled hidden>Choissisez un auteur</option>
+                <option value="" selected disabled hidden>Choissisez un auteur</option>
                 {% for author in authors %}
                 <option value="{{ author.id }}">{{ author.name }}</option>
                 {% endfor %}
@@ -53,7 +53,7 @@ Ajouter un livre
         <label for="editor">Editeur :</label><br>
         <div class="addEditor">
             <select name="editor" id="editor" required>
-                <option value="none" selected disabled hidden>Choissisez un éditeur</option>
+                <option value="" selected disabled hidden>Choissisez un éditeur</option>
                 {% for editor in editors %}
                 <option value="{{ editor.id }}">{{ editor.name }}</option>
                 {% endfor %}
@@ -66,7 +66,7 @@ Ajouter un livre
         <label for="category">Catégorie :</label><br>
         <div class="addCategory">
             <select name="category" id="category" required>
-                <option value="none" selected disabled hidden>Choissisez une catégorie</option>
+                <option value="" selected disabled hidden>Choissisez une catégorie</option>
                 {% for category in categories %}
                 <option value="{{ category.id }}">{{ category.name }}</option>
                 {% endfor %}
@@ -78,7 +78,7 @@ Ajouter un livre
     <div class="format">
         <label for="format">Format :</label><br>
         <select name="format" id="format" required>
-            <option value="none" selected disabled hidden>Choissisez un format</option>
+            <option value="" selected disabled hidden>Choissisez un format</option>
             {% for format in formats %}
             <option value="{{ format.id }}">{{ format.name }}</option>
             {% endfor %}
@@ -89,7 +89,7 @@ Ajouter un livre
         <label for="location">Emplacement :</label><br>
         <div class="addLocation">
             <select name="location" id="location" required>
-                <option value="none" selected disabled hidden>Choissisez un emplacement</option>
+                <option value="" selected disabled hidden>Choissisez un emplacement</option>
                 {% for location in locations %}
                 <option value="{{ location.id }}">{{ location.name }}</option>
                 {% endfor %}
@@ -101,7 +101,7 @@ Ajouter un livre
     <div class="status">
         <label for="status">Etat :</label><br>
         <select name="status" id="status" required>
-            <option value="none" selected disabled hidden>Choissisez un etat</option>
+            <option value="" selected disabled hidden>Choissisez un etat</option>
             {% for statut in status %}
             <option value="{{ statut.id }}">{{ statut.name }}</option>
             {% endfor %}
