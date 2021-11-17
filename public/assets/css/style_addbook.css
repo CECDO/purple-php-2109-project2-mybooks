@@ -175,6 +175,30 @@ input[type="text"], input[type="date"], select {
     color: var(--second_color);
 }
 
+.modify_delete {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    margin-top: 2.5rem;
+}
+
+.modify_delete img {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.delete {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.addInformation{
+    margin: 2rem auto;
+    width: 20rem;
+    display: flex;
+    
+}
 @media only screen and (min-width: 768px) {
     .modify_delete {
         display: flex;
@@ -222,12 +246,14 @@ input[type="text"], input[type="date"], select {
     .cover_page, .title, .author, .release_date, .editor, .category, .format, .location, .status {
         margin-left: 20%;
     }
+    
 }
 
 @media only screen and (min-width: 1024px) {
     .cover_page, .title, .author, .release_date, .editor, .category, .format, .location, .status, .submit {
         margin-left: 20%;
     }
+    
 }
 
 @media only screen and (min-width: 1440px) {
