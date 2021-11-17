@@ -1,7 +1,7 @@
 {% extends 'layout.html.twig' %}
 
 {% block title %}
-Information du livre
+Informations du livre
 {% endblock title %}
 
 {% block content %}
@@ -11,113 +11,61 @@ Information du livre
         <img src="/assets/images/logobook.png" alt="My Books Logo">
         <p>MY BOOKS</p>
     </div>
-    <h1>Information du livre</h1>
+    <h1>Informations du livre</h1>
     <div class="backHome">
         <a href=""><img src="/assets/images/home.png" alt="Home Logo"><span>Retour à l'accueil</span></a>
     </div>
 </nav>
 
-<div class="addForm">
+<div class="recapForm">
     <div class="cover_page">
         <h2>Page de couverture :</h2>
-        <img class="preview" src="{{ book.cover_page }}" id="preview" alt="Cover page of the book">
-        
+        <img class="preview" src="/{{ book.cover_page }}" id="preview" alt="Cover page of the book">
     </div>
 
     <div class="title">
-        <h2>Titre :</h2><br>
+        <h2>Titre :</h2>
         <p>{{ book.book_title }}</p>
     </div>
 
     <div class="author">
-        <label for="author">Auteur :</label><br>
-        <div class="addAuthor">
-            <select name="author" id="author">
-                <option value="none" selected disabled hidden>Choissisez un auteur</option>
-                {% for author in authors %}
-                <option value="{{ author.id }}">{{ author.name }}</option>
-                {% endfor %}
-            </select><br>
-            <a href="/author/add"><img class="more" src="/assets/images/more.png" alt=""></a>
-        </div>
+        <h2>Auteur :</h2>
+        <p>{{ book.author_name }}</p>
     </div>
 
     <div class="release_date">
-        <label for="release_date">Date de sortie :</label><br>
-        <input type="date" name="release_date" id="release_date">
+        <h2>Date de sortie :</h2>
+        <p>{{ book.release_date }}</p>
     </div>
+
     <div class="editor">
-        <label for="editor">Editeur :</label><br>
-        <div class="addEditor">
-            <select name="editor" id="editor">
-                <option value="none" selected disabled hidden>Choissisez un éditeur</option>
-                {% for editor in editors %}
-                <option value="{{ editor.id }}">{{ editor.name }}</option>
-                {% endfor %}
-            </select><br>
-            <a href="/editor/add"><img class="more" src="/assets/images/more.png" alt=""></a>
-        </div>
+        <h2>Editeur :</h2>
+        <p>{{ book.editor_name }}</p>
     </div>
 
     <div class="category">
-        <label for="category">Catégorie :</label><br>
-        <div class="addCategory">
-            <select name="category" id="category">
-                <option value="none" selected disabled hidden>Choissisez une catégorie</option>
-                {% for category in categories %}
-                <option value="{{ category.id }}">{{ category.name }}</option>
-                {% endfor %}
-            </select><br>
-            <a href="/category/add"><img class="more" src="/assets/images/more.png" alt=""></a>
-        </div>
+        <h2>Catégorie :</h2>
+        <p>{{ book.category_name }}</p>
     </div>
 
     <div class="format">
-        <label for="format">Format :</label><br>
-        <select name="format" id="format">
-            <option value="none" selected disabled hidden>Choissisez un format</option>
-            {% for format in formats %}
-            <option value="{{ format.id }}">{{ format.name }}</option>
-            {% endfor %}
-
-        </select>
+        <h2>Format :</h2>
+        <p>{{ book.format_name }}</p>
     </div>
+
     <div class="location">
-        <label for="location">Emplacement :</label><br>
-        <div class="addLocation">
-            <select name="location" id="location">
-                <option value="none" selected disabled hidden>Choissisez un emplacement</option>
-                {% for location in locations %}
-                <option value="{{ location.id }}">{{ location.name }}</option>
-                {% endfor %}
-            </select><br>
-            <a href="/location/add"><img class="more" src="/assets/images/more.png" alt=""></a>
-        </div>
+        <h2>Emplacement :</h2>
+        <p>{{ book.location_name }}</p>
     </div>
 
     <div class="status">
-        <label for="status">Etat :</label><br>
-        <select name="status" id="status">
-            <option value="none" selected disabled hidden>Choissisez un etat</option>
-            {% for statut in status %}
-            <option value="{{ statut.id }}">{{ statut.name }}</option>
-            {% endfor %}
-        </select>
+        <h2>Etat :</h2>
+        <p>{{ book.status_name }}</p>
     </div>
-    <input class="submit" type="submit" value="Enregistrer">
 </div>
-<p class="incompletForm">{{ errors[0] }}</p>
 
-
-<ul>
-    <li>{{ book.book_title }}</li>
-    <li>{{ book.release_date }}</li>
-    <li>{{ book.cover_page }}</li>
-    <li>{{ book.author_name }}</li>
-
-    <li>{{ book.editor_name }}</li>
-    <li>{{ book.category_name }}</li>
-    <li>{{ book.location_name }}</li>
-    <li>{{ book.status_name }}</li>
-</ul>
+<div class="modify_delete">
+    <a class="modify" href="/book/edit?={{ book.book_id }}"><img src="/assets/images/modify.png" alt="logo to modify book"></a>
+    <a class="delete" href="/book/delete?id={{ book.book_id }}" onclick="confirm('Voulez vous vraiment supprimer ce livre?')"><img src="/assets/images/delete.png" alt="logo to delete book"></a>
+</div>
 {% endblock %}

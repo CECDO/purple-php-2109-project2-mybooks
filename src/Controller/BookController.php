@@ -117,12 +117,28 @@ class BookController extends AbstractController
         $bookManager = new BookManager();
         $booksId = $bookManager->selectAllBookId();
 
-        if (array_search($_GET['id'], array_column($booksId, 'id'))) {
-            $bookManager = new BookManager();
+        if (in_array($_GET['id'], array_column($booksId, 'id'))) {
             $book = $bookManager->selectOneByIdWithForeignKeys($_GET['id']);
-            return $this->twig->render('Books/bookRecap.html.twig', ['book' => $book]) ;
+            return $this->twig->render('Books/bookRecap.html.twig', ['book' => $book]);
         } else {
             header('Location: /');
+        }
+    }
+
+    /**
+     * ! DELETE BOOK BY ID
+     */
+    public function deleteBook(): void
+    {
+        $bookManager = new BookManager();
+        $booksId = $bookManager->selectAllBookId();
+
+        if (in_array($_GET['id'], array_column($booksId, 'id'))) {
+            $bookManager = new BookManager();
+            $bookManager->delete($_GET['id']);
+            header('Location: /');
+        } else {
+            echo "error";
         }
     }
 }
