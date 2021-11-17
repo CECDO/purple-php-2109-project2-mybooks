@@ -9,7 +9,7 @@ class BookManager extends AbstractManager
 {
     public const TABLE = "book";
 
-    /* Insert element aboot the book into bdd */
+    /* Insert element about the book into bdd */
     public function addBook(array $properties): void
     {
         $statement = $this->pdo->prepare("INSERT INTO book 
