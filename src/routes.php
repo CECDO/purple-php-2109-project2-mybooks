@@ -9,6 +9,8 @@
 
 return [
     '' => ['HomeController', 'index',],
+    'book' => ['BookController', 'book', ['id']],
+    'book/delete' => ['BookController', 'deleteBook', ['id']],
     'book/add' => ['BookController', 'addBook'],
     'author/add' => ['BookController', 'addAuthor'],
     'editor/add' => ['BookController', 'addEditor'],
