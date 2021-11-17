@@ -61,7 +61,7 @@ class FormProcessing
 
         $items = [
             'cover_page' => $path,
-            'title' => ucfirst(strtolower(trim($_POST['title']))),
+            'title' => ucfirst(mb_strtolower(trim($_POST['title']))),
             'author' => $_POST['author'],
             'release_date' => $_POST['release_date'],
             'editor' => $_POST['editor'],
@@ -84,7 +84,7 @@ class FormProcessing
         $elements = $authorsManager->selectAll();
 
         $errors = [];
-        $item = ucwords(strtolower(trim($_POST['author_name'])));
+        $item = ucwords(mb_strtolower(trim($_POST['author_name'])));
         foreach ($elements as $element) {
             if (in_array($item, $element)) {
                 $errors[] = 'Cet auteur existe déjà';
@@ -93,7 +93,7 @@ class FormProcessing
         if (empty($errors)) {
             if (!empty($item)) {
                 $authorsManager->addAuthor($item);
-                header('Location: /book/add');
+                header("location: /book/add");
                 return $errors;
             } else {
                 $errors[0] = 'Veuillez remplir le champ auteur';
@@ -113,7 +113,7 @@ class FormProcessing
         $elements = $editorsManager->selectAll();
 
         $errors = [];
-        $item = ucwords(strtolower(trim($_POST['editor_name'])));
+        $item = ucwords(mb_strtolower(trim($_POST['editor_name'])));
         foreach ($elements as $element) {
             if (in_array($item, $element)) {
                 $errors[] = 'Cet éditeur existe déjà';
@@ -142,7 +142,7 @@ class FormProcessing
         $elements = $categoriesManager->selectAll();
 
         $errors = [];
-        $item = ucwords(strtolower(trim($_POST['category_name'])));
+        $item = ucwords(mb_strtolower(trim($_POST['category_name'])));
         foreach ($elements as $element) {
             if (in_array($item, $element)) {
                 $errors[] = 'Cet catégorie existe déjà';
@@ -171,7 +171,7 @@ class FormProcessing
         $elements = $locationsManager->selectAll();
 
         $errors = [];
-        $item = ucwords(strtolower(trim($_POST['location_name'])));
+        $item = ucwords(mb_strtolower(trim($_POST['location_name'])));
         foreach ($elements as $element) {
             if (in_array($item, $element)) {
                 $errors[] = 'Cet emplacement existe déjà';

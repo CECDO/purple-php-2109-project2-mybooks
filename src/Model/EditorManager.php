@@ -9,7 +9,7 @@ class EditorManager extends AbstractManager
     /* Insert element aboot the book into bdd */
     public function addEditor(string $information): void
     {
-        $information = ucwords(strtolower(trim($information)));
+        $information = ucwords(mb_strtolower(trim($information)));
         $statement = $this->pdo->prepare("INSERT INTO editor (name) VALUES (:editor_name)");
         $statement->bindValue(":editor_name", $information, \PDO::PARAM_STR);
         $statement->execute();

@@ -119,7 +119,7 @@
                         </div>  
                         <div class="icon-del-edit">
                             <a href="/book/edit?id={{book.book_id}}"><img src="/assets/images/modify.png" alt="modify Logo"></a>
-                            <a href="/book/delete?id={{book.book_id}}"><img src="/assets/images/delete.png" alt="delete Logo"></a>
+                            <a href="/book/delete?id={{book.book_id}}" onclick="confirm('Voulez vous vraiment supprimer ce livre?')"><img src="/assets/images/delete.png" alt="delete Logo"></a>
                         </div>
                     </div>
                 {% endfor %}

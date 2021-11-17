@@ -10,7 +10,7 @@ class LocationManager extends AbstractManager
     /* Insert element aboot the book into bdd */
     public function addLocation(string $information): void
     {
-        $information = ucwords(strtolower(trim($information)));
+        $information = ucwords(mb_strtolower(trim($information)));
         $statement = $this->pdo->prepare("INSERT INTO location (name) VALUES (:location_name)");
         $statement->bindValue(":location_name", $information, \PDO::PARAM_STR);
         $statement->execute();
