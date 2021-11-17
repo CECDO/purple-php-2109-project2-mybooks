@@ -1,0 +1,30 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+Ajouter un livre
+{% endblock title %}
+
+{% block content %}
+
+<nav>
+    <div class="logoAndName">
+        <img src="/assets/images/logobook.png" alt="My Books Logo">
+        <p>MY BOOKS</p>
+    </div>
+    <h1>Ajouter un nouveau livre</h1>
+    <div class="backHome">
+        <a href=""><img src="/assets/images/home.png" alt="Home Logo"><span>Retour à l'accueil</span></a>
+    </div>
+</nav>
+
+<form class="addForm" action="/location/add" method="post" enctype="multipart/form-data">
+    <div class="location">
+        <label for="location_name">Emplacement :</label>
+        <div class="addLocation">
+            <input type="text" id="location_name" name="location_name" placeholder="Saissisez un emplacement" required>
+            <input class="addElement" type="submit" value="">
+        </div>
+        <p class="errors">{{ errors[0] }}</p>
+    </div>
+</form>
+{% endblock %}

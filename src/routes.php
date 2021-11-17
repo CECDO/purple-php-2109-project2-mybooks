@@ -9,4 +9,9 @@
 
 return [
     '' => ['BookController', 'dashboard',],
+    'book/add' => ['BookController', 'addBook'],
+    'author/add' => ['BookController', 'addAuthor'],
+    'editor/add' => ['BookController', 'addEditor'],
+    'category/add' => ['BookController', 'addCategory'],
+    'location/add' => ['BookController', 'addLocation'],
 ];

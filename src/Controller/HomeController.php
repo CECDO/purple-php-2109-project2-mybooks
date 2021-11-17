@@ -6,6 +6,6 @@ class HomeController extends AbstractController
 {
     public function index()
     {
-        return $this->twig->render('Book/index.html.twig');
+        return $this->twig->render('Books/index.html.twig');
     }
 }
