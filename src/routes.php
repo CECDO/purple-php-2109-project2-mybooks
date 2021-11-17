@@ -10,4 +10,11 @@
 return [
     '' => ['BookController', 'dashboard',],
     'books' => ['BookController', 'searchbar', ['title']],
+    'book' => ['BookController', 'book', ['id']],
+    'book/delete' => ['BookController', 'deleteBook', ['id']],
+    'book/add' => ['BookController', 'addBook'],
+    'author/add' => ['BookController', 'addAuthor'],
+    'editor/add' => ['BookController', 'addEditor'],
+    'category/add' => ['BookController', 'addCategory'],
+    'location/add' => ['BookController', 'addLocation'],
 ];

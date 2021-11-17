@@ -1,0 +1,36 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+Ajouter un livre
+{% endblock title %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="/assets/css/style_addbook.css">
+{% endblock %}
+
+{% block content %}
+<nav>
+    <div class="logoAndName">
+        <img src="/assets/images/logobook.png" alt="My Books Logo">
+        <p>MY BOOKS</p>
+    </div>
+    <h1>Ajouter un auteur</h1>
+    <div class="backHome">
+        <a href=""><img src="/assets/images/home.png" alt="Home Logo"><span>Retour à l'accueil</span></a>
+    </div>
+</nav>
+
+<form class="addForm" action="/author/add" method="post" enctype="multipart/form-data">
+    
+
+    <div class="author">
+        <label for="author_name">Auteur :</label>
+        <div class="addAuthor">
+            <input type="text" id="author_name" name="author_name" placeholder="Saissisez l'auteur" required>
+            <input class="addElement" type="submit" value="">
+        </div>
+        <p class="errors">{{ errors[0] }}</p>
+    </div>
+    
+</form>
+{% endblock %}

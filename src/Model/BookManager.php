@@ -4,7 +4,60 @@ namespace App\Model;
 
 class BookManager extends AbstractManager
 {
-    public const TABLE = 'book';
+    public const TABLE = "book";
+    /* Insert element aboot the book into bdd */
+    public function addBook(array $properties): void
+    {
+        $statement = $this->pdo->prepare("INSERT INTO book 
+        (cover_page, title, release_date, added_date, author_id, category_id,
+        format_id, editor_id, location_id, status_id)
+        VALUES (:cover_page, :title, :release_date, NOW()
+        ,:author, :category, :format, :editor, :location, :status)");
+        $statement->bindValue(':cover_page', $properties['cover_page'], \PDO::PARAM_STR);
+        $statement->bindValue(':title', $properties['title'], \PDO::PARAM_STR);
+        $statement->bindValue(':release_date', $properties['release_date'], \PDO::PARAM_STR);
+        $statement->bindValue(':author', $properties['author'], \PDO::PARAM_INT);
+        $statement->bindValue(':category', $properties['category'], \PDO::PARAM_INT);
+        $statement->bindValue(':format', $properties['format'], \PDO::PARAM_INT);
+        $statement->bindValue(':editor', $properties['editor'], \PDO::PARAM_INT);
+        $statement->bindValue(':location', $properties['location'], \PDO::PARAM_INT);
+        $statement->bindValue(':status', $properties['status'], \PDO::PARAM_INT);
+        $statement->execute();
+    }
+
+    public function selectAllBookId(): array
+    {
+        $statement = $this->pdo->prepare("SELECT id FROM " . static::TABLE);
+        $statement->execute();
+
+        return $statement->fetchAll();
+    }
+
+    public function selectOneByIdWithForeignKeys(int $id)
+    {
+        $statement = $this->pdo->prepare('SELECT book.id AS book_id,
+        book.title AS book_title,
+        book.release_date,
+        book.cover_page,
+        editor.name AS editor_name,
+        category.name AS category_name,
+        format.name AS format_name,
+        location.name AS location_name,
+        author.name AS author_name,
+        status.name AS status_name
+        FROM ' . static::TABLE . '
+        JOIN editor ON book.editor_id = editor.id
+        JOIN category ON book.category_id = category.id
+        JOIN format ON book.format_id = format.id
+        JOIN location ON book.location_id = location.id
+        JOIN author ON book.author_id = author.id
+        JOIN status ON book.status_id = status.id
+        WHERE book.id=:id');
+
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+        return $statement->fetch();
+    }
 
     public function selectAllComplete(array $sort): array
     {
