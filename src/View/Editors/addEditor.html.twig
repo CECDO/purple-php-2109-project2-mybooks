@@ -1,7 +1,7 @@
 {% extends 'layout.html.twig' %}
 
 {% block title %}
-Ajouter un livre
+Ajouter un éditeur
 {% endblock title %}
 
 {% block stylesheet %}
@@ -12,7 +12,7 @@ Ajouter un livre
 {% block content %}
 <nav>
     <div class="logoAndName">
-        <img src="/assets/images/logobook.png" alt="My Books Logo">
+        <a href="/"><img src="/assets/images/logobook.png" alt="My Books Logo"></a>
         <p>MY BOOKS</p>
     </div>
     <h1>Ajouter un éditeur</h1>
@@ -21,7 +21,7 @@ Ajouter un livre
     </div>
 </nav>
 
-<form class="addForm" action="/editor/add" method="post" enctype="multipart/form-data">
+<form class="addInformation" action="/editor/add" method="post" enctype="multipart/form-data">
     <div class="editor">
         <label for="editor_name">Editeur:</label>
         <div class="addEditor">
