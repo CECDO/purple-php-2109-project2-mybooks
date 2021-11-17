@@ -4,5 +4,5 @@ namespace App\Model;
 
 class StatusManager extends AbstractManager
 {
-    public const TABLE = "status";
+    public const TABLE = 'status';
 }
