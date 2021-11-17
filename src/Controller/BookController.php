@@ -140,7 +140,6 @@ class BookController extends AbstractController
         } else {
             echo "error";
         }
-
     }
 
     public function dashboard()
