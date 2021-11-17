@@ -48,6 +48,7 @@ class BookController extends AbstractController
         if (empty($errors) && !empty($_FILES['avatar'])) {
             $path = $formProcessing->coverPage();
             $formProcessing->addBooktoDB($path);
+            header('Location: /');
         }
 
         return $this->twig->render('Books/addBook.html.twig', [
