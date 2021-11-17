@@ -175,25 +175,22 @@ input[type="text"], input[type="date"], select {
     color: var(--second_color);
 }
 
-.modify_delete {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    width: 100%;
-    margin-top: 2.5rem;
-}
-
-.modify_delete img {
-    width: 2.5rem;
-    height: 2.5rem;
-}
-
-.delete {
-    margin-left: 1rem;
-    margin-right: 1rem;
-}
-
 @media only screen and (min-width: 768px) {
+    .modify_delete {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        width: 100%;
+        margin-top: 2.5rem;
+    }
+    .modify_delete img {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+    .delete {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
     .recapForm {
         display: grid;
         grid-template-columns: 1fr 1fr;
