@@ -14,6 +14,7 @@ class BookManager extends AbstractManager
         $statement = $this->pdo->prepare('SELECT book.id AS book_id,
         book.title AS book_title,
         book.release_date,
+        book.cover_page,
         editor.name AS editor_name,
         category.name AS category_name,
         format.name AS format_name,
