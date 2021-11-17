@@ -1,29 +1,13 @@
-{% extends 'layout.html.twig' %}
-
-{% block content %}
-    <nav>
-        <div class="logoAndName">
-            <img src="/assets/images/logobook.png" alt="My Books Logo">
-            <p>MY BOOKS</p>
-        </div>
-        <h1>Modification d'un livre</h1>
-        <div class="backHome">
-            <a href="/"><img src="/assets/images/home.png" alt="Home Logo"><span>Retour à l'accueil</span></a>
-        </div>
-    </nav>
-    {% for error in errors %}
-        <div style="color: red;">{{error}}</div>
-    {% endfor %}
-<form class="addForm" method="post" enctype="multipart/form-data">
+<form class="addForm" action="/book/add" method="post" enctype="multipart/form-data">
     <div class="cover_page">
         <label for="imageUpload">Page de couverture :</label>
         <img class="preview" src="" id="preview" alt="preview cover page">
         <input type="file" name="avatar" id="imageUpload" accept="image/*" onchange="previewImage()" />
     </div>
-    <input type="hidden" value="{{ book.book_id }}" name="id">
+
     <div class="title">
         <label for="title">Titre :</label><br>
-        <input type="text" value="{{book.book_title}}" id="title" name="title" placeholder="{{book.book_title}}">
+        <input type="text" id="title" name="title" placeholder="Saissisez le titre">
     </div>
     <div class="author">
         <label for="author">Auteur :</label><br>
@@ -57,7 +41,7 @@
         <label for="category">Catégorie :</label><br>
         <div class="addCategory">
             <select name="category" id="category">
-                <option value="{{ book.category_id }}" selected hidden>{{ book.category_name }}</option>
+                <option value="none" selected disabled hidden>Choissisez une catégorie</option>
                 {% for category in categories %}
                 <option value="{{ category.id }}">{{ category.name }}</option>
                 {% endfor %}
@@ -90,13 +74,11 @@
     <div class="status">
         <label for="status">Etat :</label><br>
         <select name="status" id="status">
-            <option value="{{ book.status_id }}" selected hidden>{{ book.status_name }}</option>
+            <option value="none" selected disabled hidden>Choissisez un etat</option>
             {% for statut in status %}
-            <option name="status" value="{{ statut.id }}">{{ statut.name }}</option>
+            <option value="{{ statut.id }}">{{ statut.name }}</option>
             {% endfor %}
         </select>
     </div>
     <input class="submit" type="submit" value="Enregistrer">
 </form>
-
-{% endblock %}
