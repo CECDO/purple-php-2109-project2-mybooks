@@ -23,14 +23,13 @@ define('APP_DB_PASSWORD', 'your_db_password');
 7. From this manage your library.
 
 
-### Authors:
-
-#### Developers
+## Authors :
+#### Developers :
 * Alexandre Grué
 * Cécile Do Nascimento
 * Maïwenn Beloy
 * Olivier Gourdonneau
 * Thomas Clarisse
 
-#### Formateur:
+#### Formateur :
 * Romain Clair
