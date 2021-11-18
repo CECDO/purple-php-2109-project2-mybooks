@@ -4,4 +4,4 @@
 *.cache
 db.php
 .idea
-public/assets/cover_page/.gitkeep
+/public/assets/cover_page/.gitkeep
