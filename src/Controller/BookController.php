@@ -16,6 +16,9 @@ class BookController extends AbstractController
 {
     public function addBook(): string
     {
+        session_start();
+        $_SESSION["location"] = "add";
+        var_dump($_SESSION["location"]);
         /**
          * ! GET ELEMENT FOR LIST IN FORM
          */
@@ -36,7 +39,6 @@ class BookController extends AbstractController
 
         $statusManager = new StatusManager();
         $status = $statusManager->selectAll('id');
-
         /**
          * ! PUT THE BOOK IN DBB
          */
@@ -62,8 +64,9 @@ class BookController extends AbstractController
      */
     public function addAuthor(): string
     {
+        session_start();
         $errors = [];
-
+        var_dump($_SESSION["location"]);
         if (!empty($_POST['author_name'])) {
             $formProcessing = new FormProcessing();
             $errors = $formProcessing->verifyAndAddAuthor();
@@ -94,7 +97,7 @@ class BookController extends AbstractController
             $formProcessing = new FormProcessing();
             $errors = $formProcessing->verifyAndAddCategory();
         }
-        return $this->twig->render('Categories/addCategory.html.twig', ['errors' => $errors]);
+          return $this->twig->render('Categories/addCategory.html.twig', ['errors' => $errors]);
     }
 
     /**
@@ -115,6 +118,10 @@ class BookController extends AbstractController
      */
     public function edit(int $id)
     {
+        session_start();
+        $_SESSION["location"] = "edit";
+        $_SESSION["book"] = $_GET["id"];
+
         $bookManager = new BookManager();
 
         $book = $bookManager->selectOneById($id);

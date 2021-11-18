@@ -93,8 +93,16 @@ class FormProcessing
         if (empty($errors)) {
             if (!empty($item)) {
                 $authorsManager->addAuthor($item);
-                header("location: /book/add");
-                return $errors;
+                if ($_SESSION["location"] === "add") {
+                    header("location: /book/add");
+                    return $errors;
+                } elseif ($_SESSION["location"] === "edit") {
+                    header("location: /book/edit?id=" . $_SESSION["book"]);
+                    return $errors;
+                } else {
+                    header("location: /");
+                    return $errors;
+                }
             } else {
                 $errors[0] = 'Veuillez remplir le champ auteur';
                 return $errors;
