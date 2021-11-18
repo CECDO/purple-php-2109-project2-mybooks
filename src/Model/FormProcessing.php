@@ -22,8 +22,8 @@ class FormProcessing
         $extension = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
         $uploadFile = $uploadDir . uniqid("", false) . "." . $extension;
 
-        $authorizedExtensions = ['jpg', 'png', 'gif', 'webp'];
-        $maxFileSize = 1000000;
+        $authorizedExtensions = ['jpg', 'png', 'jpeg'];
+        $maxFileSize = 2000000;
 
         if ((!in_array($extension, $authorizedExtensions))) {
             $errors = 'Veuillez sélectionner une image de type Jpg ou Jpeg ou Png !';
@@ -61,7 +61,7 @@ class FormProcessing
 
         $items = [
             'cover_page' => $path,
-            'title' => strtolower(trim($_POST['title'])),
+            'title' => ucfirst(mb_strtolower(trim($_POST['title']))),
             'author' => $_POST['author'],
             'release_date' => $_POST['release_date'],
             'editor' => $_POST['editor'],
@@ -84,7 +84,7 @@ class FormProcessing
         $elements = $authorsManager->selectAll();
 
         $errors = [];
-        $item = ucwords(strtolower(trim($_POST['author_name'])));
+        $item = ucwords(mb_strtolower(trim($_POST['author_name'])));
         foreach ($elements as $element) {
             if (in_array($item, $element)) {
                 $errors[] = 'Cet auteur existe déjà';
@@ -93,8 +93,16 @@ class FormProcessing
         if (empty($errors)) {
             if (!empty($item)) {
                 $authorsManager->addAuthor($item);
-                header('Location: /book/add');
-                return $errors;
+                if ($_SESSION["location"] === "add") {
+                    header("location: /book/add");
+                    return $errors;
+                } elseif ($_SESSION["location"] === "edit") {
+                    header("location: /book/edit?id=" . $_SESSION["book"]);
+                    return $errors;
+                } else {
+                    header("location: /");
+                    return $errors;
+                }
             } else {
                 $errors[0] = 'Veuillez remplir le champ auteur';
                 return $errors;
@@ -113,7 +121,7 @@ class FormProcessing
         $elements = $editorsManager->selectAll();
 
         $errors = [];
-        $item = ucwords(strtolower(trim($_POST['editor_name'])));
+        $item = ucwords(mb_strtolower(trim($_POST['editor_name'])));
         foreach ($elements as $element) {
             if (in_array($item, $element)) {
                 $errors[] = 'Cet éditeur existe déjà';
@@ -122,8 +130,16 @@ class FormProcessing
         if (empty($errors)) {
             if (!empty($item)) {
                 $editorsManager->addEditor($item);
-                header('Location: /book/add');
-                return $errors;
+                if ($_SESSION["location"] === "add") {
+                    header("location: /book/add");
+                    return $errors;
+                } elseif ($_SESSION["location"] === "edit") {
+                    header("location: /book/edit?id=" . $_SESSION["book"]);
+                    return $errors;
+                } else {
+                    header("location: /");
+                    return $errors;
+                }
             } else {
                 $errors[0] = 'Veuillez remplir le champ editeur';
                 return $errors;
@@ -142,7 +158,7 @@ class FormProcessing
         $elements = $categoriesManager->selectAll();
 
         $errors = [];
-        $item = ucwords(strtolower(trim($_POST['category_name'])));
+        $item = ucwords(mb_strtolower(trim($_POST['category_name'])));
         foreach ($elements as $element) {
             if (in_array($item, $element)) {
                 $errors[] = 'Cet catégorie existe déjà';
@@ -151,8 +167,16 @@ class FormProcessing
         if (empty($errors)) {
             if (!empty($item)) {
                 $categoriesManager->addCategory($item);
-                header('Location: /book/add');
-                return $errors;
+                if ($_SESSION["location"] === "add") {
+                    header("location: /book/add");
+                    return $errors;
+                } elseif ($_SESSION["location"] === "edit") {
+                    header("location: /book/edit?id=" . $_SESSION["book"]);
+                    return $errors;
+                } else {
+                    header("location: /");
+                    return $errors;
+                }
             } else {
                 $errors[0] = 'Veuillez remplir le champ catégorie';
                 return $errors;
@@ -171,7 +195,7 @@ class FormProcessing
         $elements = $locationsManager->selectAll();
 
         $errors = [];
-        $item = ucwords(strtolower(trim($_POST['location_name'])));
+        $item = ucwords(mb_strtolower(trim($_POST['location_name'])));
         foreach ($elements as $element) {
             if (in_array($item, $element)) {
                 $errors[] = 'Cet emplacement existe déjà';
@@ -180,14 +204,100 @@ class FormProcessing
         if (empty($errors)) {
             if (!empty($item)) {
                 $locationsManager->addLocation($item);
-                header('Location: /book/add');
-                return $errors;
+                if ($_SESSION["location"] === "add") {
+                    header("location: /book/add");
+                    return $errors;
+                } elseif ($_SESSION["location"] === "edit") {
+                    header("location: /book/edit?id=" . $_SESSION["book"]);
+                    return $errors;
+                } else {
+                    header("location: /");
+                    return $errors;
+                }
             } else {
                 $errors[0] = 'Veuillez remplir le champ emplacement';
                 return $errors;
             }
         } else {
             return $errors;
+        }
+    }
+
+    public function verifyGetToFilter(): array
+    {
+        $errors = [];
+        if (!empty($_GET)) {
+            $items = [
+                'author_id' => $_GET['author_id'],
+                'editor_id' => $_GET['editor_id'],
+                'category_id' => $_GET['category_id'],
+                'format_id' => $_GET['format_id'],
+                'location_id' => $_GET['location_id'],
+                'status_id' => $_GET['status_id'],
+            ];
+
+
+            $errors = [];
+            foreach ($items as $key => $item) {
+                if (empty($items[$key])) {
+                    $errors[] = "Champ de sélection vide";
+                    $items[$key] = ">=0";
+                } else {
+                    $items[$key] = "=$item";
+                }
+            }
+            return $items;
+        } else {
+            return $errors;
+        }
+    }
+
+    public function verifyGetToSort(): array
+    {
+        if (!empty($_GET['sort'])) {
+            if ($_GET['sort'] === 'title-az') {
+                $sort = [
+                    'field' =>  'title',
+                    'direction' => 'ASC',
+                ];
+                return $sort;
+            } elseif ($_GET['sort'] === 'title-za') {
+                $sort = [
+                    'field' =>  'title',
+                    'direction' => 'DESC',
+                ];
+                return $sort;
+            } elseif ($_GET['sort'] === 'author-az') {
+                $sort = [
+                    'field' =>  'author_name',
+                    'direction' => 'ASC',
+                ];
+                return $sort;
+            } elseif ($_GET['sort'] === 'author-za') {
+                $sort = [
+                    'field' =>  'author_name',
+                    'direction' => 'DESC',
+                ];
+                return $sort;
+            } elseif ($_GET['sort'] === 'first-added') {
+                $sort = [
+                    'field' =>  'added_date',
+                    'direction' => 'ASC',
+                ];
+                return $sort;
+            } else {
+                $sort = [
+                    'field' =>  'added_date',
+                    'direction' => 'DESC',
+                ];
+                return $sort;
+            }
+        } else {
+            $sort = [
+                'field' =>  'added_date',
+                'direction' => 'DESC',
+            ];
+            return $sort;
         }
     }
 }

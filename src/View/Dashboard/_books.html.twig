@@ -1,0 +1,24 @@
+{% block stylesheet %}
+<link rel="stylesheet" href="/assets/css/dashboard.css">
+<link rel="stylesheet" href="/assets/css/style.css">
+{% endblock %}
+
+{% for book in books %}
+    <div class="book-card">
+        <a href="book?id={{book.book_id}}"><img class="book-cover" src="/{{book.cover_page}}" alt="image"></a>                        
+        <div class="book-text">
+            <h3 class="text-white text-title">Title</h3>
+            <p class="text-white sub-text m-1">{{book.book_title}}</p>
+            <h3 class="text-white text-title m-2">Auteur</h3>
+            <p class="text-white sub-text m-2">{{book.author_name}}</p>
+            <h3 class="text-white text-title m-3">Emplacement</h3>
+            <p class="text-white sub-text m-3">{{book.location_name}}</p>
+            <h3 class="text-white text-title m-4">Statut</h3>
+            <p class="text-white sub-text m-4">{{book.status_name}}</p>
+        </div>  
+        <div class="icon-del-edit">
+            <a href="/book/edit?id={{book.book_id}}"><img src="/assets/images/modify.png" alt="modify Logo"></a>
+            <a href="/book/delete?id={{book.book_id}}"><img src="/assets/images/delete.png" alt="delete Logo"></a>
+        </div>
+    </div>
+{% endfor %}

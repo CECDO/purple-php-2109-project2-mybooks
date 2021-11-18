@@ -8,15 +8,16 @@ use App\Model\AuthorManager;
 use App\Model\EditorManager;
 use App\Model\CategoryManager;
 use App\Model\FormatManager;
+use App\Model\FormProcessing;
 use App\Model\StatusManager;
 use App\Model\VerificationProcess;
-use App\Model\FormProcessing;
 
 class BookController extends AbstractController
 {
-
     public function addBook(): string
     {
+        session_start();
+        $_SESSION["location"] = "add";
         /**
          * ! GET ELEMENT FOR LIST IN FORM
          */
@@ -37,7 +38,6 @@ class BookController extends AbstractController
 
         $statusManager = new StatusManager();
         $status = $statusManager->selectAll('id');
-
         /**
          * ! PUT THE BOOK IN DBB
          */
@@ -49,6 +49,7 @@ class BookController extends AbstractController
         if (empty($errors) && !empty($_FILES['avatar'])) {
             $path = $formProcessing->coverPage();
             $formProcessing->addBooktoDB($path);
+            header('Location: /');
         }
 
         return $this->twig->render('Books/addBook.html.twig', [
@@ -62,8 +63,8 @@ class BookController extends AbstractController
      */
     public function addAuthor(): string
     {
+        session_start();
         $errors = [];
-
         if (!empty($_POST['author_name'])) {
             $formProcessing = new FormProcessing();
             $errors = $formProcessing->verifyAndAddAuthor();
@@ -76,6 +77,7 @@ class BookController extends AbstractController
      */
     public function addEditor(): string
     {
+        session_start();
         $errors = [];
         if (!empty($_POST['editor_name'])) {
             $formProcessing = new FormProcessing();
@@ -89,12 +91,13 @@ class BookController extends AbstractController
      */
     public function addCategory(): string
     {
+        session_start();
         $errors = [];
         if (!empty($_POST['category_name'])) {
             $formProcessing = new FormProcessing();
             $errors = $formProcessing->verifyAndAddCategory();
         }
-        return $this->twig->render('Categories/addCategory.html.twig', ['errors' => $errors]);
+          return $this->twig->render('Categories/addCategory.html.twig', ['errors' => $errors]);
     }
 
     /**
@@ -102,6 +105,7 @@ class BookController extends AbstractController
      */
     public function addLocation(): string
     {
+        session_start();
         $errors = [];
         if (!empty($_POST['location_name'])) {
             $formProcessing = new FormProcessing();
@@ -110,8 +114,15 @@ class BookController extends AbstractController
         return $this->twig->render('Locations/addLocation.html.twig', ['errors' => $errors]);
     }
 
+    /**
+     * ! EDIT BOOK
+     */
     public function edit(int $id)
     {
+        session_start();
+        $_SESSION["location"] = "edit";
+        $_SESSION["book"] = $_GET["id"];
+
         $bookManager = new BookManager();
 
         $book = $bookManager->selectOneById($id);
@@ -138,7 +149,7 @@ class BookController extends AbstractController
             $verification  = new VerificationProcess();
             $errors = $verification->TestInputVerification();
         }
-        return $this->twig->render('Book/edit.html.twig', [
+        return $this->twig->render('Books/edit.html.twig', [
             'errors' => $errors,
             'book' => $book,
             'authors' => $authors,
@@ -149,12 +160,7 @@ class BookController extends AbstractController
             'status' => $status
         ]);
     }
-    public function index()
-    {
-        $bookManager = new BookManager();
-        $books = $bookManager->selectAllComplete();
-        return $this->twig->render('Book/index.html.twig', ['books' => $books]);
-    }
+
     /**
      * ! GET ELEMENT FOR RECAPBOOK
      */
@@ -186,5 +192,68 @@ class BookController extends AbstractController
         } else {
             echo "error";
         }
+    }
+
+    /**
+     * ! DAHSBOARD
+     */
+    public function dashboard()
+    {
+        $bookManager = new BookManager();
+
+        $authorManager = new authorManager();
+        $authors = $authorManager->selectAll();
+
+        $editorManager = new EditorManager();
+        $editors = $editorManager->selectAll();
+
+        $categoryManager = new CategoryManager();
+        $categories = $categoryManager->selectAll();
+
+        $formatManager = new FormatManager();
+        $formats = $formatManager->selectAll();
+
+        $locationManager = new LocationManager();
+        $locations = $locationManager->selectAll();
+
+        $statusManager = new StatusManager();
+        $status = $statusManager->selectAll();
+        $form = new FormProcessing();
+        $sort = $form->verifyGetToSort();
+
+        if (
+            !empty($_GET['author_id'])
+            || !empty($_GET['editor_id'])
+            || !empty($_GET['category_id'])
+            || !empty($_GET['format_id'])
+            || !empty($_GET['location_id'])
+            || !empty($_GET['status_id'])
+            || !empty($_GET['sort'])
+        ) {
+            $items = $form->verifyGetToFilter();
+            $books = $bookManager->bookFilterAll($items, $sort);
+        } else {
+            $books = $bookManager->selectAllCompleteOrdered($sort);
+        }
+
+        return $this->twig->render('Dashboard/index.html.twig', [
+            'authors' => $authors,
+            'editors' => $editors,
+            'categories' => $categories,
+            'formats' => $formats,
+            'locations' => $locations,
+            'status' => $status,
+            'books' => $books,
+        ]);
+    }
+
+    /**
+     * ! SEARCH_BAR
+     */
+    public function searchbar(string $title = "")
+    {
+        $bookManager = new BookManager();
+        $books = $bookManager->selectByUnCompleteTitle($title);
+        return $this->twig->render('Dashboard/_books.html.twig', ['books' => $books,]);
     }
 }

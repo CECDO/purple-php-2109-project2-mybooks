@@ -1,0 +1,91 @@
+* {
+    padding: 0 auto;
+    --primary_color: #1C2238;
+    --second_color: #FFFFFF;
+    --third_color: #5D647E;
+    --dark_color: #212121;
+    --btn-color: #2F5BFA;
+    
+    --font: 'Roboto', sans-serif;
+
+    --title_weight: bold;
+    --my_book_size: 3.15rem;
+    --title_size_mobile: 2.25rem;
+
+    }
+
+    
+body {
+    background-color: var(--primary_color);
+    font-family: var(--font);
+}
+
+nav{
+    display: flex;
+    width: 100%;
+    color: var(--second_color);
+    margin-left: -0.25rem;
+}
+
+.logoAndName {
+    display: flex;
+    
+}
+
+.logoAndName img {
+    width: 4.75rem;
+    height: 3.5rem;
+}
+
+.logoAndName p {
+    display: none;
+}
+
+h1{
+    font-size: var(--title_size_mobile);
+    font-weight: var(--title_weight);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin: 0;
+    text-align: center;
+    
+}
+
+.backHome img{
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.backHome span {
+    display: none;
+}
+
+
+/* THOMAS */
+.icon-add-settings{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.text-white{
+    color: var(--second_color);
+}
+
+.btn {
+    font-size: 0.87rem;
+    padding: 0.37rem 0.75rem;
+    text-decoration: none;
+    text-align: center;
+    border: 1px solid transparent;
+}
+
+.btn-submit{
+    background-color: var(--btn-color);
+    color: white;
+}
+
+.text-title{
+    text-decoration: underline;
+    font-weight: bold;
+}

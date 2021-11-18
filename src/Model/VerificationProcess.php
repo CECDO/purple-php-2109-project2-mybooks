@@ -11,7 +11,7 @@ class VerificationProcess extends AbstractManager
         if (!empty($_POST)) {
             $items = [
                 'id' => intval($_POST['id']),
-                'title' => trim($_POST['title']),
+                'title' => ucfirst(mb_strtolower(trim($_POST['title']))),
                 'author' => $_POST['author'],
                 'editor' => $_POST['editor'],
                 'category' => $_POST['category'],

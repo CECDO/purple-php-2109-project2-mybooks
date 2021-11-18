@@ -1,14 +1,18 @@
 {% extends 'layout.html.twig' %}
 
 {% block title %}
-Ajouter un livre
+Ajouter un emplacement
 {% endblock title %}
 
-{% block content %}
+{% block stylesheet %}
+<link rel="stylesheet" href="/assets/css/style_addbook.css">
+{% endblock %}
 
+
+{% block content %}
 <nav>
     <div class="logoAndName">
-        <img src="/assets/images/logobook.png" alt="My Books Logo">
+        <a href="/"><img src="/assets/images/logobook.png" alt="My Books Logo"></a>
         <p>MY BOOKS</p>
     </div>
     <h1>Ajouter un emplacement</h1>

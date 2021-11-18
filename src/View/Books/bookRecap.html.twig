@@ -4,11 +4,15 @@
 Informations du livre
 {% endblock title %}
 
-{% block content %}
+{% block stylesheet %}
+<link rel="stylesheet" href="/assets/css/style_addbook.css">
+{% endblock %}
 
+
+{% block content %}
 <nav>
     <div class="logoAndName">
-        <img src="/assets/images/logobook.png" alt="My Books Logo">
+        <a href="/"><img src="/assets/images/logobook.png" alt="My Books Logo"></a>
         <p>MY BOOKS</p>
     </div>
     <h1>Informations du livre</h1>
