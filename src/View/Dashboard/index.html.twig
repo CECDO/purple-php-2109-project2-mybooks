@@ -12,12 +12,12 @@
     <header>
         <nav>
             <div class="logoAndName" >
-                <a href="/"><img src="/assets/images/logo-book.png" alt="My Books Logo"></a>
+                <a href="/" title="Retour à l'accueil"><img src="/assets/images/logo-book.png" alt="My Books Logo"></a>
                 <h3>MY BOOKS</h3>
             </div>
             <div class="icon-add-settings">
                 <div class="icon-nav">
-                    <a href="/book/add"><img src="/assets/images/add.png" alt="Add Logo"></a>
+                    <a href="/book/add" title="Ajouter un livre"><img src="/assets/images/add.png" alt="Add Logo"></a>
                 </div>
             </div>    
         </nav>
@@ -118,8 +118,8 @@
                             <p class="text-white sub-text m-4">{{book.status_name}}</p>
                         </div>  
                         <div class="icon-del-edit">
-                            <a href="/book/edit?id={{book.book_id}}"><img src="/assets/images/modify.png" alt="modify Logo"></a>
-                            <a href="/book/delete?id={{book.book_id}}" onclick="confirm('Voulez vous vraiment supprimer ce livre?')"><img src="/assets/images/delete.png" alt="delete Logo"></a>
+                                <a class="modify" href="/book/edit?id={{ book.book_id }}" title="Modifier un livre"><img src="/assets/images/modify.png" alt="logo to modify book"></a>
+                                <a class="delete" href="/book/delete?id={{ book.book_id }}" title="Supprimer un livre" onclick="confirm('Voulez vous vraiment supprimer ce livre?')"><img src="/assets/images/delete.png" alt="logo to delete book"></a>
                         </div>
                     </div>
                 {% endfor %}

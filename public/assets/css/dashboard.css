@@ -157,8 +157,8 @@ nav h1 {
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
-        max-width: 245px;
-        max-height: 100px;
+        max-width: 170px;
+        max-height: 90px;
     }
 
     .container-book {
@@ -189,8 +189,8 @@ nav h1 {
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
-        max-width: 28rem;
-        max-height: 100px;
+        max-width: 10rem;
+        max-height: 70px;
     }
 
     .book-card {
@@ -208,7 +208,7 @@ nav h1 {
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
-        max-width: 20rem;
+        max-width: 10rem;
         max-height: 100px;
     }
 

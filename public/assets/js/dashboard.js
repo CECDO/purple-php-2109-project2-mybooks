@@ -20,3 +20,8 @@ searchBar.addEventListener('keyup', () => {
     bookContent.innerHTML = html
   })
 })
+
+
+function confirmer(){
+  confirm("Êtes-vous sûr de vouloir supprimer?");
+}
