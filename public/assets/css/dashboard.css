@@ -30,8 +30,10 @@ nav h1 {
 .select {
     width: 14rem;
     height: 2rem;
-    border-radius: 0.625rem;
+    border-radius: 0.25rem;
     margin-right: 1rem;
+    background-color: #ffffff;
+    color: #636262;
 }
 
 .filter {
@@ -70,7 +72,8 @@ nav h1 {
 .search-bar {
     width: 14rem;
     height: 2rem;
-    border-radius: 0.625rem;
+    border-radius: 0.25rem;
+    border: none;
     margin-right: 1em;
     margin-bottom: 1rem;
 }
