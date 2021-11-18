@@ -22,3 +22,15 @@ define('APP_DB_PASSWORD', 'your_db_password');
 6. Go to `localhost:8000` with your favorite browser.
 7. From this manage your library.
 
+
+### Authors:
+
+#### Developers
+* Alexandre Grué
+* Cécile Do Nascimento
+* Maïwenn Beloy
+* Olivier Gourdonneau
+* Thomas Clarisse
+
+#### Formateur:
+* Romain Clair
