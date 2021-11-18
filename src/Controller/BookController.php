@@ -18,7 +18,6 @@ class BookController extends AbstractController
     {
         session_start();
         $_SESSION["location"] = "add";
-        var_dump($_SESSION["location"]);
         /**
          * ! GET ELEMENT FOR LIST IN FORM
          */
@@ -66,7 +65,6 @@ class BookController extends AbstractController
     {
         session_start();
         $errors = [];
-        var_dump($_SESSION["location"]);
         if (!empty($_POST['author_name'])) {
             $formProcessing = new FormProcessing();
             $errors = $formProcessing->verifyAndAddAuthor();
@@ -79,6 +77,7 @@ class BookController extends AbstractController
      */
     public function addEditor(): string
     {
+        session_start();
         $errors = [];
         if (!empty($_POST['editor_name'])) {
             $formProcessing = new FormProcessing();
@@ -92,6 +91,7 @@ class BookController extends AbstractController
      */
     public function addCategory(): string
     {
+        session_start();
         $errors = [];
         if (!empty($_POST['category_name'])) {
             $formProcessing = new FormProcessing();
@@ -105,6 +105,7 @@ class BookController extends AbstractController
      */
     public function addLocation(): string
     {
+        session_start();
         $errors = [];
         if (!empty($_POST['location_name'])) {
             $formProcessing = new FormProcessing();

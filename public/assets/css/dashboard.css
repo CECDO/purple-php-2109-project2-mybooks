@@ -1,49 +1,51 @@
 /* NAVBAR */
 
-*{
+* {
     margin: 0 0;
     box-sizing: border-box;
 }
-nav{
+
+nav {
     margin-top: 1rem;
 }
 
-nav h1{
+nav h1 {
     font-size: 1.5rem;
 }
 
-.icon-nav{
+.icon-nav {
     height: 2.5rem;
 }
-.icon a img{
+
+.icon a img {
     height: 2.5rem;
     margin-left: 1rem;
 }
 
-.logoAndName h3{
+.logoAndName h3 {
     margin: auto auto auto 1.5rem;
 }
 
 /* FILTER BAR */
 .select {
-    width: 17rem;
+    width: 14rem;
     height: 2rem;
     border-radius: 0.625rem;
     margin-right: 1rem;
 }
 
-.filter{
+.filter {
     display: flex;
     flex-direction: column;
     margin-bottom: 0.9rem;
     color: white;
 }
 
-#filter{
-    display: none;    
+#filter {
+    display: none;
 }
 
-.container-filter{
+.container-filter {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -51,11 +53,11 @@ nav h1{
 }
 
 
-.filter-espace{
-    margin-bottom: 0.2;
+.filter-espace {
+    margin-bottom: 0.2rem;
 }
 
-.title-filter{
+.title-filter {
     color: white;
     border-bottom: 2px solid white;
     padding-bottom: 0.3rem;
@@ -64,29 +66,29 @@ nav h1{
     width: 13rem;
 }
 
-.search-bar{
-    width: 17rem;
+.search-bar {
+    width: 14rem;
     height: 2rem;
     border-radius: 0.625rem;
     margin-right: 1em;
     margin-bottom: 1rem;
 }
 
-.book-card{
+.book-card {
     background-color: var(--third_color);
     display: flex;
     height: 12rem;
     align-items: center;
-    margin: 1rem 1rem 3rem 1.7rem;
+    margin: 1rem 1rem 4.5rem 1.7rem;
     border-radius: 1rem;
 }
 
-.container-book{
+.container-book {
     display: flex;
     flex-direction: column;
 }
 
-.book-cover{
+.book-cover {
     height: 15rem;
     display: flex;
     transform: rotate(-6deg);
@@ -95,71 +97,70 @@ nav h1{
 
 }
 
-.icon-del-edit{
+.icon-del-edit {
     display: flex;
     height: 100%;
     align-items: flex-end;
 }
 
-.icon-del-edit a img{
+.icon-del-edit a img {
     height: 2rem;
 }
 
 /* BookTEXT */
-.book-text{
+.book-text {
     height: 100%;
     width: 100%;
     margin-top: 1rem;
 }
-.sub-text{
-    overflow: hidden; 
-    white-space: nowrap; 
-    text-overflow: ellipsis; 
+
+.sub-text {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     max-width: 120px;
     max-height: 100px;
 }
-.sub-text.m-1{
+
+.sub-text.m-1 {
     margin-left: 0.3rem;
 }
-.sub-text.m-2{
+
+.sub-text.m-2 {
     margin-left: 0.6rem;
 }
-.sub-text.m-3{
+
+.sub-text.m-3 {
     margin-left: 0.9rem;
 }
-.sub-text.m-4{
+
+.sub-text.m-4 {
     margin-left: 1.2rem;
 }
-.text-title.m-2{
+
+.text-title.m-2 {
     margin-left: 0.3rem;
 }
-.text-title.m-3{
+
+.text-title.m-3 {
     margin-left: 0.6rem;
 }
-.text-title.m-4{
+
+.text-title.m-4 {
     margin-left: 0.9rem;
 }
 
-@media only screen and (min-width: 425px) {
-    .sub-text{
-        overflow: hidden; 
-        white-space: nowrap; 
-        text-overflow: ellipsis; 
-        max-width: 170px;
-        max-height: 100px;
-    }
-}
 
-@media only screen and (min-width: 500px) {
-    .sub-text{
-        overflow: hidden; 
-        white-space: nowrap; 
-        text-overflow: ellipsis; 
+@media only screen and (min-width: 425px) {
+    .sub-text {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
         max-width: 245px;
         max-height: 100px;
     }
 
-    .container-book{
+    .container-book {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
@@ -167,208 +168,134 @@ nav h1{
         justify-content: center;
     }
 
-    .book-card{
+    .book-card {
         background-color: var(--third_color);
         display: flex;
         height: 12rem;
         align-items: center;
-        margin: 1rem 1rem 3rem 1.7rem;
+        margin: 1rem 1rem 4.5rem 1.7rem;
         border-radius: 1rem;
-        width: 30rem;
+        width: 26rem;
+    }
+
+    .book-text {
+        margin-left: 0.5rem;
     }
 }
 
-
-@media only screen and (min-width: 900px) {
-    .sub-text{
-        overflow: hidden; 
-        white-space: nowrap; 
-        text-overflow: ellipsis; 
+@media only screen and (min-width: 768px) {
+    .sub-text {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
         max-width: 28rem;
         max-height: 100px;
     }
 
-    .book-card{
-        width: 40rem;
+    .book-card {
+        width: 26rem;
+    }
+
+    .container-book {
+        justify-content: space-evenly;
     }
 }
 
-
 @media only screen and (min-width: 1024px) {
 
-    .sub-text{
-        overflow: hidden; 
-        white-space: nowrap; 
-        text-overflow: ellipsis; 
+    .sub-text {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
         max-width: 20rem;
         max-height: 100px;
     }
 
-    #filter{
-        display: block;    
+    #filter {
+        display: block;
     }
 
-    .icon{
+    .icon {
         display: none;
     }
 
-    .container{
+    .container {
         width: 100%;
         display: flex;
-        align-items: center;
+        align-items: flex-start;
     }
 
-    .container-filter-desktop{
+    .container-filter-desktop {
         height: 100vh;
     }
 
-    .container-book{
-        height: 100vh;
-    }
-
-    .form-filter{
+    .form-filter {
         width: 100%;
         border-right: 1px solid white;
     }
-    .book-card{
-        width: 35rem;
+
+    .book-card {
+        width: 26rem;
     }
 }
 
-@media only screen and (min-width: 1440px) {
-    .logoAndName{
+
+@media screen and (min-width: 1440px) {
+
+    .logoAndName {
         display: flex;
         width: 24%;
         justify-content: center;
     }
 
-    .logoAndName img{
-        height: 5rem;
-        width: 6rem;
-    }
-
-}
-
-@media screen and (min-width: 1440px) and (max-width: 1675px) {
-    .logoAndName{
-        display: flex;
-        width: 24%;
-        justify-content: center;
-    }
-
-    .logoAndName img{
+    .logoAndName img {
         height: 7rem;
         width: 9rem;
     }
 
-    .sub-text{
-        overflow: hidden; 
-        white-space: nowrap; 
-        text-overflow: ellipsis; 
-        max-width: 10rem;
-        max-height: 100px;
-    }
-
-    #filter{
-        display: block;    
-    }
-
-    .icon{
-        display: none;
-    }
-
-    .container{
-        width: 100%;
-        display: flex;
-        align-items: center;
-    }
-
-    .container-book{
-        width: 100%;
-    }
-
-    .form-filter{
-        width: 100%;
-        border-right: 1px solid white;
-        height: 100vh;
-    }
-
-    .container-book{
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        width: 100%;
-
-    }
-
-    .book-card{
-        width: 28rem;
-    }
-}
-
-@media only screen and (min-width: 1675px) {
-
-    .logoAndName{
-        display: flex;
-        width: 24%;
-        justify-content: center;
-    }
-
-    .logoAndName img{
-        height: 7rem;
-        width: 9rem;
-    }
-
-    .sub-text{
-        overflow: hidden; 
-        white-space: nowrap; 
-        text-overflow: ellipsis; 
+    .sub-text {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
         max-width: 11rem;
         max-height: 70px;
     }
 
-    #filter{
-        display: block;    
+    #filter {
+        display: block;
     }
 
-    .icon{
+    .icon {
         display: none;
     }
 
-    .container{
+    .container {
         width: 100%;
         display: flex;
-        align-items: center;
     }
 
-    .container-book{
-        width: 100%;
-        margin-left: 1.5rem;
-        margin-top: 2rem;
-    }
-
-    .form-filter{
+    .form-filter {
         width: 100%;
         border-right: 1px solid white;
         height: 100vh;
     }
 
-    .container-book{
+    .container-book {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         width: 100%;
+        margin-left: 1.5rem;
+        margin-top: 2rem;
         align-content: flex-start;
-        justify-content: flex-start;
-
+        justify-content: space-evenly;
     }
 
-    .book-card{
-        width: 25rem;
+    .book-card {
+        width: 26rem;
     }
 
-    .book-text h3{
+    .book-text h3 {
         margin-top: 0.20rem;
     }
-
 }

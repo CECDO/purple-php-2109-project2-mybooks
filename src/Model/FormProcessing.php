@@ -130,8 +130,16 @@ class FormProcessing
         if (empty($errors)) {
             if (!empty($item)) {
                 $editorsManager->addEditor($item);
-                header('Location: /book/add');
-                return $errors;
+                if ($_SESSION["location"] === "add") {
+                    header("location: /book/add");
+                    return $errors;
+                } elseif ($_SESSION["location"] === "edit") {
+                    header("location: /book/edit?id=" . $_SESSION["book"]);
+                    return $errors;
+                } else {
+                    header("location: /");
+                    return $errors;
+                }
             } else {
                 $errors[0] = 'Veuillez remplir le champ editeur';
                 return $errors;
@@ -159,8 +167,16 @@ class FormProcessing
         if (empty($errors)) {
             if (!empty($item)) {
                 $categoriesManager->addCategory($item);
-                header('Location: /book/add');
-                return $errors;
+                if ($_SESSION["location"] === "add") {
+                    header("location: /book/add");
+                    return $errors;
+                } elseif ($_SESSION["location"] === "edit") {
+                    header("location: /book/edit?id=" . $_SESSION["book"]);
+                    return $errors;
+                } else {
+                    header("location: /");
+                    return $errors;
+                }
             } else {
                 $errors[0] = 'Veuillez remplir le champ catégorie';
                 return $errors;
@@ -188,8 +204,16 @@ class FormProcessing
         if (empty($errors)) {
             if (!empty($item)) {
                 $locationsManager->addLocation($item);
-                header('Location: /book/add');
-                return $errors;
+                if ($_SESSION["location"] === "add") {
+                    header("location: /book/add");
+                    return $errors;
+                } elseif ($_SESSION["location"] === "edit") {
+                    header("location: /book/edit?id=" . $_SESSION["book"]);
+                    return $errors;
+                } else {
+                    header("location: /");
+                    return $errors;
+                }
             } else {
                 $errors[0] = 'Veuillez remplir le champ emplacement';
                 return $errors;
