@@ -30,8 +30,10 @@ nav h1 {
 .select {
     width: 14rem;
     height: 2rem;
-    border-radius: 0.625rem;
+    border-radius: 0.25rem;
     margin-right: 1rem;
+    background-color: #ffffff;
+    color: #636262;
 }
 
 .filter {
@@ -70,7 +72,8 @@ nav h1 {
 .search-bar {
     width: 14rem;
     height: 2rem;
-    border-radius: 0.625rem;
+    border-radius: 0.25rem;
+    border: none;
     margin-right: 1em;
     margin-bottom: 1rem;
 }
@@ -157,8 +160,8 @@ nav h1 {
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
-        max-width: 245px;
-        max-height: 100px;
+        max-width: 170px;
+        max-height: 90px;
     }
 
     .container-book {
@@ -189,8 +192,8 @@ nav h1 {
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
-        max-width: 28rem;
-        max-height: 100px;
+        max-width: 10rem;
+        max-height: 70px;
     }
 
     .book-card {
@@ -208,7 +211,7 @@ nav h1 {
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
-        max-width: 20rem;
+        max-width: 10rem;
         max-height: 100px;
     }
 

@@ -8,30 +8,32 @@ Ajouter un livre
 <link rel="stylesheet" href="/assets/css/style_addbook.css">
 {% endblock %}
 
-
 {% block content %}
 <nav>
     <div class="logoAndName">
-        <a href="/"><img src="/assets/images/logobook.png" alt="My Books Logo"></a>
+        <a href="/" title="Retour à l'accueil"><img src="/assets/images/logobook.png" alt="My Books Logo"></a>
         <p>MY BOOKS</p>
     </div>
     <h1>Ajouter un nouveau livre</h1>
     <div class="backHome">
-        <a href="/"><img src="/assets/images/home.png" alt="Home Logo"><span>Retour à l'accueil</span></a>
+        <a href="/" title="Retour à l'accueil"><img src="/assets/images/home.png" alt="Home Logo"><span>Retour à
+                l'accueil</span></a>
     </div>
 </nav>
 
 <form class="addForm" action="/book/add" method="post" enctype="multipart/form-data">
     <div class="cover_page">
         <label for="imageUpload">Page de couverture :</label>
-        <img class="preview" src="#" id="preview" alt="Aperçu de la page de couverture">
-        <input type="file" name="avatar" id="imageUpload" accept="image/*" onchange="previewImage()" required/>
+        <img class="preview" src="/assets/cover_page/cover_page.png" id="preview"
+            alt="Aperçu de la page de couverture">
+        <input type="file" name="avatar" id="imageUpload" accept="image/*" onchange="previewImage()" required />
     </div>
-
+    
     <div class="title">
         <label for="title">Titre :</label><br>
         <input type="text" id="title" name="title" placeholder="Saissisez le titre" required>
     </div>
+
     <div class="author">
         <label for="author">Auteur :</label><br>
         <div class="addAuthor">
@@ -46,9 +48,10 @@ Ajouter un livre
     </div>
 
     <div class="release_date">
-        <label for="release_date">Date de sortie :</label><br>
+        <label for="release_date">Date d'édition :</label><br>
         <input type="date" name="release_date" id="release_date" required>
     </div>
+
     <div class="editor">
         <label for="editor">Editeur :</label><br>
         <div class="addEditor">
@@ -85,8 +88,10 @@ Ajouter un livre
 
         </select>
     </div>
+
     <div class="location">
-        <label for="location">Emplacement :</label><br>
+        <label for="location" title="Indiquer l'endroit oû se trouve votre livre (Biblio, salon..)">Emplacement
+            :</label><br>
         <div class="addLocation">
             <select name="location" id="location" required>
                 <option value="" selected disabled hidden>Choissisez un emplacement</option>
@@ -107,10 +112,12 @@ Ajouter un livre
             {% endfor %}
         </select>
     </div>
+
     <input class="submit" type="submit" value="Enregistrer">
 </form>
 <p class="incompletForm">{{ errors[0] }}</p>
-
-
 {% endblock content %}
-{% block javascript %} <script src="/assets/js/previewCover.js"></script> {% endblock %}
+
+{% block javascript %}
+<script src="/assets/js/previewCover.js"></script>
+{% endblock %}

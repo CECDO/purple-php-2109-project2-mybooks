@@ -12,12 +12,13 @@ Informations du livre
 {% block content %}
 <nav>
     <div class="logoAndName">
-        <a href="/"><img src="/assets/images/logobook.png" alt="My Books Logo"></a>
+        <a href="/" title="Retour à l'accueil"><img src="/assets/images/logobook.png" alt="My Books Logo"></a>
         <p>MY BOOKS</p>
     </div>
     <h1>Informations du livre</h1>
     <div class="backHome">
-        <a href=""><img src="/assets/images/home.png" alt="Home Logo"><span>Retour à l'accueil</span></a>
+        <a href="/" title="Retour à l'accueil"><img src="/assets/images/home.png" alt="Home Logo"><span>Retour à
+                l'accueil</span></a>
     </div>
 </nav>
 
@@ -38,7 +39,7 @@ Informations du livre
     </div>
 
     <div class="release_date">
-        <h2>Date de sortie :</h2>
+        <h2>Date d'édition :</h2>
         <p>{{ book.release_date }}</p>
     </div>
 
@@ -69,7 +70,10 @@ Informations du livre
 </div>
 
 <div class="modify_delete">
-    <a class="modify" href="/book/edit?id={{ book.book_id }}"><img src="/assets/images/modify.png" alt="logo to modify book"></a>
-    <a class="delete" href="/book/delete?id={{ book.book_id }}" onclick="confirm('Voulez vous vraiment supprimer ce livre?')"><img src="/assets/images/delete.png" alt="logo to delete book"></a>
+    <a class="modify" href="/book/edit?id={{ book.book_id }}" title="Modifier un livre"><img
+            src="/assets/images/modify.png" alt="logo to modify book"></a>
+    <a class="delete" href="/book/delete?id={{ book.book_id }}" title="Supprimer un livre"
+        onclick="confirm('Voulez vous vraiment supprimer ce livre?')"><img src="/assets/images/delete.png"
+            alt="logo to delete book"></a>
 </div>
 {% endblock %}
