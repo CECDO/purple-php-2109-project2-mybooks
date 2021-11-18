@@ -23,7 +23,7 @@ define('APP_DB_PASSWORD', 'your_db_password');
 7. From this manage your library.
 
 
-## Authors :
+## Authors
 #### Developers :
 * Alexandre Grué
 * Cécile Do Nascimento
