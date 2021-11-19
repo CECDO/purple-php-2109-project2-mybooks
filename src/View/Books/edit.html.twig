@@ -1,0 +1,120 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="/assets/css/style_addbook.css">
+{% endblock %}
+
+{% block title %}
+Modification d'un livre
+{% endblock %}
+
+{% block content %}
+<nav>
+    <div class="logoAndName">
+        <a href="/" title="Retour à l'accueil"><img src="/assets/images/logobook.png" alt="My Books Logo"></a>
+        <p>MY BOOKS</p>
+    </div>
+    <h1>Modification d'un livre</h1>
+    <div class="backHome">
+        <a href="/" title="Retour à l'accueil"><img src="/assets/images/home.png" alt="Home Logo"><span>Retour à
+                l'accueil</span></a>
+    </div>
+</nav>
+{% for error in errors %}
+<div style="color: red;">{{error}}</div>
+{% endfor %}
+<form class="addForm" method="post" enctype="multipart/form-data">
+    <div class="cover_page">
+        <h2>Page de couverture :</h2>
+        <img class="preview" src="/{{book.cover_page}}" id="preview" alt="preview cover page">
+    </div>
+
+    <input type="hidden" value="{{ book.book_id }}" name="id">
+    <div class="title">
+        <label for="title">Titre :</label><br>
+        <input type="text" value="{{book.book_title}}" id="title" name="title" placeholder="{{book.book_title}}">
+    </div>
+
+    <div class="author">
+        <label for="author">Auteur :</label><br>
+        <div class="addAuthor">
+            <select name="author" id="author">
+                <option value="{{ book.editor_id }}" selected hidden>{{ book.author_name }}</option>
+                {% for author in authors %}
+                <option value="{{ author.id }}">{{ author.name }}</option>
+                {% endfor %}
+            </select>
+            <a href="/author/add"><img class="more" src="/assets/images/more.png" alt=""></a>
+        </div>
+    </div>
+
+    <div class="release_date">
+        <label for="release_date">Date d'édition :</label><br>
+        <input type="date" name="release_date" id="release_date" value="{{ book.release_date }}">
+    </div>
+
+    <div class="editor">
+        <label for="editor">Editeur :</label><br>
+        <div class="addEditor">
+            <select name="editor" id="editor">
+                <option value="{{ book.editor_id }}" selected hidden>{{ book.editor_name }}</option>
+                {% for editor in editors %}
+                <option value="{{ editor.id }}">{{ editor.name }}</option>
+                {% endfor %}
+            </select>
+            <a href="/editor/add"><img class="more" src="/assets/images/more.png" alt=""></a>
+        </div>
+    </div>
+
+    <div class="category">
+        <label for="category">Catégorie :</label><br>
+        <div class="addCategory">
+            <select name="category" id="category">
+                <option value="{{ book.category_id }}" selected hidden>{{ book.category_name }}</option>
+                {% for category in categories %}
+                <option value="{{ category.id }}">{{ category.name }}</option>
+                {% endfor %}
+            </select>
+            <a href="/category/add"><img class="more" src="/assets/images/more.png" alt=""></a>
+        </div>
+    </div>
+
+    <div class="format">
+        <label for="format">Format :</label><br>
+        <select name="format" id="format">
+            <option value="{{ book.format_id }}" selected hidden>{{ book.format_name }}</option>
+            {% for format in formats %}
+            <option value="{{ format.id }}">{{ format.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="location">
+        <label for="location">Emplacement :</label><br>
+        <div class="addLocation">
+            <select name="location" id="location">
+                <option value="{{ book.location_id }}" selected hidden>{{ book.location_name }}</option>
+                {% for location in locations %}
+                <option value="{{ location.id }}">{{ location.name }}</option>
+                {% endfor %}
+            </select>
+            <a href="/location/add"><img class="more" src="/assets/images/more.png" alt=""></a>
+        </div>
+    </div>
+
+    <div class="status">
+        <label for="status">Etat :</label><br>
+        <select name="status" id="status">
+            <option value="{{ book.status_id }}" selected hidden>{{ book.status_name }}</option>
+            {% for statut in status %}
+            <option value="{{ statut.id }}">{{ statut.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <input class="submit" type="submit" value="Enregistrer">
+</form>
+{% endblock %}
+
+{% block javascript %}
+<script src="/assets/js/previewCover.js"></script>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+Ajouter un éditeur
+{% endblock title %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="/assets/css/style_addbook.css">
+{% endblock %}
+
+
+{% block content %}
+<nav>
+    <div class="logoAndName">
+        <a href="/" title="Retour à l'accueil">><img src="/assets/images/logobook.png" alt="My Books Logo"></a>
+        <p>MY BOOKS</p>
+    </div>
+    <h1>Ajouter un éditeur</h1>
+    <div class="backHome">
+        <a href="/" title="Retour à l'accueil">><img src="/assets/images/home.png" alt="Home Logo"><span>Retour à
+                l'accueil</span></a>
+    </div>
+</nav>
+
+<form class="addInformation" action="/editor/add" method="post" enctype="multipart/form-data">
+    <div class="editor">
+        <label for="editor_name">Editeur:</label>
+        <div class="addEditor">
+            <input type="text" id="editor_name" name="editor_name" placeholder="Saissisez l'éditeur" required>
+            <input class="addElement" type="submit" value="">
+        </div>
+        <p class="errors">{{ errors[0] }}</p>
+    </div>
+</form>
+{% endblock %}
